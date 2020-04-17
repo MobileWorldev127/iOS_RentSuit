@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomPopupViewController" customModule="RentaSuit" customModuleProvider="target">
+            <connections>
+                <outlet property="checkBoxbtn" destination="qqB-tx-kOJ" id="4pl-13-wxu"/>
+                <outlet property="messageLabel" destination="cof-xG-Qy2" id="Stl-pH-05X"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w8M-Kj-B7b">
+                    <rect key="frame" x="10" y="218.5" width="355" height="250"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5vP-Cx-pF0">
+                            <rect key="frame" x="157.5" y="8" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="OIN-4s-tTT"/>
+                                <constraint firstAttribute="height" constant="40" id="R19-C4-CcM"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqB-tx-kOJ">
+                            <rect key="frame" x="10" y="106" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="1kp-lo-zBJ"/>
+                                <constraint firstAttribute="width" constant="30" id="9gV-zU-oJY"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                            <state key="normal" image="unchecked-checkbox">
+                                <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <state key="selected" image="checked_checkbox"/>
+                            <connections>
+                                <action selector="checboxBtnActionPressed:" destination="-1" eventType="touchUpInside" id="oWV-B7-Etx"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree to all Terms and Conditions and Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cof-xG-Qy2">
+                            <rect key="frame" x="50" y="106" width="295" height="38.5"/>
+                            <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
+                            <color key="textColor" red="0.51764705879999995" green="0.51764705879999995" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ztJ-G4-SnF">
+                            <rect key="frame" x="97.5" y="204" width="70" height="26"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="VOY-qe-Ayr"/>
+                                <constraint firstAttribute="height" constant="26" id="ifc-eF-vCa"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="10"/>
+                            <state key="normal">
+                                <color key="titleColor" red="0.82352941180000006" green="0.67843137249999996" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.82352941180000006" green="0.67843137249999996" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizedString" value="popup-no"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="noBtnPressed:" destination="-1" eventType="touchUpInside" id="wdc-if-h8g"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANy-p1-acQ">
+                            <rect key="frame" x="187.5" y="204" width="70" height="26"/>
+                            <color key="backgroundColor" red="0.82352941180000006" green="0.67843137249999996" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="26" id="9P3-Ag-j2R"/>
+                                <constraint firstAttribute="width" constant="70" id="Yt6-LD-9Ku"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="10"/>
+                            <state key="normal">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizedString" value="accept_key"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="acceptBtnPressed:" destination="-1" eventType="touchUpInside" id="lyb-WV-cAj"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jwn-ky-kNW">
+                            <rect key="frame" x="177.5" y="230" width="0.0" height="0.0"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" id="SJ7-K1-IBw"/>
+                                <constraint firstAttribute="height" id="lyp-xq-QvZ"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="ztJ-G4-SnF" secondAttribute="bottom" constant="20" id="04c-La-ndy"/>
+                        <constraint firstAttribute="trailing" secondItem="cof-xG-Qy2" secondAttribute="trailing" constant="10" id="C2j-nj-3FD"/>
+                        <constraint firstItem="5vP-Cx-pF0" firstAttribute="centerX" secondItem="w8M-Kj-B7b" secondAttribute="centerX" id="FgI-E9-2R6"/>
+                        <constraint firstAttribute="bottom" secondItem="jwn-ky-kNW" secondAttribute="bottom" constant="20" id="Fkt-qH-UPF"/>
+                        <constraint firstItem="jwn-ky-kNW" firstAttribute="centerX" secondItem="w8M-Kj-B7b" secondAttribute="centerX" id="MWU-OW-w4Q"/>
+                        <constraint firstItem="qqB-tx-kOJ" firstAttribute="leading" secondItem="w8M-Kj-B7b" secondAttribute="leading" constant="10" id="Mjv-9c-OMS"/>
+                        <constraint firstAttribute="bottom" secondItem="ANy-p1-acQ" secondAttribute="bottom" constant="20" id="UkJ-5b-F9W"/>
+                        <constraint firstItem="jwn-ky-kNW" firstAttribute="leading" secondItem="ztJ-G4-SnF" secondAttribute="trailing" constant="10" id="WyR-YR-Q0F"/>
+                        <constraint firstItem="cof-xG-Qy2" firstAttribute="top" secondItem="qqB-tx-kOJ" secondAttribute="top" id="YlG-Dh-VTB"/>
+                        <constraint firstItem="cof-xG-Qy2" firstAttribute="leading" secondItem="qqB-tx-kOJ" secondAttribute="trailing" constant="10" id="dBY-bB-oqi"/>
+                        <constraint firstItem="ANy-p1-acQ" firstAttribute="leading" secondItem="jwn-ky-kNW" secondAttribute="trailing" constant="10" id="eJs-nC-Dpl"/>
+                        <constraint firstItem="5vP-Cx-pF0" firstAttribute="top" secondItem="w8M-Kj-B7b" secondAttribute="top" constant="8" id="eQw-TN-toX"/>
+                        <constraint firstItem="cof-xG-Qy2" firstAttribute="centerY" secondItem="w8M-Kj-B7b" secondAttribute="centerY" id="w9D-2Z-iTE"/>
+                        <constraint firstAttribute="height" constant="250" id="yt1-V4-kz9"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.75285456730769229" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="w8M-Kj-B7b" secondAttribute="trailing" constant="10" id="AkY-Ra-Pcd"/>
+                <constraint firstItem="w8M-Kj-B7b" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="F12-Bg-l18"/>
+                <constraint firstItem="w8M-Kj-B7b" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="a2L-Hx-Wph"/>
+                <constraint firstItem="w8M-Kj-B7b" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="uEo-rq-GFC"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="checked_checkbox" width="60" height="60"/>
+        <image name="unchecked-checkbox" width="60" height="60"/>
+    </resources>
+</document>

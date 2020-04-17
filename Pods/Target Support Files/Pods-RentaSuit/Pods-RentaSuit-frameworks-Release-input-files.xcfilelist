@@ -1,0 +1,10 @@
+${PODS_ROOT}/Target Support Files/Pods-RentaSuit/Pods-RentaSuit-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
+${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework
+${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework
+${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework
+${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework
+${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework
+${BUILT_PRODUCTS_DIR}/TPKeyboardAvoidingSwift/TPKeyboardAvoidingSwift.framework
+${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework
+${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework

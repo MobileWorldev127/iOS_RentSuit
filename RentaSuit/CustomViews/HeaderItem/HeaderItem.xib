@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HeaderItem" customModule="RentaSuit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QHv-dF-0NE" customClass="SelectableButton" customModule="RentaSuit" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="20" width="375" height="646"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="10"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="onTextColor">
+                            <color key="value" red="0.82352941180000006" green="0.67843137249999996" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="offTextColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="BLa-hc-H3C"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FGE-0D-hhR">
+                    <rect key="frame" x="0.0" y="666" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.82352941180000006" green="0.67843137249999996" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="gbd-jq-5cs"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="FGE-0D-hhR" secondAttribute="bottom" id="0JA-0l-Bzh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FGE-0D-hhR" secondAttribute="trailing" id="3Hh-n1-RI3"/>
+                <constraint firstItem="QHv-dF-0NE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="AvN-Vo-5Yj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="QHv-dF-0NE" secondAttribute="trailing" id="EEC-3k-Zgq"/>
+                <constraint firstItem="FGE-0D-hhR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="PVq-Ta-rRq"/>
+                <constraint firstItem="FGE-0D-hhR" firstAttribute="top" secondItem="QHv-dF-0NE" secondAttribute="bottom" id="cUh-C0-J9M"/>
+                <constraint firstItem="QHv-dF-0NE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="kVF-83-Ig3"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="button" destination="QHv-dF-0NE" id="OEi-fQ-Z9K"/>
+                <outlet property="indicator" destination="FGE-0D-hhR" id="dcs-kD-yfZ"/>
+            </connections>
+        </view>
+    </objects>
+</document>

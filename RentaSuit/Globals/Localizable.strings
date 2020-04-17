@@ -1,0 +1,252 @@
+/* 
+  LocalizableString.strings
+  RentaSuit
+
+  Created by htrimech MacBook Pro on 18/09/2018.
+  Copyright © 2018 MacBook Pro. All rights reserved.
+*/
+
+"signup_key" = "SIGN UP";
+"login_key" = "LOG IN";
+"ok_key" = "Ok";
+"email_not_valid" = "Please enter a valid email address :)";
+"login_fail" = "Incorrect email or password";
+"data_incomplete" = "Your information is incomplete, thank you to inform them.";
+"server_error" = "An error has occurred. Thank you try again later.";
+"network_error" = "Check your internet connection.";
+
+"choice_msg_key" = "This application provide an online service  to rent and display quality suits and garments for business, special occasions or events at an affordable price.";
+// Map wording
+
+"cleaners_btn" = "Cleaners";
+"request_btn" = "Request";
+// profile wording
+
+"selector_personal" = "Personal Info";
+"selector_body_info" = "Body Type";
+"selector_payement" = "Paypal Sandbox";
+"selector_password" = "Edit Password";
+"selector_measurement_view" = "Measurement Reference guide";
+"selector_body_view" = "View body";
+"selector_save_changes" = "Save Changes";
+
+"first_name_lbl" = "First name";
+"last_name_lbl" = "Name";
+"phone_lbl" = "Telephone";
+"location_lbl" = "Adresse";
+"email_lbl" = "E-mail";
+"birthday_lbl" = "Birthday";
+"size_lbl" = "Cut";
+"breast_lbl" = "Chest (Inch)";
+"height_lbl" = "Height (Foot)";
+"waist_lbl" = "Waist (inch)";
+"hips_lbl" = "Hip (Inch)";
+
+"billing_mail" = "E-mail Paypal";
+
+
+"submit_btn" = "VALIDATE";
+"old_pwd_lbl" = "Current password";
+"new_pwd_lbl" = "New password";
+"confirm_pwd_lbl" = "Confirm password";
+
+// details wording
+
+"designer_lbl" = "Designer";
+"season_lbl" = "Season";
+"category_lbl" = "Category";
+"location_lbl" = "Location";
+"size_lbl" = "Size";
+"color_lbl" = "Color";
+"body_type_lbl" = "Body Type";
+
+// biling methods wording
+
+"methods_lbl" = "Select another payment option";
+"card_number_lbl" = "Card number";
+"card_type_lbl" = "Card type";
+"card_security_number_lbl" = "CVV";
+"next_button" = "NEXT";
+
+"alert_select_payement" = "Please choose / select a payment method";
+
+// payement validation
+
+"transaction_amount_lbl" = "Transaction  Amount";
+"notice_fees_label" = "the total amount to pay is% @ and some fees may result";
+"pay_button" = "PAY";
+
+
+// action
+
+"action_map" = "Map";
+"action_chat" = "Chat";
+"action_profile" = "Profile";
+"action_billing" = "Payement";
+"action_wish_list" = "My Wishlist";
+"action_cart" = "My Cart";
+"action_logout" = "Log Out";
+
+// details
+
+"details_action" = "test details view";
+
+// wish list
+"wish_list_action" = "Wishlist";
+"wish_list_button" = "CONTINUE SHOPPING";
+
+// cart list
+"cart_list_button" = "Wishlist";
+"wish_list_button" = "CONTINUE SHOPPING";
+
+//About
+"about-key" = "ABOUT US";
+"about-msg" = "This online service provides an opportunity for\n women to rent and display quality suits and\n garments for business, special occasions or events\n at an affordable price.";
+"follow-key" = "Follow Us on";
+"read-more" = "Read More";
+"send_msg_key" = "SEND US A MESSAGE";
+
+// contact_us
+"submit_key" = "SUBMIT";
+"Plz_category_title_key" = "Select a category";
+"Plz_category_key" = "Please select a subject category";
+"item_damaged_key" ="I received the items damaged";
+"item_late_key"="I received the item late";
+"item_wrong_key"="I received the wrong item";
+"technical_problme_key"="Technical problems with the website";
+"contact_us_succes_key" = "Message has been sent.";
+"good_job_key"="Good job!";
+//
+"search_key" = "Search";
+"filter_key" = "Filter";
+"per_week_key" = "Per Week";
+"per_day_key" = "Per Day" ; 
+
+
+// image picker
+
+"av_take_pic" = "Take photo";
+"av_chose_pic" = "Choose photo";
+"av_cancel" = "Cancel";
+"permission_camera" = "Please allow the app to use the camera. (Settings -> Rent a Suite)";
+
+"update_btn" = " UPLOAD";
+
+// create rent wording
+"main_picture_lbl" = "MAIN PHOTO";
+"sub_picture_lbl" = "SUB PHOTO";
+"item_title_lbl" = "ITEM NAME";
+"item_retail_price_lbl" = "RETAIL PRICE";
+"item_price_per_day_lbl" = "ITEM PRICE (PER/DAY)";
+"item_color_lbl" = "COLOR";
+"item_size_lbl" = "SIZE";
+"item_category_lbl" = "SELECT A CATEGORY";
+"item_alteration_lbl" = "ALTERATION";
+"item_condition_lbl" = "SELECT A CONDITION";
+"item_season_lbl" = "SEASON";
+"item_designer_lbl" = "DESIGNER";
+"item_cancelation_lbl" = "CANCELLATION SELECTION";
+"item_description_lbl" = "DESCRIPTION";
+"item_agreement_lbl" = "I agree to receive my item back unclean and will clean it myself with a charge of";
+"create_post_btn" = "CREATE POST";
+// for rent wording
+"delivery_options_lbl" = "Delivery options";
+"rent_end_lbl" = "End date";
+"rent_start_lbl" = "Start date";
+"rent_address_lbl" = "Adress";
+"rent_street_lbl" = "Street Name";
+"rent_apart_number_lbl" = "Apart, Suit, Unit...";
+"rent_city_lbl" = "City";
+"rent_state_lbl" = "State";
+"rent_zip_code_lbl" = "Zip Code";
+"rent_country_lbl" = "Country";
+"rent_contact_lbl" = "Contact number";
+"rent_email_lbl" = "E-mail";
+"rent_description_lbl" = "Description";
+"rent_button" = "ADD TO CART";
+
+//shipping
+
+"plz_select_key" = "Please Select";
+"AB" = "Alberta, CA";
+"BC" = "British Columbia, CA";
+"MB" = "Manitoba, CA";
+"NB" = "New Brunswick, CA";
+"NL" = "Newfoundland and Labrador, CA";
+"NT" = "Northwest Territories, CA";
+"NS" = "Nova Scotia, CA";
+"NU" = "Nunavut, CA";
+"ON" = "Ontario, CA";
+"PE" = "Prince Edward Island, CA";
+"QC" = "Quebec, CA";
+"SK" = "Saskatchewan, CA";
+"YT" = "Yukon, CA";
+"note_shipping_key"   = "Note: This item will be released and delivered on or within 10 days";
+
+"canada_key" = "Canada Post" ;
+"UPS_key"    = "UPS" ;
+// input
+
+"season_winter" = "WINTER";
+"season_autaumn" = "AUTAUMN";
+"season_spring" = "SPRING";
+"season_summer" = "SUMMER";
+
+// condition
+
+"condition_like_new" = "LIKE NEW";
+"condition_worn" = "SLIGHTLY WORN";
+"condition_looks_good" = "STILL LOOKS GOOD";
+
+// cancelation
+
+"cancelation_agressive" = "AGRESSIVE";
+"cancelation_moderate" = "MODERATE";
+
+// altaration
+
+"altaration_yes" = "YES";
+"altaration_no" = "NO";
+
+// delivery options
+
+"do_localisation" = "Localization";
+"do_mail" = "Regular mail";
+"do_ups" = "Ups";
+// custompoups
+"messagePopup_key" = "I agree to all Terms and Conditions and Privacy Policy";
+"Terms_and_Condition_key" = "Terms and Conditions";
+"Privacy_Polic_key" = "Privacy Policy";
+"accept_key" = "Accept";
+"popup-no" = "NO";
+
+// notifications
+"sorted_by_lbl" = "Sorted by";
+"product_pending_approval" = "New product is now pending for approval";
+"reject_rent_request" = "Rejected your rental request";
+"accept_rent_request" = "Accepted your rental request";
+// feedback view
+
+"feed_back_title" = "GIVE YOUR FEEDBACK";
+"feed_back_sub_title" = "PLEASE RATE THE FOLLOWING from 1 to 5 (1 - worst and 5 - best)";
+"review_delivery" = "DELIVERY";
+"review_time" = "TIME";
+"review_clean" = "CLEANLINESS";
+"review_accuracy" = "ACCURACY";
+"review_communication" = "COMMUNICATION";
+"review_quality" = "QUALITY";
+"review_condition" = "CONDITION";
+"review_exp" = "OVERALL EXPERIENCE";
+"review_comment" = "COMMENT";
+"review_submit" = "SUBMIT FEEDBACK";
+
+
+// notification satisfied
+"satisfaction_title" = "Are you satisfied with the item ?";
+"satisfaction_yes" = "YES";
+"satisfaction_no" = "NO";
+
+// notification request rent
+"request_title" = "You have a new rent request for R301667";
+"request_yes" = "ACCEPT";
+"request_no" = "DECLINE";
