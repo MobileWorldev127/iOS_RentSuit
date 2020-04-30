@@ -63,9 +63,58 @@ class GarmentsPageViewController: BasepageViewController,UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellidentfier, for: indexPath as IndexPath) as! GarmentsCollectionViewCell
         let product:Product = self.listProducts[indexPath.row]
-      cell.setupCellWithProduct(product: product)
+        cell.productSelected = product
+        cell.setupCellWithProduct(product: product)
+        cell.removeOrAddWishListBlock = {
+            (isSelected) -> Void in
+            if isSelected {
+                self.removeFromWishlitList(product: product , incell:cell ,index: indexPath.row )
+            }else{
+                self.addInWishlitList(product: product , incell:cell,index: indexPath.row )
+            }
+        }
         return cell
     }
+    func removeFromWishlitList(product:Product ,incell:GarmentsCollectionViewCell ,index:Int)  {
+        var params : Dictionary<String , AnyObject> = [:]
+        params["product_id"] = product.id as AnyObject
+        params ["on_wishlist"] = 0 as AnyObject
+        
+        Product.addOrRemoveProductwishlist(credentials: params as! Dictionary<String, NSObject>) { (removed, err) in
+            if (err == nil ){
+                if (removed != nil){
+                    if (removed! ){
+                        incell.favoritetBtn.isSelected = false
+                        product.onWishlist = false;
+                        self.listProducts[index] = product
+                    }else{
+                        incell.favoritetBtn.isSelected = true
+                    }
+                }
+            }
+            
+        }
+    }
+    func addInWishlitList(product:Product ,incell:GarmentsCollectionViewCell ,index:Int)   {
+        var params : Dictionary<String , AnyObject> = [:]
+        params["product_id"] = product.id as AnyObject
+        params ["on_wishlist"] = 1 as AnyObject
+        
+        Product.addOrRemoveProductwishlist(credentials: params as! Dictionary<String, NSObject>) { (added, err) in
+            if (err == nil ){
+                if (added != nil){
+                    if (added! ){
+                        incell.favoritetBtn.isSelected = true
+                        product.onWishlist = true;
+                        self.listProducts[index] = product
+                    }else{
+                        incell.favoritetBtn.isSelected = false
+                    }
+                }
+            }
+        }
+    }
+  
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellPhotoWidth :CGFloat = (SCREEN_WIDTH - 60) / 2;
         let ratio :CGFloat = 1.4
@@ -73,13 +122,11 @@ class GarmentsPageViewController: BasepageViewController,UICollectionViewDataSou
         return CGSize(width: cellPhotoWidth, height: cellPhotoHeight)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if indexPath.row != 0{
-            let product:Product = self.listProducts[indexPath.row]
-            if product.id != nil{
-                self.goToItemDetails(product.id!)
+        let product:Product = self.listProducts[indexPath.row]
+        if product.id != nil{
+            self.goToItemDetails(product.id!)
 
-            }
-//        }
+        }
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let ymaxOffset:CGFloat = scrollView.contentSize.height - scrollView.frame.height
