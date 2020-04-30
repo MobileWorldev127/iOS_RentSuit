@@ -75,11 +75,11 @@ class HomeViewController: BaseViewController ,HomePagerDelagate{
          homeItemVC = HomeVcPageItemViewController.sharedInstance
          garmentsVC = GarmentsPageViewController.sharedInstance
          shippingVC = ShippingPageViewController.sharedInstance
-         aboutVC = AboutViewController.sharedInstance
+//         aboutVC = AboutViewController.sharedInstance
          contatcUsVC = ContatcUsPageViewController.sharedInstance
-         newsVC = NewsViewController.sharedInstance
+//         newsVC = NewsViewController.sharedInstance
 
-        return [homeItemVC!,aboutVC!,garmentsVC!,newsVC!,contatcUsVC!,shippingVC!]
+        return [homeItemVC!,garmentsVC!,contatcUsVC!,shippingVC!]
     }
     func updateHeader(indexBtn:NSInteger) -> Void {
         for  subview:UIView in self.menuBtnsStackview!.subviews {
@@ -108,58 +108,58 @@ class HomeViewController: BaseViewController ,HomePagerDelagate{
                 switch indexbtnSelected {
                 case 0:
                     self.selectedViewHome.isHidden = false
-                    self.selectedSearchView.isHidden = true
+//                    self.selectedSearchView.isHidden = true
                     self.selectedgarmentsView.isHidden = true
-                    self.selectedNewsViews.isHidden = true
+//                    self.selectedNewsViews.isHidden = true
                     self.selectedContactView.isHidden = true
                     self.selectedShippingView.isHidden = true
 
                 break
                 case 1:
                     self.selectedViewHome.isHidden = true
-                    self.selectedSearchView.isHidden = false
-                    self.selectedgarmentsView.isHidden = true
-                    self.selectedNewsViews.isHidden = true
+//                    self.selectedSearchView.isHidden = false
+                    self.selectedgarmentsView.isHidden = false
+//                    self.selectedNewsViews.isHidden = true
                     self.selectedContactView.isHidden = true
                     self.selectedShippingView.isHidden = true
 
                     break
                 case 2:
                     self.selectedViewHome.isHidden = true
-                    self.selectedSearchView.isHidden = true
-                    self.selectedgarmentsView.isHidden = false
-                    self.selectedNewsViews.isHidden = true
-                    self.selectedContactView.isHidden = true
+//                    self.selectedSearchView.isHidden = true
+                    self.selectedgarmentsView.isHidden = true
+//                    self.selectedNewsViews.isHidden = false
+                    self.selectedContactView.isHidden = false
                     self.selectedShippingView.isHidden = true
 
                     break
                 case 3:
                     self.selectedViewHome.isHidden = true
-                    self.selectedSearchView.isHidden = true
+//                    self.selectedSearchView.isHidden = true
                     self.selectedgarmentsView.isHidden = true
-                    self.selectedNewsViews.isHidden = false
-                    self.selectedContactView.isHidden = true
-                    self.selectedShippingView.isHidden = true
-
-                    break
-                case 4:
-                    self.selectedViewHome.isHidden = true
-                    self.selectedSearchView.isHidden = true
-                    self.selectedgarmentsView.isHidden = true
-                    self.selectedNewsViews.isHidden = true
-                    self.selectedContactView.isHidden = false
-                    self.selectedShippingView.isHidden = true
-
-                    break
-                case 5:
-                    self.selectedViewHome.isHidden = true
-                    self.selectedSearchView.isHidden = true
-                    self.selectedgarmentsView.isHidden = true
-                    self.selectedNewsViews.isHidden = true
+//                    self.selectedNewsViews.isHidden = true
                     self.selectedContactView.isHidden = true
                     self.selectedShippingView.isHidden = false
 
                     break
+//                case 4:
+//                    self.selectedViewHome.isHidden = true
+////                    self.selectedSearchView.isHidden = true
+//                    self.selectedgarmentsView.isHidden = true
+//                    self.selectedNewsViews.isHidden = true
+//                    self.selectedContactView.isHidden = true
+//                    self.selectedShippingView.isHidden = false
+//
+//                    break
+//                case 5:
+//                    self.selectedViewHome.isHidden = true
+//                    self.selectedSearchView.isHidden = true
+//                    self.selectedgarmentsView.isHidden = true
+//                    self.selectedNewsViews.isHidden = true
+//                    self.selectedContactView.isHidden = true
+//                    self.selectedShippingView.isHidden = false
+//
+//                    break
                     
                 default:
                     break

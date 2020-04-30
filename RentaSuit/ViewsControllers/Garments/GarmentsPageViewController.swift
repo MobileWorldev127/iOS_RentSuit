@@ -13,15 +13,30 @@ class GarmentsPageViewController: BasepageViewController,UICollectionViewDataSou
 
 //    @IBOutlet weak var filterBtn: UIButton!
     @IBOutlet weak var garmentsCollectionCell: UICollectionView!
-     let cellidentfier  = "garmentsCellId"
-     var listCategoryProduct :[CategoryProduct]  = [CategoryProduct]()
+    let cellidentfier  = "garmentsCellId"
+    var homeObject:HomeProduct?
+    var listCategoryProduct :[CategoryProduct]  = [CategoryProduct]()
+    var listProducts :[Product]  = [Product]()
+    var currentPageProducts : Int = 0
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        getCategoriesProdcutsList()
-
+//        getCategoriesProdcutsList()
+        getListProducts()
     }
     
-    
+    func getListProducts()  {
+        HomeProduct.getListProducts(productsUrl: "product_list" ,page: 0) { (homeProduct, err) in
+            if homeProduct != nil {
+                self.homeObject = homeProduct
+                self.listProducts = (homeProduct?.listProducts)!
+            }else{
+                self.showAlertView(title: nil, message: "server_error".localized)
+            }
+            self.garmentsCollectionCell .reloadData()
+
+        }
+    }
    
     func getCategoriesProdcutsList()  {
         CategoryProduct.getListCategoriesProducts { (listCategories, err) in
@@ -41,29 +56,62 @@ class GarmentsPageViewController: BasepageViewController,UICollectionViewDataSou
     }()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.listCategoryProduct.count
+        return self.listProducts.count
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellidentfier, for: indexPath as IndexPath) as! GarmentsCollectionViewCell
-        cell.setTopStateBtnConstarint(index: indexPath.row)
-        cell.setupCellWithcategory(category: listCategoryProduct[indexPath.row])
+        let product:Product = self.listProducts[indexPath.row]
+      cell.setupCellWithProduct(product: product)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellPhotoWidth :CGFloat = SCREEN_WIDTH ;
-        let cellPhotoHeight :CGFloat = 256  ;
+        let cellPhotoWidth :CGFloat = (SCREEN_WIDTH - 60) / 2;
+        let ratio :CGFloat = 1.4
+        let cellPhotoHeight :CGFloat = cellPhotoWidth * ratio  ;
         return CGSize(width: cellPhotoWidth, height: cellPhotoHeight)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "ListeProducts", bundle: nil)
-        let vc:ListeProductsViewController = storyboard.instantiateViewController(withIdentifier: "liste_products") as! ListeProductsViewController
-        let category = listCategoryProduct[indexPath.row]
-        vc.category = category
-        APP_DELEGATE.mainNavigationController!.pushViewController(vc, animated: true)
+//        if indexPath.row != 0{
+            let product:Product = self.listProducts[indexPath.row]
+            if product.id != nil{
+                self.goToItemDetails(product.id!)
+
+            }
+//        }
     }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let ymaxOffset:CGFloat = scrollView.contentSize.height - scrollView.frame.height
+        if (scrollView.contentOffset.y > 0 && scrollView.contentOffset.y >= ymaxOffset ){
+            getMoreProducts()
+        }
+    }
+    func getMoreProducts()  {
+        if (homeObject?.hasMorePage(currentpage: currentPageProducts)) == true {
+            currentPageProducts = currentPageProducts + 1
+            HomeProduct.getListProducts(productsUrl: "product_list",page:currentPageProducts) { (homeProduct, err) in
+                if homeProduct != nil {
+                    self.homeObject = homeProduct
+                    self.listProducts.append(contentsOf: homeProduct!.listProducts!)
+
+                }else{
+                    self.currentPageProducts = self.currentPageProducts - 1
+                }
+                self.garmentsCollectionCell .reloadData()
+                
+            }
+        }
+
+    }
+  
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let storyboard = UIStoryboard(name: "ListeProducts", bundle: nil)
+//        let vc:ListeProductsViewController = storyboard.instantiateViewController(withIdentifier: "liste_products") as! ListeProductsViewController
+//        let category = listProducts[indexPath.row]
+//        vc.category = category
+//        APP_DELEGATE.mainNavigationController!.pushViewController(vc, animated: true)
+//    }
     /*
     // MARK: - Navigation
 

@@ -287,7 +287,8 @@ class MABMapperFetcher<T>: NSObject {
         }
         
         if object is String {
-            return NSNumber(value:Float(object as! String)!)
+//            return NSNumber(value:Float(object as! String)!)
+          return nil
         }
         
         return nil;

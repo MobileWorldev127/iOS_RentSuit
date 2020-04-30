@@ -14,6 +14,13 @@ class GarmentsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var stateBtnTopConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var markLabel: UILabel!
+
+  
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var favoritetBtn: UIButton!
+    var removeOrAddWishListBlock: ((Bool)->Void)?
+  
+  
     func setTopStateBtnConstarint(index:NSInteger)  {
         if index == 0 {
             self.stateBtnTopConstraint.constant = 42
@@ -31,5 +38,35 @@ class GarmentsCollectionViewCell: UICollectionViewCell {
             self.garmentImageView.setImageWith(url, placeholderImage: placeHolder)
    
         }
+    }
+  
+    @IBAction func favoriteBtnPressed(_ sender: UIButton) {
+        if removeOrAddWishListBlock != nil {
+            self.removeOrAddWishListBlock!(true)
+        }
+        if sender.isSelected {
+            if removeOrAddWishListBlock != nil {
+                self.removeOrAddWishListBlock!(true)
+            }
+        }else{
+            if removeOrAddWishListBlock != nil {
+                self.removeOrAddWishListBlock!(false)
+            }
+        }
+    }
+  
+    func setupCellWithProduct(product:Product)  {
+        if (product.price != nil) {
+            self.priceLabel.text = "$" + product.price! + "/hr"
+        }
+        self.markLabel.text = product.name
+//        self.favoritetBtn.isSelected = product.onWishlist
+        let placeHolder : UIImage? = UIImage.init(named: "placeholder-test")
+        if (product.picture != nil) {
+            let urlwithPercentEscapes =  (kBaseUrlImage + product.picture!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
+            let url:URL = URL(string:urlwithPercentEscapes!)!
+            self.garmentImageView.setImageWith(url, placeholderImage: placeHolder)
+        }
+        
     }
 }
