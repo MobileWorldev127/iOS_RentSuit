@@ -161,7 +161,7 @@
                                                 <subviews>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQ0-Ei-kDT">
                                                         <rect key="frame" x="0.0" y="0.0" width="86" height="30"/>
-                                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="10"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Shipping ">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2235,7 +2235,7 @@ at an affordable price.</string>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKC-g7-7Zm">
                                                     <rect key="frame" x="10" y="168.5" width="49" height="38.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="10"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="11"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
@@ -2246,10 +2246,17 @@ at an affordable price.</string>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKz-Cs-g7G" userLabel="Price Label">
                                                     <rect key="frame" x="77.5" y="181" width="66.5" height="14"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQv-OC-YZP">
+                                                    <rect key="frame" x="0.0" y="174" width="154" height="43"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="JQv-OC-YZP" secondAttribute="height" multiplier="154:43" id="kms-Q3-5Jt"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -2260,14 +2267,20 @@ at an affordable price.</string>
                                             <constraint firstAttribute="bottom" secondItem="Wcd-na-nGd" secondAttribute="bottom" id="Z2d-rT-kBf"/>
                                             <constraint firstItem="YKC-g7-7Zm" firstAttribute="leading" secondItem="BBu-x1-0eH" secondAttribute="leading" constant="10" id="daR-hI-EYh"/>
                                             <constraint firstItem="j55-NH-2Vy" firstAttribute="top" secondItem="BBu-x1-0eH" secondAttribute="top" id="eHp-gF-O8v"/>
+                                            <constraint firstAttribute="bottom" secondItem="JQv-OC-YZP" secondAttribute="bottom" id="fBn-x3-CQK"/>
                                             <constraint firstItem="Wcd-na-nGd" firstAttribute="top" secondItem="BBu-x1-0eH" secondAttribute="top" id="fu0-1n-ZOx"/>
                                             <constraint firstItem="Wcd-na-nGd" firstAttribute="leading" secondItem="BBu-x1-0eH" secondAttribute="leading" id="ice-4f-wY5"/>
                                             <constraint firstAttribute="trailing" secondItem="j55-NH-2Vy" secondAttribute="trailing" id="nhi-Yj-8fT"/>
+                                            <constraint firstAttribute="trailing" secondItem="JQv-OC-YZP" secondAttribute="trailing" id="o24-wQ-fAs"/>
+                                            <constraint firstItem="JQv-OC-YZP" firstAttribute="leading" secondItem="BBu-x1-0eH" secondAttribute="leading" id="uwn-u7-BdZ"/>
                                         </constraints>
                                         <size key="customSize" width="154" height="217"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>

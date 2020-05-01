@@ -60,7 +60,7 @@ class GarmentsPageViewController: BasepageViewController,UICollectionViewDataSou
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellidentfier, for: indexPath as IndexPath) as! GarmentsCollectionViewCell
         let product:Product = self.listProducts[indexPath.row]
         cell.productSelected = product
