@@ -72,34 +72,34 @@ class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDeleg
         }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return listProducts.count + 1
+//        return listProducts.count + 1
+      return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        switch indexPath.row {
-        case  0 :
-            
+//        switch indexPath.row {
+//        case  0 :
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseGroupIdentifier, for: indexPath as IndexPath) as! HomeGroupCollectionViewCell
                 cell.setupCellWith(groups: listGroupsProducts)
             return cell
-        default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseHomeIdentifier, for: indexPath as IndexPath) as! HomeCollectionViewCell
-            
-            let product:Product = self.listProducts[indexPath.row - 1]
-            cell.productSelected = product
-            cell.setupCellWithProduct(product: product)
-            cell.removeOrAddWishListBlock = {
-                (isSelected) -> Void in
-                if isSelected {
-                    self.removeFromWishlitList(product: product , incell:cell ,index: indexPath.row - 1 )
-                }else{
-                    self.addInWishlitList(product: product , incell:cell,index: indexPath.row - 1 )
-                }
-            }
-            
-            return cell
-        }
+//        default:
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseHomeIdentifier, for: indexPath as IndexPath) as! HomeCollectionViewCell
+//
+//            let product:Product = self.listProducts[indexPath.row - 1]
+//            cell.productSelected = product
+//            cell.setupCellWithProduct(product: product)
+//            cell.removeOrAddWishListBlock = {
+//                (isSelected) -> Void in
+//                if isSelected {
+//                    self.removeFromWishlitList(product: product , incell:cell ,index: indexPath.row - 1 )
+//                }else{
+//                    self.addInWishlitList(product: product , incell:cell,index: indexPath.row - 1 )
+//                }
+//            }
+//
+//            return cell
+//        }
        
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -116,13 +116,13 @@ class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDeleg
         let cellPhotoWidth :CGFloat = (SCREEN_WIDTH - 60) / 2;
         let ratio :CGFloat = 1.4
         let cellPhotoHeight :CGFloat = cellPhotoWidth * ratio  ;
-        switch indexPath.row {
-        case  0 :
-           return CGSize(width: (SCREEN_WIDTH - 60), height: cellPhotoHeight)
-        default:
+//        switch indexPath.row {
+//        case  0 :
+//           return CGSize(width: (SCREEN_WIDTH - 60), height: cellPhotoHeight)
+//        default:
            
-            return CGSize(width: cellPhotoWidth, height: cellPhotoHeight)
-        }
+            return CGSize(width: SCREEN_WIDTH, height: cellPhotoHeight)
+//        }
       
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{

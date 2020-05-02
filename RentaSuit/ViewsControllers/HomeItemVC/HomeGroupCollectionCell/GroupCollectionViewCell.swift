@@ -19,6 +19,7 @@ class GroupCollectionViewCell: UICollectionViewCell {
         if (category.picture != nil) {
             let urlwithPercentEscapes =  (kBaseUrlImage + category.picture!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
             let url:URL = URL(string:urlwithPercentEscapes!)!
+            self.imageGroupView.contentMode = UIViewContentMode.scaleAspectFill;
             self.imageGroupView.setImageWith(url, placeholderImage: placeHolder)
 //            self.imageGroupView.setImageFromUrl(kBaseUrlImage + category.picture! , placeHolder: placeHolder)
             
