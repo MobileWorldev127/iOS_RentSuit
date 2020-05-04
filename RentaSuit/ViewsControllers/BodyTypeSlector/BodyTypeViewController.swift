@@ -29,6 +29,7 @@ class BodyTypeViewController: UIViewController, UICollectionViewDelegate, UIColl
         collectionView!.collectionViewLayout = layout
         
         self.collectionView.register(UINib(nibName: "BodyTypeCollectionCell", bundle: nil), forCellWithReuseIdentifier: "BodyTypeCollectionCell")
+        self.mainImage.contentMode = UIViewContentMode.scaleAspectFit;
         self.mainImage.setImageWith(URL.bodyImage(typeIndex: selectedBodyType)!)
     }
     
@@ -56,6 +57,7 @@ class BodyTypeViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BodyTypeCollectionCell", for: indexPath) as! BodyTypeCollectionCell
+        cell.bodyImage.contentMode = UIViewContentMode.scaleAspectFit;
         cell.bodyImage.setImageWith(URL.bodyImage(typeIndex: indexPath.row + 1)!)
         return cell
     }

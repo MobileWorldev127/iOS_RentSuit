@@ -52,6 +52,8 @@ class ProductDetailsViewController: BaseViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         self.scrollView.delegate = self
         let images = self.item?.images
+      print("===>")
+      print(self.item)
         self.pageControl.numberOfPages = nil != images ? images!.count : 0
         createSlides()
         self.setUpSlidesScrollView(slides: slides)

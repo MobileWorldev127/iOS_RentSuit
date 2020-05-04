@@ -37,7 +37,7 @@
 "email_lbl" = "E-mail";
 "birthday_lbl" = "Birthday";
 "size_lbl" = "Cut";
-"breast_lbl" = "Chest (Inch)";
+"breast_lbl" = "Breast (Inch)";
 "height_lbl" = "Height (Foot)";
 "waist_lbl" = "Waist (inch)";
 "hips_lbl" = "Hip (Inch)";
