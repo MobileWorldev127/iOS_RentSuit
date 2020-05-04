@@ -105,7 +105,7 @@ class ShippingPageViewController: BasepageViewController,PickableValuesTextField
     }
     static let sharedInstance: ShippingPageViewController = {
         let instance: ShippingPageViewController = UIStoryboard(name: "HomeStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ShippingPageViewController") as! ShippingPageViewController
-        instance.index = 5
+        instance.index = 3
         
         return instance
     }()

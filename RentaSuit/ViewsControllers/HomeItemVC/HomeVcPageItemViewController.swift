@@ -73,13 +73,16 @@ class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDeleg
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        return listProducts.count + 1
-      return 1
+      return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-//        switch indexPath.row {
-//        case  0 :
+        switch indexPath.row {
+        case 0 :
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCellTitleId", for: indexPath as IndexPath) as! HomeCollectionTitleViewCell
+            return cell
+        default :
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseGroupIdentifier, for: indexPath as IndexPath) as! HomeGroupCollectionViewCell
                 cell.setupCellWith(groups: listGroupsProducts)
             return cell
@@ -99,7 +102,7 @@ class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDeleg
 //            }
 //
 //            return cell
-//        }
+        }
        
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -116,13 +119,13 @@ class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDeleg
         let cellPhotoWidth :CGFloat = (SCREEN_WIDTH - 60) / 2;
         let ratio :CGFloat = 1.4
         let cellPhotoHeight :CGFloat = cellPhotoWidth * ratio  ;
-//        switch indexPath.row {
-//        case  0 :
-//           return CGSize(width: (SCREEN_WIDTH - 60), height: cellPhotoHeight)
-//        default:
+        switch indexPath.row {
+        case  0 :
+           return CGSize(width: (SCREEN_WIDTH - 60), height: 60)
+        default:
            
             return CGSize(width: SCREEN_WIDTH, height: cellPhotoHeight)
-//        }
+        }
       
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{

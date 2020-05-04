@@ -50,7 +50,7 @@ class GarmentsPageViewController: BasepageViewController,UICollectionViewDataSou
     }
     static let sharedInstance: GarmentsPageViewController = {
         let instance: GarmentsPageViewController = UIStoryboard(name: "HomeStoryboard", bundle: nil).instantiateViewController(withIdentifier: "GarmentsPageViewController") as! GarmentsPageViewController
-        instance.index = 2
+        instance.index = 1
         
         return instance
     }()

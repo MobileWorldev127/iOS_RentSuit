@@ -25,7 +25,7 @@ class ContatcUsPageViewController: BasepageViewController,PickableValuesTextFiel
     
     static let sharedInstance: ContatcUsPageViewController = {
         let instance: ContatcUsPageViewController = UIStoryboard(name:"HomeStoryboard", bundle: nil).instantiateViewController(withIdentifier: "ContatcUsPageViewController") as! ContatcUsPageViewController
-        instance.index = 4
+        instance.index = 2
         
         return instance
     }()

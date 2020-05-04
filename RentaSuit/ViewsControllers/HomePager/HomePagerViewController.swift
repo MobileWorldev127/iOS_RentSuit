@@ -32,7 +32,6 @@ class HomePagerViewController: UIViewController  ,UIPageViewControllerDataSource
         self.pageVc = UIPageViewController.init(transitionStyle:.scroll, navigationOrientation: .horizontal, options: nil)
         self.pageVc?.dataSource = self
         self.pageVc?.delegate = self
-        
         if ((self.allViewControllersPage) != nil) {
             self.pageVc?.setViewControllers( [self.allViewControllersPage![currentPage]], direction:.forward, animated: true, completion: nil)
             self.pageVc?.view.autoresizingMask = [ .flexibleWidth , .flexibleHeight]
@@ -65,7 +64,6 @@ class HomePagerViewController: UIViewController  ,UIPageViewControllerDataSource
         return nil
     }
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]){
-        
         let pager: BasepageViewController = pendingViewControllers[0] as! BasepageViewController
         currentPage =  pager.index
     }

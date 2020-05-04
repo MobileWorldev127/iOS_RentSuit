@@ -22,6 +22,7 @@ class ProductSlide: UIView {
             let urlwithPercentEscapes =  (kBaseUrlImage + picture.picture!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
             let url = URL(string:urlwithPercentEscapes!)!
             self.productImage.setImageWith(url, placeholderImage: UIImage(named: "placeholder-test"))
+            self.productImage.contentMode = UIViewContentMode.scaleAspectFill;
         }
     }
     

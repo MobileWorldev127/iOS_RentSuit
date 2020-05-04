@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -503,7 +502,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zzj-pt-Gzr">
-                                                                <rect key="frame" x="307.5" y="29" width="9.5" height="22"/>
+                                                                <rect key="frame" x="298" y="29" width="19" height="22"/>
                                                                 <state key="normal" image="down-flech"/>
                                                             </button>
                                                         </subviews>
@@ -620,7 +619,7 @@
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHf-93-FVy">
-                                                                        <rect key="frame" x="172.5" y="28" width="9.5" height="22"/>
+                                                                        <rect key="frame" x="163" y="28" width="19" height="22"/>
                                                                         <state key="normal" image="down-flech"/>
                                                                     </button>
                                                                 </subviews>
@@ -722,7 +721,7 @@
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13Z-mH-4a4">
-                                                                        <rect key="frame" x="172.5" y="28" width="9.5" height="22"/>
+                                                                        <rect key="frame" x="163" y="28" width="19" height="22"/>
                                                                         <state key="normal" image="down-flech"/>
                                                                     </button>
                                                                 </subviews>
@@ -1800,26 +1799,46 @@ message</string>
                                     <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jQO-mF-Q0J" userLabel="HomeCellTitleId">
-                                        <rect key="frame" x="20" y="295" width="335" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCellTitleId" id="jQO-mF-Q0J" userLabel="HomeCellTitleId" customClass="HomeCollectionTitleViewCell" customModule="RentaSuit" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="295" width="335" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="iQc-gS-7eS">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2P-RF-ECH">
-                                                    <rect key="frame" x="8" y="10" width="319" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIMELESS CLASSIC BEYOND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2P-RF-ECH">
+                                                    <rect key="frame" x="0.0" y="10" width="319" height="17"/>
+                                                    <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OUR COLLECTIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOa-Xp-ozc">
+                                                    <rect key="frame" x="0.0" y="29" width="319" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="DS2-tF-d17"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="335" height="50"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="l2P-RF-ECH" firstAttribute="leading" secondItem="jQO-mF-Q0J" secondAttribute="leading" id="85i-CV-Fmk"/>
+                                            <constraint firstAttribute="trailing" secondItem="l2P-RF-ECH" secondAttribute="trailing" constant="16" id="Ody-1o-71p"/>
+                                            <constraint firstItem="VOa-Xp-ozc" firstAttribute="leading" secondItem="jQO-mF-Q0J" secondAttribute="leading" id="PYt-RU-WMg"/>
+                                            <constraint firstItem="VOa-Xp-ozc" firstAttribute="top" secondItem="l2P-RF-ECH" secondAttribute="bottom" constant="2" id="Q3u-AW-XgC"/>
+                                            <constraint firstItem="l2P-RF-ECH" firstAttribute="top" secondItem="jQO-mF-Q0J" secondAttribute="top" constant="10" id="Rdd-Xd-DRf"/>
+                                            <constraint firstAttribute="trailing" secondItem="VOa-Xp-ozc" secondAttribute="trailing" constant="16" id="VUh-mh-Yac"/>
+                                        </constraints>
+                                        <size key="customSize" width="335" height="70"/>
+                                        <connections>
+                                            <outlet property="title1" destination="l2P-RF-ECH" id="Zdv-e2-1SX"/>
+                                            <outlet property="title2" destination="VOa-Xp-ozc" id="bpC-tW-1Q2"/>
+                                        </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCellId" id="ijy-wd-JcN" customClass="HomeCollectionViewCell" customModule="RentaSuit" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="365" width="154" height="217"/>
+                                        <rect key="frame" x="20" y="385" width="154" height="217"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="154" height="217"/>
@@ -1892,7 +1911,7 @@ message</string>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeGroupId" id="wbL-PH-3qO" customClass="HomeGroupCollectionViewCell" customModule="RentaSuit" customModuleProvider="target">
-                                        <rect key="frame" x="194" y="365" width="154" height="217"/>
+                                        <rect key="frame" x="194" y="385" width="154" height="217"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="154" height="217"/>
@@ -1919,8 +1938,8 @@ message</string>
                                                                         <rect key="frame" x="0.0" y="0.0" width="157" height="246"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="751" text="ydhdfvjgujg" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80g-5g-CU5">
-                                                                        <rect key="frame" x="8" y="218.5" width="131" height="19.5"/>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="14"/>
+                                                                        <rect key="frame" x="8" y="214.5" width="131" height="23.5"/>
+                                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -1939,7 +1958,7 @@ message</string>
                                                             <size key="customSize" width="157" height="246"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="8"/>
+                                                                    <real key="value" value="10"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
@@ -2145,7 +2164,7 @@ at an affordable price.</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Cqh-Ud-slj">
-                                <rect key="frame" x="125" y="293" width="125" height="37"/>
+                                <rect key="frame" x="107.5" y="293" width="160" height="37"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Na-Tq-E7B">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="37"/>
@@ -2166,7 +2185,7 @@ at an affordable price.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="At9-jP-cd7">
-                                        <rect key="frame" x="90" y="0.0" width="35" height="37"/>
+                                        <rect key="frame" x="90" y="0.0" width="70" height="37"/>
                                         <state key="normal" image="instagram-ic"/>
                                         <connections>
                                             <action selector="instagram:" destination="IR9-Xy-WxN" eventType="touchUpInside" id="bhZ-4h-2ti"/>
@@ -2238,7 +2257,7 @@ at an affordable price.</string>
                                                     <rect key="frame" x="0.0" y="0.0" width="154" height="217"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j55-NH-2Vy">
-                                                    <rect key="frame" x="104" y="0.0" width="50" height="32"/>
+                                                    <rect key="frame" x="104" y="0.0" width="50" height="38"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="YN0-qR-9Gr"/>
                                                     </constraints>

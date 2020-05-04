@@ -49,6 +49,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
             let urlwithPercentEscapes =  (kBaseUrlImage + product.picture!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
             let url:URL = URL(string:urlwithPercentEscapes!)!
             self.imageHomeCell.setImageWith(url, placeholderImage: placeHolder)
+            self.imageHomeCell.contentMode = UIViewContentMode.scaleAspectFill;
 //            self.imageHomeCell.setImageFromUrl(kBaseUrlImage + product.picture! , placeHolder: placeHolder)
         }else{
 //            self.imageHomeCell.setImageFromUrl(nil, placeHolder: placeHolder)
