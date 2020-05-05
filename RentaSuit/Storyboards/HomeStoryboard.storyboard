@@ -502,7 +502,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zzj-pt-Gzr">
-                                                                <rect key="frame" x="298" y="29" width="19" height="22"/>
+                                                                <rect key="frame" x="307.5" y="29" width="9.5" height="22"/>
                                                                 <state key="normal" image="down-flech"/>
                                                             </button>
                                                         </subviews>
@@ -619,7 +619,7 @@
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHf-93-FVy">
-                                                                        <rect key="frame" x="163" y="28" width="19" height="22"/>
+                                                                        <rect key="frame" x="172.5" y="28" width="9.5" height="22"/>
                                                                         <state key="normal" image="down-flech"/>
                                                                     </button>
                                                                 </subviews>
@@ -721,7 +721,7 @@
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13Z-mH-4a4">
-                                                                        <rect key="frame" x="163" y="28" width="19" height="22"/>
+                                                                        <rect key="frame" x="172.5" y="28" width="9.5" height="22"/>
                                                                         <state key="normal" image="down-flech"/>
                                                                     </button>
                                                                 </subviews>
@@ -1272,7 +1272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s4i-EQ-4b1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2437.5999999999999" y="1275.1124437781111"/>
+            <point key="canvasLocation" x="2462" y="806"/>
         </scene>
         <!--Contatc Us Page View Controller-->
         <scene sceneID="7FZ-4P-Bvm">
@@ -2022,63 +2022,72 @@ message</string>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeMode" translatesAutoresizingMaskIntoConstraints="NO" id="NZf-Ee-xX4" customClass="WebImageView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="275"/>
                                                             </imageView>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LW-jz-wgh">
-                                                                <rect key="frame" x="30" y="240" width="90" height="20"/>
-                                                                <color key="backgroundColor" red="0.82352941180000006" green="0.67843137249999996" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z6q-Tc-XoG">
+                                                                <rect key="frame" x="84" y="225" width="207" height="30"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LW-jz-wgh">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <color key="backgroundColor" red="0.82352941180000006" green="0.67843137249999996" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="10"/>
+                                                                        <state key="normal" title="I Want To POST">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="3"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                <real key="value" value="1"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="didTapCreateRent:" destination="cwY-OA-oBO" eventType="touchUpInside" id="GNw-HL-bEi"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvI-ve-Pfj">
+                                                                        <rect key="frame" x="117" y="0.0" width="90" height="30"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="10"/>
+                                                                        <state key="normal" title="I Want To RENT">
+                                                                            <color key="titleColor" red="0.82352941180000006" green="0.67843137249999996" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        </state>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="3"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                <real key="value" value="1"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="didTapSearchRent:" destination="cwY-OA-oBO" eventType="touchUpInside" id="gPf-v5-fC3"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="20" id="CZK-s8-tdw"/>
-                                                                    <constraint firstAttribute="width" constant="90" id="fDP-PJ-Mxf"/>
+                                                                    <constraint firstAttribute="width" constant="207" id="5oq-yj-8qd"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="10"/>
-                                                                <state key="normal" title="I Want To POST">
-                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <real key="value" value="3"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="didTapCreateRent:" destination="cwY-OA-oBO" eventType="touchUpInside" id="GNw-HL-bEi"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvI-ve-Pfj">
-                                                                <rect key="frame" x="135" y="240" width="90" height="20"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="90" id="8HI-Zt-CWR"/>
-                                                                    <constraint firstAttribute="height" constant="20" id="hfB-K7-TEi"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="10"/>
-                                                                <state key="normal" title="I Want To RENT">
-                                                                    <color key="titleColor" red="0.82352941180000006" green="0.67843137249999996" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                                </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <real key="value" value="3"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                        <color key="value" red="0.82352941180000006" green="0.67843137249999996" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                        <real key="value" value="1"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="didTapSearchRent:" destination="cwY-OA-oBO" eventType="touchUpInside" id="gPf-v5-fC3"/>
-                                                                </connections>
-                                                            </button>
+                                                            </view>
                                                         </subviews>
                                                     </view>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="5LW-jz-wgh" secondAttribute="bottom" constant="15" id="IQd-bm-Kvb"/>
-                                                        <constraint firstItem="wvI-ve-Pfj" firstAttribute="centerY" secondItem="5LW-jz-wgh" secondAttribute="centerY" id="VGL-cy-kd4"/>
+                                                        <constraint firstItem="Z6q-Tc-XoG" firstAttribute="centerX" secondItem="zHv-cc-pfz" secondAttribute="centerX" id="4Fi-R5-ax3"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Z6q-Tc-XoG" secondAttribute="trailing" constant="84" id="RVe-OR-97M"/>
+                                                        <constraint firstItem="Z6q-Tc-XoG" firstAttribute="top" secondItem="zHv-cc-pfz" secondAttribute="top" constant="225" id="X5q-YL-pnd"/>
                                                         <constraint firstAttribute="trailing" secondItem="NZf-Ee-xX4" secondAttribute="trailing" id="bNk-BR-bnT"/>
-                                                        <constraint firstItem="wvI-ve-Pfj" firstAttribute="leading" secondItem="5LW-jz-wgh" secondAttribute="trailing" constant="15" id="cZn-ph-cPe"/>
-                                                        <constraint firstItem="5LW-jz-wgh" firstAttribute="leading" secondItem="zHv-cc-pfz" secondAttribute="leading" constant="30" id="e9l-0J-xvh"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Z6q-Tc-XoG" secondAttribute="bottom" constant="20" id="frg-UK-0Dn"/>
                                                         <constraint firstAttribute="bottom" secondItem="NZf-Ee-xX4" secondAttribute="bottom" id="heY-Zf-0mg"/>
                                                         <constraint firstItem="NZf-Ee-xX4" firstAttribute="leading" secondItem="zHv-cc-pfz" secondAttribute="leading" id="hif-cv-Flc"/>
                                                         <constraint firstItem="NZf-Ee-xX4" firstAttribute="top" secondItem="zHv-cc-pfz" secondAttribute="top" id="if2-8a-JAm"/>
+                                                        <constraint firstItem="Z6q-Tc-XoG" firstAttribute="leading" secondItem="zHv-cc-pfz" secondAttribute="leading" constant="84" id="r8e-fZ-8Ld"/>
                                                     </constraints>
                                                     <size key="customSize" width="375" height="275"/>
                                                     <connections>
@@ -2164,7 +2173,7 @@ at an affordable price.</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Cqh-Ud-slj">
-                                <rect key="frame" x="107.5" y="293" width="160" height="37"/>
+                                <rect key="frame" x="125" y="293" width="125" height="37"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Na-Tq-E7B">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="37"/>
@@ -2185,7 +2194,7 @@ at an affordable price.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="At9-jP-cd7">
-                                        <rect key="frame" x="90" y="0.0" width="70" height="37"/>
+                                        <rect key="frame" x="90" y="0.0" width="35" height="37"/>
                                         <state key="normal" image="instagram-ic"/>
                                         <connections>
                                             <action selector="instagram:" destination="IR9-Xy-WxN" eventType="touchUpInside" id="bhZ-4h-2ti"/>
@@ -2257,7 +2266,7 @@ at an affordable price.</string>
                                                     <rect key="frame" x="0.0" y="0.0" width="154" height="217"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j55-NH-2Vy">
-                                                    <rect key="frame" x="104" y="0.0" width="50" height="38"/>
+                                                    <rect key="frame" x="104" y="0.0" width="50" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="YN0-qR-9Gr"/>
                                                     </constraints>

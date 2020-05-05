@@ -52,8 +52,6 @@ class ProductDetailsViewController: BaseViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         self.scrollView.delegate = self
         let images = self.item?.images
-      print("===>")
-      print(self.item)
         self.pageControl.numberOfPages = nil != images ? images!.count : 0
         createSlides()
         self.setUpSlidesScrollView(slides: slides)
@@ -78,7 +76,7 @@ class ProductDetailsViewController: BaseViewController, UIScrollViewDelegate {
     }
     
     func setUp() {
-        self.pricePerHourLabel.text = "$" + item!.price! + "/hr"
+        self.pricePerHourLabel.text = "$" + item!.price! + "/day"
         self.descriptionLabel.text = item?.detail
         self.ownerTitleLabel.text = item?.userDetail?.displayName()
         self.productTitleLbl.text = item?.name

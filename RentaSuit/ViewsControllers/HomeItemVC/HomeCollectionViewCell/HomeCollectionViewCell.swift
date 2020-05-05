@@ -40,7 +40,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     func setupCellWithProduct(product:Product)  {
         if (product.price != nil) {
-            self.priceLabel.text = "$" + product.price! + "/hr"
+            self.priceLabel.text = "$" + product.price! + "/day"
         }
         self.markLabel.text = product.name
         self.favoritetBtn.isSelected = product.onWishlist
