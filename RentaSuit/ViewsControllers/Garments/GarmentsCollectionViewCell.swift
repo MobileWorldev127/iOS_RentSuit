@@ -69,7 +69,8 @@ class GarmentsCollectionViewCell: UICollectionViewCell {
             let urlwithPercentEscapes =  (kBaseUrlImage + product.picture!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
             let url:URL = URL(string:urlwithPercentEscapes!)!            
             self.garmentImageView.contentMode = UIViewContentMode.scaleAspectFill;
-            self.garmentImageView.setImageWith(url, placeholderImage: placeHolder)
+//            self.garmentImageView.setImageWith(url, placeholderImage: placeHolder)
+            self.garmentImageView.setImageWith(url)
         }
         
     }

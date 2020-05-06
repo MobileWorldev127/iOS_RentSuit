@@ -120,7 +120,8 @@
 "search_key" = "Search";
 "filter_key" = "Filter";
 "per_week_key" = "Per Week";
-"per_day_key" = "Per Day" ; 
+"per_day_key" = "Per Day" ;
+"per_month_key" = "Per Month";
 
 
 // image picker
