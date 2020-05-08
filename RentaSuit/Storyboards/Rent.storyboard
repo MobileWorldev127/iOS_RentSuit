@@ -760,9 +760,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCa-7n-lAJ" userLabel="header">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-rent" translatesAutoresizingMaskIntoConstraints="NO" id="0sR-Zf-ePu">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFS-cb-8se">
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                         <constraints>
@@ -773,18 +770,23 @@
                                             <action selector="didTapBack:" destination="HXY-uz-ylP" eventType="touchUpInside" id="S5d-LF-6VH"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add To Cart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="516-cK-3O9">
+                                        <rect key="frame" x="107" y="8" width="200" height="28"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="0sR-Zf-ePu" firstAttribute="leading" secondItem="RCa-7n-lAJ" secondAttribute="leading" id="B6p-ko-TEy"/>
-                                    <constraint firstAttribute="bottom" secondItem="0sR-Zf-ePu" secondAttribute="bottom" id="Jls-h6-NTl"/>
+                                    <constraint firstItem="516-cK-3O9" firstAttribute="centerY" secondItem="RCa-7n-lAJ" secondAttribute="centerY" id="AbG-d9-2z1"/>
+                                    <constraint firstItem="516-cK-3O9" firstAttribute="top" secondItem="RCa-7n-lAJ" secondAttribute="top" constant="8" id="Bai-GL-IHN"/>
                                     <constraint firstAttribute="height" constant="44" id="MMN-P8-e4W"/>
-                                    <constraint firstAttribute="trailing" secondItem="0sR-Zf-ePu" secondAttribute="trailing" id="OLW-YU-Pvb"/>
                                     <constraint firstItem="jFS-cb-8se" firstAttribute="leading" secondItem="RCa-7n-lAJ" secondAttribute="leading" id="T3N-LT-2UW"/>
                                     <constraint firstAttribute="bottom" secondItem="jFS-cb-8se" secondAttribute="bottom" id="W01-yI-uFS"/>
+                                    <constraint firstItem="516-cK-3O9" firstAttribute="centerX" secondItem="RCa-7n-lAJ" secondAttribute="centerX" id="Xtv-GO-csl"/>
                                     <constraint firstItem="jFS-cb-8se" firstAttribute="top" secondItem="RCa-7n-lAJ" secondAttribute="top" id="dNg-qk-bg0"/>
-                                    <constraint firstItem="0sR-Zf-ePu" firstAttribute="centerX" secondItem="RCa-7n-lAJ" secondAttribute="centerX" id="ijH-Z2-71e"/>
-                                    <constraint firstItem="0sR-Zf-ePu" firstAttribute="top" secondItem="RCa-7n-lAJ" secondAttribute="top" id="xeu-IB-idO"/>
+                                    <constraint firstItem="516-cK-3O9" firstAttribute="leading" secondItem="RCa-7n-lAJ" secondAttribute="leading" constant="107" id="wj9-TT-wtP"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zhf-34-RsG">
@@ -1459,12 +1461,9 @@
                                     <constraint firstAttribute="height" constant="50" id="R1s-68-3sS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
-                                <state key="normal">
+                                <state key="normal" title="ADD">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedString" value="wish_list_button"/>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="didTapContinue:" destination="HXY-uz-ylP" eventType="touchUpInside" id="OKd-ON-SUw"/>
                                 </connections>

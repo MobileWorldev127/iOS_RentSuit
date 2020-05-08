@@ -59,6 +59,7 @@
 "size_lbl" = "Size";
 "color_lbl" = "Color";
 "body_type_lbl" = "Body Type";
+"retail_price_lbl" = "Retail Price";
 
 // biling methods wording
 
@@ -213,7 +214,7 @@
 
 "do_localisation" = "Localization";
 "do_mail" = "Regular mail";
-"do_ups" = "Ups";
+"do_ups" = "Pick up from UPS";
 // custompoups
 "messagePopup_key" = "I agree to all Terms and Conditions and Privacy Policy";
 "Terms_and_Condition_key" = "Terms and Conditions";

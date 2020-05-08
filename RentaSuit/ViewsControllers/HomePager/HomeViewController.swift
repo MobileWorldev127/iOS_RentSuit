@@ -260,13 +260,13 @@ extension HomeViewController : PopUpSelectorDelegate {
         self.startLoading()
         Wish.myWishList { (products, code) in
             self.stopLoading()
-            if products != nil {
+//            if products != nil {
                 let vc  = self.getViewControllerInstance(sbId: "Wishlist",vcId: "wish_list_scene") as! WishListViewController
                 vc.wishList = products
                 self.navigationController?.pushViewController(vc, animated: true)
-            }else{
-                
-            }
+//            }else{
+//                
+//            }
         }
         
     }
@@ -276,13 +276,13 @@ extension HomeViewController : PopUpSelectorDelegate {
         self.startLoading()
         Cart.cartList(callBack:{ (products, code) in
             self.stopLoading()
-            if products != nil {
+//            if products != nil {
                 let vc  = self.getViewControllerInstance(sbId: "Cartlist",vcId: "cart_list_scene") as! CartListViewController
                 vc.cartList = products
                 self.navigationController?.pushViewController(vc, animated: true)
-            }else{
-                
-            }
+//            }else{
+//
+//            }
         })
     }
     

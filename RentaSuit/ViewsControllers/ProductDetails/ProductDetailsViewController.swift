@@ -25,6 +25,7 @@ class ProductDetailsViewController: BaseViewController, UIScrollViewDelegate {
     @IBOutlet weak var locationKeyLabel: UILabel!
     @IBOutlet weak var sizeKeyLabel: UILabel!
     @IBOutlet weak var colorKeyLabel: UILabel!
+    @IBOutlet weak var retailPriceKeyLabel: UILabel!
     
     @IBOutlet weak var designerValueLabel: UILabel!
     @IBOutlet weak var seasonValueLabel: UILabel!
@@ -32,6 +33,7 @@ class ProductDetailsViewController: BaseViewController, UIScrollViewDelegate {
     @IBOutlet weak var locationValueLabel: UILabel!
     @IBOutlet weak var sizeValueLabel: UILabel!
     @IBOutlet weak var colorValueLabel: UILabel!
+    @IBOutlet weak var retailPriceValueLabel: UILabel!
     
     @IBOutlet weak var agencyNameLabel: UILabel!
     @IBOutlet weak var agencyLocationLabel: UILabel!
@@ -86,6 +88,7 @@ class ProductDetailsViewController: BaseViewController, UIScrollViewDelegate {
         self.locationValueLabel.text = item?.location
         self.colorValueLabel.text = item?.color
         self.categoryValueLabel.text = Category.categoryWithId((item?.category)!)
+        self.retailPriceValueLabel.text = "$" + item!.retailPrice!
         self.contactLbl.text = item?.userDetail?.displayName()
         self.ownerTitleLabel.text = item?.userDetail?.displayName()
         ratingView.rating = Double(exactly: (item?.avgProductReview)!)!

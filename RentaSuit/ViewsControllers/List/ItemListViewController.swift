@@ -30,7 +30,9 @@ class ItemListViewController: BaseViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func didTapBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
+      let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+      self.navigationController?.popToViewController(viewControllers[1], animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
