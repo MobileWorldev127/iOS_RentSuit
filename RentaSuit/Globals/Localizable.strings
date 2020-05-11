@@ -59,6 +59,20 @@
 "size_lbl" = "Size";
 "color_lbl" = "Color";
 "body_type_lbl" = "Body Type";
+
+
+//Cart details wording
+"product_name_lbl" = "Product Name";
+"delivery_option_lbl" = "Delivery Option";
+"rent_from_lbl" = "Rent From";
+"rent_until_lbl" = "Rent Until";
+"rent_price_lbl" = "Rent Price";
+"shipping_lbl" = "Shipping";
+"price_per_day_lbl" = "Price Per Day";
+"days_lbl" = "Days";
+"rent_lbl" = "Rent";
+"cleaning_price_lbl" = "Cleaning Price";
+"total_lbl" = "Total";
 "retail_price_lbl" = "Retail Price";
 
 // biling methods wording

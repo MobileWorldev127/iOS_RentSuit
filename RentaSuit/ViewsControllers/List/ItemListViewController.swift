@@ -53,7 +53,7 @@ class ItemListViewController: BaseViewController, UITableViewDataSource, UITable
             self.goToItemDetails(item.id!)
         }else{
             let item = self.cartList![indexPath.row]
-            //self.goToItemDetails(item.id!)
+            self.goToItemDetails(String(item.productDetail.id))
         }
         
     }

@@ -24,6 +24,18 @@ class ItemCell: UITableViewCell {
     @IBOutlet weak var locationValueLabel: UILabel!
     @IBOutlet weak var sizeValueLabel: UILabel!
     @IBOutlet weak var colorValueLabel: UILabel!
+  
+    @IBOutlet weak var productNameValueLabel: UILabel!
+    @IBOutlet weak var deliveryOptionValueLabel: UILabel!
+    @IBOutlet weak var rentfromValueLabel: UILabel!
+    @IBOutlet weak var rentUntilValueLabel: UILabel!
+    @IBOutlet weak var retailPriceValueLabel: UILabel!
+    @IBOutlet weak var shippingValueLabel: UILabel!
+    @IBOutlet weak var pricePerDayValueLabel: UILabel!
+    @IBOutlet weak var daysValueLabel: UILabel!
+    @IBOutlet weak var rentValueLabel: UILabel!
+    @IBOutlet weak var cleaningPriceValueLabel: UILabel!
+    @IBOutlet weak var totalValueLabel: UILabel!
     
     @IBOutlet weak var itemImage: UIImageView!
     
@@ -45,12 +57,17 @@ class ItemCell: UITableViewCell {
     }
     
     func setUp(cart : Cart) {
-        self.designerValueLabel.text = "cart."
-        self.sizeValueLabel.text = "cart.size"
-        self.seasonValueLabel.text = "cart.season"
-        self.locationValueLabel.text = "cart.location"
-        self.colorValueLabel.text = "cart.productDetail."
-        self.categoryValueLabel.text = "cart.category"//Category.categoryWithId(cart.category)
+        self.productNameValueLabel.text = cart.productDetail.name
+        self.deliveryOptionValueLabel.text = cart.deliveryOption
+        self.rentfromValueLabel.text = cart.rentalStartDate
+        self.rentUntilValueLabel.text = cart.rentalEndDate
+        self.retailPriceValueLabel.text = cart.deliveryOption
+        self.shippingValueLabel.text = "0"
+        self.pricePerDayValueLabel.text = cart.productDetail.price
+        self.daysValueLabel.text = String(Int(cart.total)! / Int(cart.productDetail.price)!)
+        self.rentValueLabel.text = cart.total
+        self.cleaningPriceValueLabel.text = cart.deliveryOption
+        self.totalValueLabel.text = cart.deliveryOption
         
         if (cart.productDetail.picture != nil) {
             let urlwithPercentEscapes =  (kBaseUrlImage + cart.productDetail.picture).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)

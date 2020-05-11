@@ -24,9 +24,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xyS-Zy-ZYV" userLabel="header">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-rent" translatesAutoresizingMaskIntoConstraints="NO" id="vRy-g9-U0W">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqQ-XM-IhP">
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                         <constraints>
@@ -37,18 +34,23 @@
                                             <action selector="didTapBack:" destination="Z97-GM-OCh" eventType="touchUpInside" id="3z1-Jv-afw"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMF-lt-VqY">
+                                        <rect key="frame" x="128" y="10" width="158" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="PqQ-XM-IhP" secondAttribute="bottom" id="2d7-wt-8Bc"/>
-                                    <constraint firstAttribute="bottom" secondItem="vRy-g9-U0W" secondAttribute="bottom" id="3EE-ll-rdx"/>
-                                    <constraint firstAttribute="trailing" secondItem="vRy-g9-U0W" secondAttribute="trailing" id="Dc1-Cc-2cv"/>
-                                    <constraint firstItem="vRy-g9-U0W" firstAttribute="centerX" secondItem="xyS-Zy-ZYV" secondAttribute="centerX" id="IRW-EK-NeT"/>
-                                    <constraint firstItem="vRy-g9-U0W" firstAttribute="leading" secondItem="xyS-Zy-ZYV" secondAttribute="leading" id="KEv-OB-OQ1"/>
+                                    <constraint firstItem="oMF-lt-VqY" firstAttribute="top" secondItem="xyS-Zy-ZYV" secondAttribute="top" constant="10" id="57y-p0-byM"/>
+                                    <constraint firstItem="oMF-lt-VqY" firstAttribute="centerY" secondItem="xyS-Zy-ZYV" secondAttribute="centerY" id="9bU-8N-ZlS"/>
                                     <constraint firstItem="PqQ-XM-IhP" firstAttribute="leading" secondItem="xyS-Zy-ZYV" secondAttribute="leading" id="Ssf-8u-2vO"/>
                                     <constraint firstAttribute="height" constant="44" id="bBS-Rh-0nW"/>
-                                    <constraint firstItem="vRy-g9-U0W" firstAttribute="top" secondItem="xyS-Zy-ZYV" secondAttribute="top" id="jC6-la-wTP"/>
+                                    <constraint firstItem="oMF-lt-VqY" firstAttribute="centerX" secondItem="xyS-Zy-ZYV" secondAttribute="centerX" id="k9i-RO-Tkq"/>
                                     <constraint firstItem="PqQ-XM-IhP" firstAttribute="top" secondItem="xyS-Zy-ZYV" secondAttribute="top" id="knK-8M-df9"/>
+                                    <constraint firstItem="oMF-lt-VqY" firstAttribute="leading" secondItem="xyS-Zy-ZYV" secondAttribute="leading" constant="128" id="wiu-ZS-Iff"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2h-BD-sdZ">
@@ -76,7 +78,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ShC-zN-cuR">
-                                                        <rect key="frame" x="119.33333333333331" y="20" width="26" height="25"/>
+                                                        <rect key="frame" x="119.3333333333333" y="20" width="18.333333333333329" height="25"/>
                                                         <color key="backgroundColor" red="0.82352941180000006" green="0.67843137249999996" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="nTS-by-TR8"/>
@@ -747,7 +749,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8wh-PZ-1Zh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-364" y="73"/>
+            <point key="canvasLocation" x="-365.21739130434787" y="72.554347826086968"/>
         </scene>
         <!--For Rent View Controller-->
         <scene sceneID="0e0-Pr-h3e">
@@ -1515,6 +1517,5 @@
         <image name="ic_calendar" width="13" height="14.333333015441895"/>
         <image name="ic_drop_down" width="9.3333330154418945" height="8.3333330154418945"/>
         <image name="ic_upload_avatar" width="8.3333330154418945" height="10"/>
-        <image name="logo-rent" width="98" height="23"/>
     </resources>
 </document>
