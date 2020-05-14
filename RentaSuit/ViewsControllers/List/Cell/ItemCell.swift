@@ -61,13 +61,13 @@ class ItemCell: UITableViewCell {
         self.deliveryOptionValueLabel.text = cart.deliveryOption
         self.rentfromValueLabel.text = cart.rentalStartDate
         self.rentUntilValueLabel.text = cart.rentalEndDate
-        self.retailPriceValueLabel.text = cart.deliveryOption
+        self.retailPriceValueLabel.text = "217"
         self.shippingValueLabel.text = "0"
         self.pricePerDayValueLabel.text = cart.productDetail.price
         self.daysValueLabel.text = String(Int(cart.total)! / Int(cart.productDetail.price)!)
         self.rentValueLabel.text = cart.total
-        self.cleaningPriceValueLabel.text = cart.deliveryOption
-        self.totalValueLabel.text = cart.deliveryOption
+        self.cleaningPriceValueLabel.text = "NP"
+        self.totalValueLabel.text = "218"
         
         if (cart.productDetail.picture != nil) {
             let urlwithPercentEscapes =  (kBaseUrlImage + cart.productDetail.picture).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)

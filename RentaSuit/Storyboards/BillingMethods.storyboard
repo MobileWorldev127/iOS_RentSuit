@@ -76,24 +76,10 @@
                                                         <rect key="frame" x="10" y="10" width="250" height="80"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnr-il-Pwf">
-                                                                <rect key="frame" x="0.0" y="0.0" width="76.5" height="80"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="250" height="80"/>
                                                                 <state key="normal" image="ic_paypal"/>
                                                                 <connections>
                                                                     <action selector="didSelectMethod:" destination="2qD-u3-SWe" eventType="touchUpInside" id="Qzb-eL-6FS"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjx-ZG-V87">
-                                                                <rect key="frame" x="86.5" y="0.0" width="77" height="80"/>
-                                                                <state key="normal" image="ic_credit_card"/>
-                                                                <connections>
-                                                                    <action selector="didSelectMethod:" destination="2qD-u3-SWe" eventType="touchUpInside" id="LPW-Y0-LbQ"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDn-Os-DVK">
-                                                                <rect key="frame" x="173.5" y="0.0" width="76.5" height="80"/>
-                                                                <state key="normal" image="ic_bank_transfer"/>
-                                                                <connections>
-                                                                    <action selector="didSelectMethod:" destination="2qD-u3-SWe" eventType="touchUpInside" id="BeY-el-oTl"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -309,12 +295,10 @@
                         <viewLayoutGuide key="safeArea" id="fh5-y1-YgU"/>
                     </view>
                     <connections>
-                        <outlet property="bankTransferButton" destination="RDn-Os-DVK" id="1Wn-jb-ZxO"/>
                         <outlet property="cardNumberLabel" destination="hNR-Kn-yer" id="q4X-GY-S4s"/>
                         <outlet property="cardNumberTextField" destination="iEM-4D-4uZ" id="iQa-my-cch"/>
                         <outlet property="cardTypeLabel" destination="gzr-3u-Tq5" id="2zx-4W-wYO"/>
                         <outlet property="cardTypeTextField" destination="qv7-bZ-bc4" id="oB1-Ei-hGW"/>
-                        <outlet property="creditCardButton" destination="Tjx-ZG-V87" id="H7S-gJ-Wci"/>
                         <outlet property="cvvNumberLabel" destination="VAk-Gn-fib" id="DYa-j1-cOg"/>
                         <outlet property="cvvNumberTextField" destination="apZ-ZC-33x" id="S2Y-mr-Pwb"/>
                         <outlet property="nextButton" destination="zs6-Gb-5St" id="B1O-gz-rcL"/>
@@ -398,10 +382,10 @@
                                                 <rect key="frame" x="25" y="185.5" width="270" height="100"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SR2-TE-upc">
-                                                        <rect key="frame" x="0.0" y="15" width="90" height="10"/>
+                                                        <rect key="frame" x="0.0" y="15" width="190" height="10"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4X-vo-Bzz">
-                                                                <rect key="frame" x="74" y="1" width="8" height="8"/>
+                                                                <rect key="frame" x="175" y="1" width="8" height="8"/>
                                                                 <color key="backgroundColor" red="1" green="0.65098039215686276" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="8" id="7Tf-cc-eg2"/>
@@ -418,31 +402,17 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="10" id="0ze-tF-fbZ"/>
                                                             <constraint firstItem="l4X-vo-Bzz" firstAttribute="centerY" secondItem="SR2-TE-upc" secondAttribute="centerY" id="Gmt-JQ-J9T"/>
-                                                            <constraint firstAttribute="trailing" secondItem="l4X-vo-Bzz" secondAttribute="trailing" constant="8" id="hLP-Ao-5GD"/>
+                                                            <constraint firstAttribute="trailing" secondItem="l4X-vo-Bzz" secondAttribute="trailing" constant="7" id="hLP-Ao-5GD"/>
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FZg-Ru-Q3B">
                                                         <rect key="frame" x="10" y="0.0" width="250" height="90"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DE1-nd-qQD">
-                                                                <rect key="frame" x="0.0" y="0.0" width="76.5" height="90"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="250" height="90"/>
                                                                 <state key="normal" image="ic_paypal"/>
                                                                 <connections>
                                                                     <action selector="didSelectMethod:" destination="2qD-u3-SWe" eventType="touchUpInside" id="uPr-Fq-3Ly"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="soG-Bj-jbQ">
-                                                                <rect key="frame" x="86.5" y="0.0" width="77" height="90"/>
-                                                                <state key="normal" image="ic_credit_card"/>
-                                                                <connections>
-                                                                    <action selector="didSelectMethod:" destination="2qD-u3-SWe" eventType="touchUpInside" id="Nam-td-x5q"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bqa-ot-s6E">
-                                                                <rect key="frame" x="173.5" y="0.0" width="76.5" height="90"/>
-                                                                <state key="normal" image="ic_bank_transfer"/>
-                                                                <connections>
-                                                                    <action selector="didSelectMethod:" destination="2qD-u3-SWe" eventType="touchUpInside" id="X9e-6N-fOk"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -454,7 +424,7 @@
                                                     <constraint firstAttribute="height" constant="100" id="CW5-FS-Tvm"/>
                                                     <constraint firstItem="FZg-Ru-Q3B" firstAttribute="top" secondItem="MeP-gU-fLw" secondAttribute="top" id="Sii-QN-MaT"/>
                                                     <constraint firstItem="SR2-TE-upc" firstAttribute="top" secondItem="MeP-gU-fLw" secondAttribute="top" constant="15" id="bbI-LT-QDP"/>
-                                                    <constraint firstItem="SR2-TE-upc" firstAttribute="width" secondItem="MeP-gU-fLw" secondAttribute="width" multiplier="1:3" id="hrD-vM-rEJ"/>
+                                                    <constraint firstItem="SR2-TE-upc" firstAttribute="width" secondItem="MeP-gU-fLw" secondAttribute="width" multiplier="1:3" constant="100" id="hrD-vM-rEJ"/>
                                                     <constraint firstItem="SR2-TE-upc" firstAttribute="leading" secondItem="MeP-gU-fLw" secondAttribute="leading" id="lGd-7A-tIi"/>
                                                     <constraint firstAttribute="bottom" secondItem="FZg-Ru-Q3B" secondAttribute="bottom" constant="10" id="uxO-Cc-Cg0"/>
                                                     <constraint firstItem="FZg-Ru-Q3B" firstAttribute="leading" secondItem="MeP-gU-fLw" secondAttribute="leading" constant="10" id="yjX-ng-WoZ"/>
@@ -592,8 +562,6 @@
     </scenes>
     <resources>
         <image name="ic_back_arrow" width="13" height="10.5"/>
-        <image name="ic_bank_transfer" width="57" height="57"/>
-        <image name="ic_credit_card" width="46" height="46"/>
         <image name="ic_paypal" width="62" height="18"/>
         <image name="logo-rent" width="98" height="23"/>
     </resources>

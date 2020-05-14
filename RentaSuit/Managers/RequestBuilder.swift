@@ -295,7 +295,6 @@ open class RequestBuilder {
         request.timeoutInterval = TimeInterval(RequestBuilder.TIMEOUT)
         request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData
         //        if User.UserIsConnected() {
-
         if User.isConnected() {
             if (User.current()!.sessionToken != nil){
                 request.setValue(User.current()!.bearerToken, forHTTPHeaderField: "Authorization")
