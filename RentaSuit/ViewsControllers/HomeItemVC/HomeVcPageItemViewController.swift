@@ -80,7 +80,7 @@ class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDeleg
         
         switch indexPath.row {
         case 0 :
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCellTitleId", for: indexPath as IndexPath) as! HomeCollectionTitleViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCellTitleId", for: indexPath as IndexPath) as! HomeCollectionViewCell
             return cell
         default :
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseGroupIdentifier, for: indexPath as IndexPath) as! HomeGroupCollectionViewCell
