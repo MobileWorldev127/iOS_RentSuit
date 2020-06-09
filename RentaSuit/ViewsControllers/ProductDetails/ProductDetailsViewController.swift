@@ -78,9 +78,17 @@ class ProductDetailsViewController: BaseViewController, UIScrollViewDelegate {
     }
     
     func setUp() {
+        let placeHolder : UIImage? = UIImage.init(named: "placeholder-test")
+         if ((item?.userDetail)!.photo! != nil) {
+             let urlwithPercentEscapes =  ((item?.userDetail)!.photo!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
+             let url:URL = URL(string:urlwithPercentEscapes!)!
+             self.agencyLogoImage.setImageWith(url, placeholderImage: placeHolder)
+         }
+        self.agencyNameLabel.text = item?.userDetail?.displayName()
         self.pricePerHourLabel.text = "$" + item!.price! + "/day"
         self.descriptionLabel.text = item?.detail
-        self.ownerTitleLabel.text = item?.userDetail?.displayName()
+//        self.ownerTitleLabel.text = item?.userDetail?.displayName()
+        self.ownerTitleLabel.text = item?.condition
         self.productTitleLbl.text = item?.name
         self.designerValueLabel.text = item?.designer
         self.sizeValueLabel.text = item?.size
@@ -90,7 +98,6 @@ class ProductDetailsViewController: BaseViewController, UIScrollViewDelegate {
         self.categoryValueLabel.text = Category.categoryWithId((item?.category)!)
         self.retailPriceValueLabel.text = "$" + item!.retailPrice!
         self.contactLbl.text = item?.userDetail?.displayName()
-        self.ownerTitleLabel.text = item?.userDetail?.displayName()
         ratingView.rating = Double(exactly: (item?.avgProductReview)!)!
         self.availableAtLabel.text = item?.rentStartAt
         let onWishList = (item?.onWishlist)!

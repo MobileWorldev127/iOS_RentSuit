@@ -67,7 +67,7 @@ class Product: NSObject , NSCoding, MABMapper{
             ],
             "userDetail" : [
                 "class" : UserProfile.self,
-                "path" : "user_detail",
+                "path" : "added_by",
                 "required" : false,
                 "array" : false
             ]
@@ -97,8 +97,6 @@ class Product: NSObject , NSCoding, MABMapper{
         aCoder.encode(onWishlist, forKey: "onWishlist")
         aCoder.encode(userDetail, forKey: "userDetail")
         aCoder.encode(avgProductReview, forKey: "avgProductReview")
-
-        
     }
     
     
@@ -179,12 +177,12 @@ class Product: NSObject , NSCoding, MABMapper{
     
     
     
-    public class func filtreProduitWs( credentials : Dictionary <String , NSObject>, callBack:@escaping (HomeProduct?,Error?) -> Void) -> Void {
+    public class func filtreProduitWs( credentials : Dictionary <String , String>, callBack:@escaping (HomeProduct?,Error?) -> Void) -> Void {
         var request =
-            RequestBuilder.buildGetRequest(url: kBaseUrl + "product_list_filter", requireAuth: true, pathParams: nil, queryParams : nil)
-        for (key, element) in credentials {
-            request.addValue(String(describing:element), forHTTPHeaderField: key)
-        }
+            RequestBuilder.buildGetRequest(url: kBaseUrl + "product-list-filter", requireAuth: true, pathParams: nil, queryParams : credentials)
+//        for (key, element) in credentials {
+//            request.addValue(String(describing:element), forHTTPHeaderField: key)
+//        }
         DispatchQueue.main.async {
             LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         }
@@ -198,59 +196,40 @@ class Product: NSObject , NSCoding, MABMapper{
                 do {
                     let result = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String,Any>
                     
-                    if result["code"] != nil && result["code"] is String{
-                        let code:String  = result["code"]! as! String;
-                        
-                        if code  == "200"{
-                            if result["data"] != nil && result["data"] is Dictionary<String,Any>{
-                                let productsDetails:Dictionary<String,Any>  = result["data"] as! Dictionary<String,Any>;
-                                
-                                let homeProduct = MABMapperFetcher<Any>.fetch(dictionary: productsDetails, type: HomeProduct.self) as? HomeProduct
-                                if homeProduct != nil {
-                                    DispatchQueue.main.async {
-                                        callBack(homeProduct!,nil)
-                                    }
-                                }else{
-                                    callBack(nil,nil)
+                    let code:Int  = result["status"]! as! Int;
+                    
+                    if code == 200 {
+                        if result["data"] != nil && result["data"] is Dictionary<String,Any>{
+                            let productsDetails:Dictionary<String,Any>  = result["data"] as! Dictionary<String,Any>;
+                            
+                            let homeProduct = MABMapperFetcher<Any>.fetch(dictionary: productsDetails, type: HomeProduct.self) as? HomeProduct
+                            if homeProduct != nil {
+                                DispatchQueue.main.async {
+                                    callBack(homeProduct!,nil)
                                 }
                             }else{
                                 callBack(nil,nil)
                             }
-                            
-                            
                         }else{
-                            DispatchQueue.main.async {
-                                if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
-                                    let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
-                                    callBack(nil,errorTemp)
-                                    
-                                }else if result["msg"] is NSString && result["msg"] != nil {
-                                    let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
-                                    callBack(nil,errorTemp)
-                                }else{
-                                    callBack(nil,nil)
-                                    
-                                }
-                            }
+                            callBack(nil,nil)
                         }
                         
                         
                     }else{
                         DispatchQueue.main.async {
-                            if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
-                                let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
+                            if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
+                                let errorTemp = NSError(domain:"", code:101, userInfo:result["message"]!  as? [String : Any])
                                 callBack(nil,errorTemp)
                                 
-                            }else if result["msg"] is NSString && result["msg"] != nil {
-                                let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
+                            }else if result["message"] is NSString && result["message"] != nil {
+                                let errorTemp = NSError(domain:result["message"]! as! String, code:101, userInfo:nil)
                                 callBack(nil,errorTemp)
                             }else{
-                                callBack(nil,error)
+                                callBack(nil,nil)
                                 
                             }
                         }
-                    }
-                    
+                    }                    
                     
                 } catch {
                     DispatchQueue.main.async {

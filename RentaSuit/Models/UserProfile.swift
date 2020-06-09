@@ -18,6 +18,7 @@ class UserProfile: User {
     @objc var country : String?
     @objc var longitude : String?
     @objc var latitude : String?
+    @objc var photo : String?
     
     // body_type
     @objc var bodyType : Int = 1
@@ -63,7 +64,16 @@ class UserProfile: User {
         superMap["contactNumber"] = [
             "class" : NSString.self,
             "path" : "contact_number",
-            "required" : false,
+            "required"
+              : false,
+            "array" : false
+        ]
+      
+        superMap["photo"] = [
+            "class" : NSString.self,
+            "path" : "profile_picture",
+            "required"
+              : false,
             "array" : false
         ]
         

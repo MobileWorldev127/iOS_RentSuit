@@ -116,6 +116,7 @@ public class User  : NSObject, NSCoding, MABMapper{
     public class func register( credentials : Dictionary <String , NSObject>, callBack:@escaping (User?,Error?) -> Void) -> Void {
         let request =
             RequestBuilder.buildPostFormDataRequest(url: kBaseUrl + "signup", requireAuth: false, pathParams: nil, queryParams : nil, body: credentials)
+      
         DispatchQueue.main.async {
             LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         }
@@ -133,9 +134,8 @@ public class User  : NSObject, NSCoding, MABMapper{
                     //                    if code == 200  {
                     if result["data"] != nil && result["data"] is NSDictionary{
                         let data:NSDictionary  = result["data"]! as! NSDictionary;
-                        
-                        if data["user_details"] != nil && data["user_details"] is NSDictionary{
-                            let userDetails:Dictionary<String,Any>  = data["user_details"] as! Dictionary<String,Any>;
+//                        if data["user_details"] != nil && data["user_details"] is NSDictionary{
+                            let userDetails:Dictionary<String,Any>  = data as! Dictionary<String,Any>;
                             let user = MABMapperFetcher<Any>.fetch(dictionary: userDetails, type: User.self) as? User
                             if user != nil {
                                 DispatchQueue.main.async {
@@ -157,7 +157,7 @@ public class User  : NSObject, NSCoding, MABMapper{
                                     }
                                 }
                             }
-                        }else{
+//                        }else{
                             DispatchQueue.main.async {
                                 if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
                                     let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
@@ -172,7 +172,7 @@ public class User  : NSObject, NSCoding, MABMapper{
                                 }
                                 
                             }
-                        }
+//                        }
                         
                     }else{
                         DispatchQueue.main.async {
@@ -234,7 +234,7 @@ public class User  : NSObject, NSCoding, MABMapper{
                     if result["data"] != nil && result["data"] is NSDictionary{
                         let data:NSDictionary  = result["data"]! as! NSDictionary;
                         
-                        if data["user_details"] != nil && data["user_details"] is NSDictionary{
+//                        if data["user_details"] != nil && data["user_details"] is NSDictionary{
                             let userDetails:Dictionary<String,Any>  = data["user_details"] as! Dictionary<String,Any>;
                             let user = MABMapperFetcher<Any>.fetch(dictionary: userDetails, type: User.self) as? User
                             if user != nil {
@@ -257,7 +257,7 @@ public class User  : NSObject, NSCoding, MABMapper{
                                     }
                                 }
                             }
-                        }else{
+//                        }else{
                             DispatchQueue.main.async {
                                 if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull  {
                                     let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
@@ -272,7 +272,7 @@ public class User  : NSObject, NSCoding, MABMapper{
                                 }
                                 
                             }
-                        }
+//                        }
                         
                     }else{
                         DispatchQueue.main.async {
@@ -476,7 +476,7 @@ public class User  : NSObject, NSCoding, MABMapper{
                     if result["data"] != nil && result["data"] is NSDictionary{
                         let data:NSDictionary  = result["data"]! as! NSDictionary;
                         
-                        if data["user_details"] != nil && data["user_details"] is NSDictionary{
+//                        if data["user_details"] != nil && data["user_details"] is NSDictionary{
                             let userDetails:Dictionary<String,Any>  = data["user_details"] as! Dictionary<String,Any>;
                             let user = MABMapperFetcher<Any>.fetch(dictionary: userDetails, type: User.self) as? User
                             if user != nil {
@@ -499,7 +499,7 @@ public class User  : NSObject, NSCoding, MABMapper{
                                     }
                                 }
                             }
-                        }else{
+//                        }else{
                             DispatchQueue.main.async {
                                 if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
                                     let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
@@ -514,7 +514,7 @@ public class User  : NSObject, NSCoding, MABMapper{
                                 }
                                 
                             }
-                        }
+//                        }
                         
                     }else{
                         DispatchQueue.main.async {

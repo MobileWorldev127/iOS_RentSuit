@@ -59,7 +59,7 @@ class CategoryProduct: NSObject , NSCoding, MABMapper{
     }
     public class func getListCategoriesProducts(callBack:@escaping (Array<CategoryProduct>?,Error?) -> Void) -> Void {
         let request =
-            RequestBuilder.buildGetRequest(url: kBaseUrl + "category_list", requireAuth: false, pathParams: nil, queryParams : nil)
+            RequestBuilder.buildGetRequest(url: kBaseUrl + "category-list", requireAuth: false, pathParams: nil, queryParams : nil)
         DispatchQueue.main.async {
             LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         }
@@ -71,16 +71,16 @@ class CategoryProduct: NSObject , NSCoding, MABMapper{
                 do {
                     let result = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String,Any>
                     
-                    if result["code"] != nil && result["code"] is String{
-                        let code:String  = result["code"]! as! String;
+                    if result["status"] != nil{
+                        let code:Int  = result["status"] as! Int
                         
-                        if code  == "200"{
+                        if code  == 200 {
                             if result["data"] != nil && result["data"] is Dictionary<String,Any>{
                                 let productsDetails:Dictionary<String,Any>  = result["data"] as! Dictionary<String,Any>;
                                 
-                                if productsDetails["category_list"] != nil && productsDetails["category_list"] is Array<Any>{
+                                if productsDetails["categories"] != nil && productsDetails["categories"] is Array<Any>{
                                     
-                                    let categoriesArray: Array<CategoryProduct> = MABMapperFetcher<Any>.fetch(array:productsDetails["category_list"] as! Array<Any> , type: CategoryProduct.self) as! Array<CategoryProduct>
+                                    let categoriesArray: Array<CategoryProduct> = MABMapperFetcher<Any>.fetch(array:productsDetails["categories"] as! Array<Any> , type: CategoryProduct.self) as! Array<CategoryProduct>
                                         DispatchQueue.main.async {
                                             callBack(categoriesArray,nil)
                                         }
@@ -94,12 +94,12 @@ class CategoryProduct: NSObject , NSCoding, MABMapper{
                             }
                         }else{
                             DispatchQueue.main.async {
-                                if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
-                                    let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
+                                if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
+                                    let errorTemp = NSError(domain:"", code:101, userInfo:result["message"]!  as? [String : Any])
                                     callBack(nil,errorTemp)
                                     
-                                }else if result["msg"] is NSString && result["msg"] != nil {
-                                    let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
+                                }else if result["message"] is NSString && result["message"] != nil {
+                                    let errorTemp = NSError(domain:result["message"]! as! String, code:101, userInfo:nil)
                                     callBack(nil,errorTemp)
                                 }else{
                                     callBack(nil,nil)
@@ -111,12 +111,12 @@ class CategoryProduct: NSObject , NSCoding, MABMapper{
                         
                     }else{
                         DispatchQueue.main.async {
-                            if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
-                                let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
+                            if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
+                                let errorTemp = NSError(domain:"", code:101, userInfo:result["message"]!  as? [String : Any])
                                 callBack(nil,errorTemp)
                                 
-                            }else if result["msg"] is NSString && result["msg"] != nil {
-                                let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
+                            }else if result["message"] is NSString && result["message"] != nil {
+                                let errorTemp = NSError(domain:result["message"]! as! String, code:101, userInfo:nil)
                                 callBack(nil,errorTemp)
                             }else{
                                 callBack(nil,error)

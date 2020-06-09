@@ -26,7 +26,7 @@ class GarmentsPageViewController: BasepageViewController,UICollectionViewDataSou
     }
     
     func getListProducts()  {
-        HomeProduct.getListProducts(productsUrl: "product_list" ,page: 0) { (homeProduct, err) in
+        HomeProduct.getListProducts(productsUrl: "product-list" ,page: 0) { (homeProduct, err) in
             if homeProduct != nil {
                 self.homeObject = homeProduct
                 self.listProducts = (homeProduct?.listProducts)!
@@ -137,7 +137,7 @@ class GarmentsPageViewController: BasepageViewController,UICollectionViewDataSou
     func getMoreProducts()  {
         if (homeObject?.hasMorePage(currentpage: currentPageProducts)) == true {
             currentPageProducts = currentPageProducts + 1
-            HomeProduct.getListProducts(productsUrl: "product_list",page:currentPageProducts) { (homeProduct, err) in
+            HomeProduct.getListProducts(productsUrl: "product-list",page:currentPageProducts) { (homeProduct, err) in
                 if homeProduct != nil {
                     self.homeObject = homeProduct
                     self.listProducts.append(contentsOf: homeProduct!.listProducts!)

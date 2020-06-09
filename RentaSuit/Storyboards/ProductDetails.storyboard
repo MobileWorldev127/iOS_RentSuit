@@ -412,7 +412,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phW-RI-sYR">
                                                                 <rect key="frame" x="10" y="0.0" width="187" height="37"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="oq0-Zc-Hob">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oq0-Zc-Hob">
                                                                         <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="oq0-Zc-Hob" secondAttribute="height" id="dwP-vO-eML"/>
@@ -1346,7 +1346,6 @@
         <image name="ic_mail_owner" width="11.666666984558105" height="8.6666669845581055"/>
         <image name="ic_shopping_basket" width="60" height="60"/>
         <image name="logo-rent" width="98" height="23"/>
-        <image name="test_avatar" width="37" height="37"/>
         <image name="test_silouhet" width="16" height="31"/>
     </resources>
 </document>

@@ -14,10 +14,10 @@ class GroupCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     func setupCellWithcategory(category:CategoryProduct) {
-        self.nameLabel.text = category.name
+      self.nameLabel.text = category.name!
         let placeHolder : UIImage? = UIImage.init(named: "placeholder-test")
         if (category.picture != nil) {
-            let urlwithPercentEscapes =  (kBaseUrlImage + category.picture!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
+            let urlwithPercentEscapes = category.picture!.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
             let url:URL = URL(string:urlwithPercentEscapes!)!
             self.imageGroupView.contentMode = UIViewContentMode.scaleAspectFill;
 //            self.imageGroupView.setImageWith(url, placeholderImage: placeHolder)

@@ -19,7 +19,7 @@ class ProductSlide: UIView {
     }
     func setUpSlide(_ picture: Picture) {
         if picture.picture != nil {
-            let urlwithPercentEscapes =  (kBaseUrlImage + picture.picture!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
+            let urlwithPercentEscapes =  (picture.picture!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
             let url = URL(string:urlwithPercentEscapes!)!
             self.productImage.setImageWith(url, placeholderImage: UIImage(named: "placeholder-test"))
             self.productImage.contentMode = UIViewContentMode.scaleAspectFill;

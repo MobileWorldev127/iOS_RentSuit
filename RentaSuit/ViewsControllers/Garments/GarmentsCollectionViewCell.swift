@@ -66,7 +66,7 @@ class GarmentsCollectionViewCell: UICollectionViewCell {
         self.favoritetBtn.isSelected = product.onWishlist
         let placeHolder : UIImage? = UIImage.init(named: "placeholder-test")
         if (product.picture != nil) {
-            let urlwithPercentEscapes =  (kBaseUrlImage + product.picture!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
+            let urlwithPercentEscapes =  product.picture!.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
             let url:URL = URL(string:urlwithPercentEscapes!)!            
             self.garmentImageView.contentMode = UIViewContentMode.scaleAspectFill;
 //            self.garmentImageView.setImageWith(url, placeholderImage: placeHolder)

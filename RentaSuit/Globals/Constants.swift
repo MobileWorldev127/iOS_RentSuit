@@ -14,8 +14,10 @@ let APP_DELEGATE = UIApplication.shared.delegate as! AppDelegate
 
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
-let kBaseUrl = "https://rentasuit.ca/api/v1.0/"
-let kBaseUrlImage = "https://rentasuit.ca/"
+//let kBaseUrl = "https://rentasuit.ca/api/v1.0/"
+let kBaseUrl = "https://rentasuit.sandboxbuild.com/api/v1.0/"
+//let kBaseUrlImage = "https://rentasuit.ca/"
+let kBaseUrlImage = "https://rentasuit.sandboxbuild.com/"
 
 let REQUEST_TIME_OUT = 30.0
 let ContentType = "application/json"

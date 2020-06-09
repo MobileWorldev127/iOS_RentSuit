@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		229ABBE52485477100F417A3 /* HomeCollectionTitleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229ABBE42485477100F417A3 /* HomeCollectionTitleViewCell.swift */; };
 		550B8BE621737FB800CFF01B /* HomeHeaderViewCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550B8BE521737FB800CFF01B /* HomeHeaderViewCollectionReusableView.swift */; };
 		550B8BE92173811500CFF01B /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550B8BE82173811500CFF01B /* HomeCollectionViewCell.swift */; };
 		55166649216D5CFA007BED49 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55166648216D5CFA007BED49 /* LoadingOverlay.swift */; };
@@ -186,6 +187,7 @@
 
 /* Begin PBXFileReference section */
 		1EED8CAC56E8618E00CC52A5 /* Pods-RentaSuit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RentaSuit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RentaSuit/Pods-RentaSuit.debug.xcconfig"; sourceTree = "<group>"; };
+		229ABBE42485477100F417A3 /* HomeCollectionTitleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionTitleViewCell.swift; sourceTree = "<group>"; };
 		550B8BE521737FB800CFF01B /* HomeHeaderViewCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderViewCollectionReusableView.swift; sourceTree = "<group>"; };
 		550B8BE82173811500CFF01B /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		5514850421B03CAD005B2352 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
@@ -419,6 +421,7 @@
 		550B8BE7217380F200CFF01B /* HomeCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				229ABBE42485477100F417A3 /* HomeCollectionTitleViewCell.swift */,
 				550B8BE82173811500CFF01B /* HomeCollectionViewCell.swift */,
 			);
 			path = HomeCollectionViewCell;
@@ -1402,6 +1405,7 @@
 				9A1CEF4521C2B671004A90A0 /* RentRequestViewController.swift in Sources */,
 				9A0B596A2173E9EC000435C0 /* RentaMapViewController.swift in Sources */,
 				5561D3D421750A2200FB41A7 /* GarmentsCollectionViewCell.swift in Sources */,
+				229ABBE52485477100F417A3 /* HomeCollectionTitleViewCell.swift in Sources */,
 				555B29A3216FF7AB00C1BE52 /* GarmentsPageViewController.swift in Sources */,
 				559F7636217B8C73008DF004 /* CategoryProduct.swift in Sources */,
 				5538F81D218259FE009A4A52 /* PagerNews.swift in Sources */,

@@ -48,16 +48,34 @@ class ListeProductsViewController: BaseViewController,UICollectionViewDelegate,U
     }
     
     func getListProducts()  {
-        let urlProduct = "product_list_filter" + "?category_id=" + (category?.id)!
-        HomeProduct.getListProducts(productsUrl: urlProduct, page: 0) { (homeProduct, err) in
-            if homeProduct != nil {
-                self.productsObject = homeProduct
-                self.listProducts = (homeProduct?.listProducts)!
-            }else{
+        var params : Dictionary<String, String> = [:]
+        params ["category_id"] = (category?.id)! as String
+        params ["page"] = "1" as String
+        params ["results_per_page"] = "50" as String
+      
+        Product.filtreProduitWs(credentials:  params as! Dictionary<String, String>) { (listProducts, error) in
+            if (listProducts != nil){
+                self.productsObject = listProducts
+                self.listProducts = (listProducts?.listProducts)!
+            }
+            else{
                 self.showAlertView(title: nil, message: "server_error".localized)
             }
             self.productsCollectionsView .reloadData()
         }
+      
+      
+      
+//        let urlProduct = "product-list-filter" + "?category_id=" + (category?.id)!
+//        HomeProduct.getListProducts(productsUrl: urlProduct, page: 0) { (homeProduct, err) in
+//            if homeProduct != nil {
+//                self.productsObject = homeProduct
+//                self.listProducts = (homeProduct?.listProducts)!
+//            }else{
+//                self.showAlertView(title: nil, message: "server_error".localized)
+//            }
+//            self.productsCollectionsView .reloadData()
+//        }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       return  listProducts.count
@@ -149,7 +167,7 @@ class ListeProductsViewController: BaseViewController,UICollectionViewDelegate,U
     func getMoreProducts()  {
         if (productsObject?.hasMorePage(currentpage: currentPageProducts)) == true {
             currentPageProducts = currentPageProducts + 1
-             let urlProduct = "product_list_filter" + "?category_id=" + (category?.id)!
+             let urlProduct = "product-list-filter" + "?category_id=" + (category?.id)!
             HomeProduct.getListProducts(productsUrl: urlProduct,page:currentPageProducts) { (homeProduct, err) in
                 if homeProduct != nil {
                     self.productsObject = homeProduct

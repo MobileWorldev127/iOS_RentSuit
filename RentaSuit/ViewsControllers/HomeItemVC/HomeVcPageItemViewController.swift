@@ -38,7 +38,7 @@ class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDeleg
         }
     }
     func getListProducts()  {
-        HomeProduct.getListProducts(productsUrl: "product_list" ,page: 0) { (homeProduct, err) in
+        HomeProduct.getListProducts(productsUrl: "product-list" ,page: 0) { (homeProduct, err) in
             if homeProduct != nil {
                 self.homeObject = homeProduct
                 self.listProducts = (homeProduct?.listProducts)!
@@ -80,7 +80,7 @@ class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDeleg
         
         switch indexPath.row {
         case 0 :
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCellTitleId", for: indexPath as IndexPath) as! HomeCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCellTitleId", for: indexPath as IndexPath) as! HomeCollectionTitleViewCell
             return cell
         default :
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseGroupIdentifier, for: indexPath as IndexPath) as! HomeGroupCollectionViewCell
@@ -188,7 +188,7 @@ class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDeleg
     func getMoreProducts()  {
         if (homeObject?.hasMorePage(currentpage: currentPageProducts)) == true {
             currentPageProducts = currentPageProducts + 1
-            HomeProduct.getListProducts(productsUrl: "product_list",page:currentPageProducts) { (homeProduct, err) in
+            HomeProduct.getListProducts(productsUrl: "product-list",page:currentPageProducts) { (homeProduct, err) in
                 if homeProduct != nil {
                     self.homeObject = homeProduct
                     self.listProducts.append(contentsOf: homeProduct!.listProducts!)

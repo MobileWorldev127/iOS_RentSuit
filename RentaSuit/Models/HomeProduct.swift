@@ -13,7 +13,8 @@ class HomeProduct: NSObject , NSCoding, MABMapper{
         return [
             "listProducts" : [
                 "class" : Product.self,
-                "path" : "product_list",
+//                "path" : "product_list",
+                "path" : "products",
                 "required" : false,
                 "array" : true
             ],
@@ -70,12 +71,15 @@ class HomeProduct: NSObject , NSCoding, MABMapper{
     }
     
     public class func getListProducts(productsUrl:String ,page:Int,callBack:@escaping (HomeProduct?,Error?) -> Void) -> Void {
-       
-        var request =
-            RequestBuilder.buildGetRequest(url: kBaseUrl + productsUrl, requireAuth: false, pathParams: nil, queryParams : nil)
-        if page != 0 {
-            request.addValue(String(describing: page), forHTTPHeaderField: "page")
-        }
+
+      print("======>", String(page));
+      let params = [
+        "page": String(page),
+        "results_per_page": "10"
+      ]
+      let request =
+          RequestBuilder.buildGetRequest(url: kBaseUrl + productsUrl, requireAuth: false, pathParams: nil, queryParams : params)
+
         DispatchQueue.main.async {
             LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         }
@@ -83,19 +87,20 @@ class HomeProduct: NSObject , NSCoding, MABMapper{
             DispatchQueue.main.async {
                 LoadingOverlay.shared.hideOverlayView()
             }
+          
             if (error == nil) && (data != nil) {
                 do {
                     let result = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String,Any>
                     
-                    if result["code"] != nil && result["code"] is String{
-                        let code:String  = result["code"]! as! String;
+                    if result["status"] != nil{
+                      let code:Int  = result["status"] as! Int
                         
-                        if code  == "200"{
+                        if code  == 200 {
                             if result["data"] != nil && result["data"] is Dictionary<String,Any>{
                                 let productsDetails:Dictionary<String,Any>  = result["data"] as! Dictionary<String,Any>;
                                 
                                 let homeProduct = MABMapperFetcher<Any>.fetch(dictionary: productsDetails, type: HomeProduct.self) as? HomeProduct
-                                homeProduct?.nbrPage = (homeProduct?.totalProduct)!/10
+                                homeProduct?.nbrPage = (homeProduct?.totalProduct)!/10+1
                                 if homeProduct != nil {
                                     DispatchQueue.main.async {
                                         callBack(homeProduct!,nil)
@@ -110,12 +115,12 @@ class HomeProduct: NSObject , NSCoding, MABMapper{
                             
                         }else{
                             DispatchQueue.main.async {
-                                if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
+                                if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
                                     let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
                                     callBack(nil,errorTemp)
                                     
-                                }else if result["msg"] is NSString && result["msg"] != nil {
-                                    let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
+                                }else if result["message"] is NSString && result["message"] != nil {
+                                    let errorTemp = NSError(domain:result["message"]! as! String, code:101, userInfo:nil)
                                     callBack(nil,errorTemp)
                                 }else{
                                     callBack(nil,nil)
@@ -127,12 +132,12 @@ class HomeProduct: NSObject , NSCoding, MABMapper{
                         
                     }else{
                         DispatchQueue.main.async {
-                            if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
-                                let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
+                            if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
+                                let errorTemp = NSError(domain:"", code:101, userInfo:result["message"]!  as? [String : Any])
                                 callBack(nil,errorTemp)
                                 
-                            }else if result["msg"] is NSString && result["msg"] != nil {
-                                let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
+                            }else if result["message"] is NSString && result["message"] != nil {
+                                let errorTemp = NSError(domain:result["message"]! as! String, code:101, userInfo:nil)
                                 callBack(nil,errorTemp)
                             }else{
                                 callBack(nil,error)

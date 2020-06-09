@@ -212,7 +212,7 @@ class Wish : Product {
     class func getItemDetails(_ id : String,callBack:@escaping (Wish?,Int?) -> Void) -> Void {
         
         let request =
-            RequestBuilder.buildGetRequest(url: kBaseUrl + "product_detail", requireAuth: true, pathParams: nil, queryParams: ["product_id" : id])
+            RequestBuilder.buildGetRequest(url: kBaseUrl + "product-detail", requireAuth: true, pathParams: nil, queryParams: ["product_id" : id])
         
         URLSession.shared.dataTask(with: request) { (data, response, err) in
             
