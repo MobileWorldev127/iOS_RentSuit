@@ -76,11 +76,10 @@ class GarmentsPageViewController: BasepageViewController,UICollectionViewDataSou
         return cell
     }
     func removeFromWishlitList(product:Product ,incell:GarmentsCollectionViewCell ,index:Int)  {
-        var params : Dictionary<String , AnyObject> = [:]
-        params["product_id"] = product.id as AnyObject
-        params ["on_wishlist"] = 0 as AnyObject
+        var params : Dictionary<String , String> = [:]
+        params["product_id"] = product.id as! String
         
-        Product.addOrRemoveProductwishlist(credentials: params as! Dictionary<String, NSObject>) { (removed, err) in
+        Product.removeProductwishlist(credentials: params as! Dictionary<String, String>) { (removed, err) in
             if (err == nil ){
                 if (removed != nil){
                     if (removed! ){
@@ -98,9 +97,8 @@ class GarmentsPageViewController: BasepageViewController,UICollectionViewDataSou
     func addInWishlitList(product:Product ,incell:GarmentsCollectionViewCell ,index:Int)   {
         var params : Dictionary<String , AnyObject> = [:]
         params["product_id"] = product.id as AnyObject
-        params ["on_wishlist"] = 1 as AnyObject
         
-        Product.addOrRemoveProductwishlist(credentials: params as! Dictionary<String, NSObject>) { (added, err) in
+        Product.addProductwishlist(credentials: params as! Dictionary<String, NSObject>) { (added, err) in
             if (err == nil ){
                 if (added != nil){
                     if (added! ){

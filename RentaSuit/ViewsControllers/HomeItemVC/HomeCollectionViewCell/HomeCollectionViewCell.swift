@@ -62,7 +62,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
 //        params["product_id"] = product.id as AnyObject
 //        params ["on_wishlist"] = 0 as AnyObject
 //      
-//        Product.addOrRemoveProductwishlist(credentials: params as! Dictionary<String, NSObject>) { (removed, err) in
+//        Product.removeProductwishlist(credentials: params as! Dictionary<String, NSObject>) { (removed, err) in
 //            if (err == nil ){
 //                if (removed != nil){
 //                    if (removed! ){
@@ -80,7 +80,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
 //        params["product_id"] = product.id as AnyObject
 //        params ["on_wishlist"] = 1 as AnyObject
 //        
-//        Product.addOrRemoveProductwishlist(credentials: params as! Dictionary<String, NSObject>) { (removed, err) in
+//        Product.addProductwishlist(credentials: params as! Dictionary<String, NSObject>) { (removed, err) in
 //            if (err == nil ){
 //                if (removed != nil){
 //                    if (removed! ){

@@ -9,21 +9,25 @@
 import Foundation
 
 struct CartResponse: Codable {
-    let code, msg: String
-    let data: CartList
+    let status: Int?
+    let message: String?
+    let data: [Cart]?
+//    enum CodingKeys: String, CodingKey {
+//        case cartList = "data"
+//    }
 }
 
-struct CartList: Codable {
-    let cartList: [Cart]?
-    
-    enum CodingKeys: String, CodingKey {
-        case cartList = "cart_list"
-    }
-}
+//struct CartList: Codable {
+//    let cartList: [Cart]?
+//
+//    enum CodingKeys: String, CodingKey {
+//        case cartList = "cart_list"
+//    }
+//}
 
 struct Cart: Codable {
-    let id: Int
-    let userID, productID, deliveryOption: String
+    let id, userID, productID: Int
+    let deliveryOption: String
     let returnDeliveryOption, returnDate: JSONNull?
     let rentalStartDate: String
     let shippingInfo, returnShippingInfo: JSONNull?
@@ -32,9 +36,11 @@ struct Cart: Codable {
     let country, contactNumber, email, description: String
     let status: String
     let reason: JSONNull?
-    let payKey, cartTotal, total: String
+    let payKey: String
+    let cartTotal, total: Int
     let rating: JSONNull?
-    let userReviewSubmitted, createdAt, updatedAt: String
+    let userReviewSubmitted: Int
+    let createdAt, updatedAt: String
     let productDetail: ProductDetail
     
     enum CodingKeys: String, CodingKey {
@@ -66,25 +72,25 @@ struct Cart: Codable {
     
     static func cartList(callBack:@escaping ([Cart]?, Int?) -> Void) -> Void {
         let request =
-            RequestBuilder.buildGetRequest(url: kBaseUrl + "cart_list", requireAuth: true, pathParams: nil, queryParams: nil)
-        
+            RequestBuilder.buildGetRequest(url: kBaseUrl + "cart/list", requireAuth: true, pathParams: nil, queryParams: nil)
+      
         URLSession.shared.dataTask(with: request) { (data, response, err) in
-            
+
             if (err == nil) && (data != nil) {
                 do {
                     let decoder = JSONDecoder()
                     let model = try decoder.decode(CartResponse.self, from:
                         data!)
-                    if model.data.cartList != nil {
+                    if model.data != nil {
                         DispatchQueue.main.async {
-                            callBack(model.data.cartList!,200)
+                            callBack(model.data!,200)
                         }
                     }else{
                         DispatchQueue.main.async {
                             callBack(nil,200)
                         }
                     }
-                   
+
                 } catch let err {
                     print(err)
                     DispatchQueue.main.async {
@@ -96,20 +102,20 @@ struct Cart: Codable {
                     callBack(nil,500)
                 }
             }
-            
+
             }.resume()
     }
     
     
     func delete(callBack:@escaping (String?) -> Void) -> Void {
-        let params = ["product_id" : self.productID]
+        let params = ["product_id" : String(self.productID)]
         let request =
-            RequestBuilder.buildPostFormDataRequest(url: kBaseUrl + "remove_cart", requireAuth: true, pathParams: nil, queryParams : nil, body: params as! Dictionary<String, NSObject>)
+        RequestBuilder.buildDeleteRequest(url: kBaseUrl + "cart/remove", requireAuth: true, pathParams: nil, queryParams : params)
         URLSession.shared.dataTask(with: request) { (data:Data?, response:URLResponse?,error: Error?) in
             if (error == nil) && (data != nil) {
                 do {
                     let result = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String,Any>
-                    guard let code = result["code"] as? String else {
+                    guard let code = result["status"] as? String else {
                         DispatchQueue.main.async {
                             callBack("500")
                         }
@@ -164,12 +170,12 @@ struct Cart: Codable {
     
     static func add(params : [String : NSObject], callBack:@escaping (String?) -> Void) -> Void {
         let request =
-            RequestBuilder.buildPostFormDataRequest(url: kBaseUrl + "add_cart", requireAuth: true, pathParams: nil, queryParams : nil, body: params)
+            RequestBuilder.buildPostFormDataRequest(url: kBaseUrl + "cart/add", requireAuth: true, pathParams: nil, queryParams : nil, body: params)
         URLSession.shared.dataTask(with: request) { (data:Data?, response:URLResponse?,error: Error?) in
             if (error == nil) && (data != nil) {
                 do {
                     let result = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String,Any>
-                    guard let code = result["code"] as? String else {
+                    guard let code = result["status"] as? String else {
                         DispatchQueue.main.async {
                             callBack("500")
                         }
@@ -226,15 +232,15 @@ struct Cart: Codable {
 }
 
 struct ProductDetail: Codable {
-    let id: Int
-    let userID, name, price, picture: String
+    let id, userID, price: Int
+    let name, picture: String
     let userDetail: UserDetail
     
     enum CodingKeys: String, CodingKey {
         case id
         case userID = "user_id"
         case name, price, picture
-        case userDetail = "user_detail"
+        case userDetail = "added_by"
     }
 }
 

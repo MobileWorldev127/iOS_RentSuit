@@ -61,6 +61,7 @@ class ValidatePayementViewController: BaseViewController {
     }
     
     @IBAction func didTapValidatePayement(_ sender: Any) {
+      print("==>")
     }
     
     @IBAction func didTapBack(_ sender: Any) {

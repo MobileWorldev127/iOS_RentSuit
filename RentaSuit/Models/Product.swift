@@ -99,10 +99,9 @@ class Product: NSObject , NSCoding, MABMapper{
         aCoder.encode(avgProductReview, forKey: "avgProductReview")
     }
     
-    
-    public class func addOrRemoveProductwishlist( credentials : Dictionary <String , NSObject>,callBack:@escaping (Bool?,Error?) -> Void) -> Void {
+    public class func addProductwishlist( credentials : Dictionary <String , NSObject>,callBack:@escaping (Bool?,Error?) -> Void) -> Void {
         let request =
-             RequestBuilder.buildPostFormDataRequest(url: kBaseUrl + "product_add_remove_wishlist", requireAuth: false, pathParams: nil, queryParams : nil, body: credentials)
+             RequestBuilder.buildPostFormDataRequest(url: kBaseUrl + "product-add-wishlist", requireAuth: false, pathParams: nil, queryParams : nil, body: credentials)
         DispatchQueue.main.async {
             LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         }
@@ -114,21 +113,21 @@ class Product: NSObject , NSCoding, MABMapper{
                 do {
                     let result = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String,Any>
                     
-                    if result["code"] != nil && result["code"] is String{
-                        let code:String  = result["code"]! as! String;
+                    if result["status"] != nil{
+                        let code:Int  = result["status"]! as! Int;
                         
-                        if code  == "200"{
+                        if code == 201{
                             DispatchQueue.main.async {
                                 callBack(true,nil)
                             }
                         }else{
                             DispatchQueue.main.async {
-                                if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
-                                    let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
+                                if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
+                                    let errorTemp = NSError(domain:"", code:101, userInfo:result["message"]!  as? [String : Any])
                                     callBack(nil,errorTemp)
                                     
-                                }else if result["msg"] is NSString && result["msg"] != nil {
-                                    let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
+                                }else if result["message"] is NSString && result["message"] != nil {
+                                    let errorTemp = NSError(domain:result["message"]! as! String, code:101, userInfo:nil)
                                     callBack(nil,errorTemp)
                                 }else{
                                     callBack(nil,nil)
@@ -136,16 +135,14 @@ class Product: NSObject , NSCoding, MABMapper{
                                 }
                             }
                         }
-                        
-                        
                     }else{
                         DispatchQueue.main.async {
-                            if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
-                                let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
+                            if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
+                                let errorTemp = NSError(domain:"", code:101, userInfo:result["message"]!  as? [String : Any])
                                 callBack(nil,errorTemp)
                                 
-                            }else if result["msg"] is NSString && result["msg"] != nil {
-                                let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
+                            }else if result["message"] is NSString && result["message"] != nil {
+                                let errorTemp = NSError(domain:result["message"]! as! String, code:101, userInfo:nil)
                                 callBack(nil,errorTemp)
                             }else{
                                 callBack(nil,error)
@@ -154,12 +151,79 @@ class Product: NSObject , NSCoding, MABMapper{
                         }
                     }
                     
-                    
                 } catch {
                     DispatchQueue.main.async {
                         callBack(nil,error)
                     }
+                }
+            }else{
+                var sessionError : Error?;
+                if error == nil {
+                    sessionError = NSError(domain:"NO DATA ERROR", code:-12332, userInfo:nil) as Error
+                }else{
+                    sessionError = error
+                }
+                DispatchQueue.main.async {
+                    callBack(nil,sessionError)
+                }
+            }
+            }.resume()
+    }
+    
+    public class func removeProductwishlist( credentials : Dictionary <String , String>,callBack:@escaping (Bool?,Error?) -> Void) -> Void {
+        let request =
+            RequestBuilder.buildDeleteRequest(url: kBaseUrl + "product-remove-wishlist", requireAuth: true, pathParams: nil, queryParams : credentials)
+        DispatchQueue.main.async {
+            LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
+        }
+        URLSession.shared.dataTask(with: request) { (data:Data?, response:URLResponse?,error: Error?) in
+            DispatchQueue.main.async {
+                LoadingOverlay.shared.hideOverlayView()
+            }
+            if (error == nil) && (data != nil) {
+                do {
+                    let result = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String,Any>
                     
+                    if result["status"] != nil {
+                        let code:Int  = result["status"]! as! Int;
+                        
+                        if code == 200{
+                            DispatchQueue.main.async {
+                                callBack(true,nil)
+                            }
+                        }else{
+                            DispatchQueue.main.async {
+                                if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
+                                    let errorTemp = NSError(domain:"", code:101, userInfo:result["message"]!  as? [String : Any])
+                                    callBack(nil,errorTemp)
+                                    
+                                }else if result["message"] is NSString && result["message"] != nil {
+                                    let errorTemp = NSError(domain:result["message"]! as! String, code:101, userInfo:nil)
+                                    callBack(nil,errorTemp)
+                                }else{
+                                    callBack(nil,nil)
+                                    
+                                }
+                            }
+                        }
+                    }else{
+                        DispatchQueue.main.async {
+                            if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
+                                let errorTemp = NSError(domain:"", code:101, userInfo:result["message"]!  as? [String : Any])
+                                callBack(nil,errorTemp)
+                                
+                            }else if result["message"] is NSString && result["message"] != nil {
+                                let errorTemp = NSError(domain:result["message"]! as! String, code:101, userInfo:nil)
+                                callBack(nil,errorTemp)
+                            }else{
+                                callBack(nil,error)
+                            }
+                        }
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        callBack(nil,error)
+                    }
                 }
             }else{
                 var sessionError : Error?;
@@ -213,8 +277,6 @@ class Product: NSObject , NSCoding, MABMapper{
                         }else{
                             callBack(nil,nil)
                         }
-                        
-                        
                     }else{
                         DispatchQueue.main.async {
                             if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
@@ -226,16 +288,13 @@ class Product: NSObject , NSCoding, MABMapper{
                                 callBack(nil,errorTemp)
                             }else{
                                 callBack(nil,nil)
-                                
                             }
                         }
-                    }                    
-                    
+                    }
                 } catch {
                     DispatchQueue.main.async {
                         callBack(nil,error)
                     }
-                    
                 }
             }else{
                 var sessionError : Error?;
@@ -250,6 +309,4 @@ class Product: NSObject , NSCoding, MABMapper{
             }
             }.resume()
     }
-    
-    
 }

@@ -329,7 +329,6 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="localizedString" value="pay_button"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="didTapPayButton:" destination="2qD-u3-SWe" eventType="touchUpInside" id="sDH-ba-zOt"/>
                                     <action selector="didTapValidatePayement:" destination="Fvl-hV-wdM" eventType="touchUpInside" id="oe3-k0-G21"/>
                                 </connections>
                             </button>

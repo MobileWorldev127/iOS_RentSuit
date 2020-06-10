@@ -272,17 +272,12 @@ extension HomeViewController : PopUpSelectorDelegate {
     }
     
     func goToCartList() {
-        
         self.startLoading()
         Cart.cartList(callBack:{ (products, code) in
             self.stopLoading()
-//            if products != nil {
-                let vc  = self.getViewControllerInstance(sbId: "Cartlist",vcId: "cart_list_scene") as! CartListViewController
-                vc.cartList = products
-                self.navigationController?.pushViewController(vc, animated: true)
-//            }else{
-//
-//            }
+            let vc  = self.getViewControllerInstance(sbId: "Cartlist",vcId: "cart_list_scene") as! CartListViewController
+            vc.cartList = products
+            self.navigationController?.pushViewController(vc, animated: true)
         })
     }
     

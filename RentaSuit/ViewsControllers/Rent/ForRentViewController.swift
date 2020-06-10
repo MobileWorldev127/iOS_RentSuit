@@ -42,7 +42,7 @@ class ForRentViewController: BaseViewController, PickableValuesTextFieldDelegate
         self.productName.text = self.product?.name
         self.designerName.text = self.product?.designer
         if product?.picture != nil {
-            let urlwithPercentEscapes =  (kBaseUrlImage + (product?.picture)!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
+            let urlwithPercentEscapes =  (product?.picture)!.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
             let url = URL(string:urlwithPercentEscapes!)!
             self.productImage.setImageWith(url, placeholderImage: UIImage(named: "placeholder-test"))
         }
@@ -81,7 +81,12 @@ class ForRentViewController: BaseViewController, PickableValuesTextFieldDelegate
             return
         }
         if String.isValid(deliveryOptionInput.text) {
-            params["delivery_option"] = deliveryOptionInput.text!.toObject
+            if (deliveryOptionInput.text == "Pick up from UPS") {
+              params["delivery_option"] = "Ups".toObject
+            }
+            else {
+              params["delivery_option"] = deliveryOptionInput.text!.toObject
+            }
         }else{
             self.showAlertView(title: nil, message: "mendatory field")
             return
@@ -116,7 +121,7 @@ class ForRentViewController: BaseViewController, PickableValuesTextFieldDelegate
         }
         
         if String.isValid(rentAdressInput.text) {
-            params["address2"] = rentAdressInput.text!.toObject
+            params["address"] = rentAdressInput.text!.toObject
         }else{
             self.showAlertView(title: nil, message: "mendatory field")
             return
@@ -172,6 +177,7 @@ class ForRentViewController: BaseViewController, PickableValuesTextFieldDelegate
         
         self.startLoading()
         Cart.add(params: params) { (msg) in
+          print("+++>", msg)
             Cart.cartList(callBack:{ (products, code) in
               self.stopLoading()
               let vc  = self.getViewControllerInstance(sbId: "Cartlist",vcId: "cart_list_scene") as! CartListViewController

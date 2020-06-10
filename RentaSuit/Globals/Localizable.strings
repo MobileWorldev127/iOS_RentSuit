@@ -36,7 +36,7 @@
 "location_lbl" = "Adresse";
 "email_lbl" = "E-mail";
 "birthday_lbl" = "Birthday";
-"size_lbl" = "Cut";
+
 "breast_lbl" = "Breast (Inch)";
 "height_lbl" = "Height (Foot)";
 "waist_lbl" = "Waist (inch)";
@@ -63,6 +63,8 @@
 
 //Cart details wording
 "product_name_lbl" = "Product Name";
+"owner_lbl" = "Owner";
+"price_lbl" = "Price";
 "delivery_option_lbl" = "Delivery Option";
 "rent_from_lbl" = "Rent From";
 "rent_until_lbl" = "Rent Until";

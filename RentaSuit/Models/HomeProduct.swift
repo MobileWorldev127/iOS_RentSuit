@@ -72,7 +72,6 @@ class HomeProduct: NSObject , NSCoding, MABMapper{
     
     public class func getListProducts(productsUrl:String ,page:Int,callBack:@escaping (HomeProduct?,Error?) -> Void) -> Void {
 
-      print("======>", String(page));
       let params = [
         "page": String(page),
         "results_per_page": "10"

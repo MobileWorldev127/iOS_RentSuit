@@ -18,14 +18,12 @@ protocol CellActionDelegate {
 
 class ItemCell: UITableViewCell {
 
-    @IBOutlet weak var designerValueLabel: UILabel!
-    @IBOutlet weak var seasonValueLabel: UILabel!
-    @IBOutlet weak var categoryValueLabel: UILabel!
-    @IBOutlet weak var locationValueLabel: UILabel!
-    @IBOutlet weak var sizeValueLabel: UILabel!
+    @IBOutlet weak var ownerValueLabel: UILabel!
     @IBOutlet weak var colorValueLabel: UILabel!
-  
+    @IBOutlet weak var sizeValueLabel: UILabel!
+    @IBOutlet weak var priceValueLabel: UILabel!
     @IBOutlet weak var productNameValueLabel: UILabel!
+  
     @IBOutlet weak var deliveryOptionValueLabel: UILabel!
     @IBOutlet weak var rentfromValueLabel: UILabel!
     @IBOutlet weak var rentUntilValueLabel: UILabel!
@@ -42,38 +40,52 @@ class ItemCell: UITableViewCell {
     var delegate : CellActionDelegate?
     
     func setUp(wish : Wish) {
-        self.designerValueLabel.text = wish.designer
-        self.sizeValueLabel.text = wish.size
-        self.seasonValueLabel.text = wish.season
-        self.locationValueLabel.text = wish.location
+        self.productNameValueLabel.text = wish.name
+        self.ownerValueLabel.text = wish.owner
         self.colorValueLabel.text = wish.color
-        self.categoryValueLabel.text = Category.categoryWithId(wish.category)
+        self.sizeValueLabel.text = wish.size
+        self.priceValueLabel.text = "$" + wish.retailPrice! + "/day"
         
         if (wish.picture != nil) {
-            let urlwithPercentEscapes =  (kBaseUrlImage + wish.picture!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
+            let urlwithPercentEscapes =  (wish.picture!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
             let url:URL = URL(string:urlwithPercentEscapes!)!
             self.itemImage.setImageWith(url, placeholderImage: UIImage(named: "placeholder-test"))
         }
     }
     
     func setUp(cart : Cart) {
-        self.productNameValueLabel.text = cart.productDetail.name
-        self.deliveryOptionValueLabel.text = cart.deliveryOption
-        self.rentfromValueLabel.text = cart.rentalStartDate
-        self.rentUntilValueLabel.text = cart.rentalEndDate
-        self.retailPriceValueLabel.text = "217"
-        self.shippingValueLabel.text = "0"
-        self.pricePerDayValueLabel.text = cart.productDetail.price
-        self.daysValueLabel.text = String(Int(cart.total)! / Int(cart.productDetail.price)!)
-        self.rentValueLabel.text = cart.total
-        self.cleaningPriceValueLabel.text = "NP"
-        self.totalValueLabel.text = "218"
-        
-        if (cart.productDetail.picture != nil) {
-            let urlwithPercentEscapes =  (kBaseUrlImage + cart.productDetail.picture).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
-            let url:URL = URL(string:urlwithPercentEscapes!)!
-            self.itemImage.setImageWith(url, placeholderImage: UIImage(named: "placeholder-test"))
-        }
+      Wish.getItemDetails(String(cart.productID)) { (detail, code) in
+          if nil != detail {
+              self.productNameValueLabel.text = cart.productDetail.name
+              if (cart.deliveryOption == "Ups"){
+                self.deliveryOptionValueLabel.text = "Pick up from UPS"
+              }else {
+                self.deliveryOptionValueLabel.text = cart.deliveryOption
+              }
+              
+              self.rentfromValueLabel.text = cart.rentalStartDate
+              self.rentUntilValueLabel.text = cart.rentalEndDate
+              self.retailPriceValueLabel.text = detail?.retailPrice
+              self.shippingValueLabel.text = "0"
+              self.pricePerDayValueLabel.text = String(cart.productDetail.price)
+              self.daysValueLabel.text = String(cart.total / cart.productDetail.price)
+              self.rentValueLabel.text = String(cart.total)
+              if (detail?.cleansingPrice == ""){
+                self.cleaningPriceValueLabel.text = detail?.cleansingPrice
+              } else {
+                self.cleaningPriceValueLabel.text = "NP"
+              }
+              self.totalValueLabel.text = String(Int((detail?.retailPrice)!)! + cart.total)
+              
+              if (cart.productDetail.picture != nil) {
+                  let urlwithPercentEscapes =  (cart.productDetail.picture).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
+                  let url:URL = URL(string:urlwithPercentEscapes!)!
+                  self.itemImage.setImageWith(url, placeholderImage: UIImage(named: "placeholder-test"))
+              }
+          }
+      }
+      
+
     }
     
     

@@ -232,14 +232,7 @@ class UserProfile: User {
                         return
                     }
                     
-                    guard let userProfile = data["user_profile"] as? Dictionary<String,Any> else {
-                        DispatchQueue.main.async {
-                            callBack(nil,426)
-                        }
-                        return
-                    }
-                    
-                    let user = MABMapperFetcher<Any>.fetch(dictionary: userProfile, type: UserProfile.self) as? UserProfile
+                    let user = MABMapperFetcher<Any>.fetch(dictionary: data, type: UserProfile.self) as? UserProfile
                     if user != nil {
                         DispatchQueue.main.async {
                             callBack(user,nil)

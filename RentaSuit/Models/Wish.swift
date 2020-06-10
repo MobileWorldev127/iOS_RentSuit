@@ -42,6 +42,11 @@ class Wish : Product {
     @objc var rentStartAt : String?
     @objc var rentEndAt : String?
     
+    @objc var owner : String? {
+      get{
+          return (userDetail?.displayName())!
+      }
+    }
     
     override class func map() -> Dictionary<String, Any>{
         var superMap = super.map()
@@ -161,9 +166,13 @@ class Wish : Product {
     }
     
     class func myWishList(callBack:@escaping ([Wish]?,Int?) -> Void) -> Void {
-        
+        var params : Dictionary<String , String> = [:]
+        params["page"] = "1" as! String
+        params["results_per_page"] = "50" as! String
         let request =
-            RequestBuilder.buildGetRequest(url: kBaseUrl + "wish_list", requireAuth: true, pathParams: nil, queryParams: nil)
+          RequestBuilder.buildGetRequest(url: kBaseUrl + "wish-list", requireAuth: true, pathParams: nil, queryParams : params)
+//        let request =
+//            RequestBuilder.buildGetRequest(url: kBaseUrl + "wish-list", requireAuth: true, pathParams: nil, queryParams: nil)
         
         URLSession.shared.dataTask(with: request) { (data, response, err) in
             
@@ -178,7 +187,7 @@ class Wish : Product {
                         }
                         return
                     }
-                    guard let array = data["Wishlist"] as? Array<Any> else {
+                    guard let array = data["wishlist"] as? Array<Any> else { 
                         DispatchQueue.main.async {
                             callBack(nil,426)
                         }
@@ -260,15 +269,14 @@ class Wish : Product {
     
     
     func delete(callBack:@escaping (String?) -> Void) -> Void {
-        let params = ["product_id" : self.id!,
-                      "on_wishlist" : "0"]
+        let params = ["product_id" : self.id!]
         let request =
-            RequestBuilder.buildPostFormDataRequest(url: kBaseUrl + "product_add_remove_wishlist", requireAuth: false, pathParams: nil, queryParams : nil, body: params as! Dictionary<String, NSObject>)
+        RequestBuilder.buildDeleteRequest(url: kBaseUrl + "product-remove-wishlist", requireAuth: true, pathParams: nil, queryParams : params)
         URLSession.shared.dataTask(with: request) { (data:Data?, response:URLResponse?,error: Error?) in
             if (error == nil) && (data != nil) {
                 do {
                     let result = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String,Any>
-                    guard let code = result["code"] as? String else {
+                    guard let code = result["status"] as? String else {
                         DispatchQueue.main.async {
                             callBack("500")
                         }
@@ -277,7 +285,6 @@ class Wish : Product {
                     DispatchQueue.main.async {
                         callBack(code)
                     }
-                    
                 } catch {
                     DispatchQueue.main.async {
                         callBack("500")
@@ -289,7 +296,6 @@ class Wish : Product {
                 }
             }
             }.resume()
-        
     }
     
     func add(callBack:@escaping (String?) -> Void) -> Void {
