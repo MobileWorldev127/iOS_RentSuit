@@ -177,7 +177,6 @@ class ForRentViewController: BaseViewController, PickableValuesTextFieldDelegate
         
         self.startLoading()
         Cart.add(params: params) { (msg) in
-          print("+++>", msg)
             Cart.cartList(callBack:{ (products, code) in
               self.stopLoading()
               let vc  = self.getViewControllerInstance(sbId: "Cartlist",vcId: "cart_list_scene") as! CartListViewController

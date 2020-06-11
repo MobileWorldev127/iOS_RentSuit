@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import Braintree
 
 class ValidatePayementViewController: BaseViewController {
 
+    var braintreeClient: BTAPIClient!
+  
     @IBOutlet weak var payementMethodLabel: UILabel!
     @IBOutlet weak var transactionAmountLabel: UILabel!
     @IBOutlet weak var transactionAmountInput: UITextField!
@@ -27,13 +30,15 @@ class ValidatePayementViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         if !didAppearOnce {
             didAppearOnce = true
-            setUpIndicator(method: self.selectedPayementMethod!)
+//            setUpIndicator(method: self.selectedPayementMethod!)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpStaticInfo()
+        braintreeClient = BTAPIClient(authorization: "sandbox_csdtvgwj_5snrzj39bv5gmh4k")!
+        
     }
     
     func setUpStaticInfo(){
@@ -61,11 +66,66 @@ class ValidatePayementViewController: BaseViewController {
     }
     
     @IBAction func didTapValidatePayement(_ sender: Any) {
-      print("==>")
+        let payPalDriver = BTPayPalDriver(apiClient: braintreeClient)
+        payPalDriver.viewControllerPresentingDelegate = self
+        payPalDriver.appSwitchDelegate = self
+      
+        // Specify the transaction amount here. "2.32" is used in this example.
+      let request = BTPayPalRequest(amount: transactionAmountInput.text as! String)
+        request.currencyCode = "USD" // Optional; see BTPayPalRequest.h for more options
+
+        payPalDriver.requestOneTimePayment(request) { (tokenizedPayPalAccount, error) in
+            if let tokenizedPayPalAccount = tokenizedPayPalAccount {
+                print("Got a nonce: \(tokenizedPayPalAccount.nonce)")
+
+                // Access additional information
+                let email = tokenizedPayPalAccount.email
+                let firstName = tokenizedPayPalAccount.firstName
+                let lastName = tokenizedPayPalAccount.lastName
+                let phone = tokenizedPayPalAccount.phone
+
+                // See BTPostalAddress.h for details
+                let billingAddress = tokenizedPayPalAccount.billingAddress
+                let shippingAddress = tokenizedPayPalAccount.shippingAddress
+              self.billingInfoLabel.text = "The total amount to be padin is $" + self.transactionAmountInput.text! + " and some charges may icure"
+            } else if let error = error {
+                // Handle error here...
+            } else {
+                // Buyer canceled payment approval
+            }
+        }
     }
     
     @IBAction func didTapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
+}
+
+extension ValidatePayementViewController: BTViewControllerPresentingDelegate{
+  func paymentDriver(_ driver: Any, requestsPresentationOf viewController: UIViewController) {
+    
+  }
+  
+  func paymentDriver(_ driver: Any, requestsDismissalOf viewController: UIViewController) {
+    
+  }
+  
+  
+}
+
+extension ValidatePayementViewController: BTAppSwitchDelegate {
+  func appSwitcherWillPerformAppSwitch(_ appSwitcher: Any) {
+    
+  }
+  
+  func appSwitcher(_ appSwitcher: Any, didPerformSwitchTo target: BTAppSwitchTarget) {
+    
+  }
+  
+  func appSwitcherWillProcessPaymentInfo(_ appSwitcher: Any) {
+    
+  }
+  
+  
 }

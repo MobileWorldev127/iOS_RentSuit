@@ -11,6 +11,7 @@ import GoogleMaps
 import FBSDKShareKit
 import FBSDKLoginKit
 import TwitterKit
+import Braintree
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -56,7 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initSDK()
         initUI()
         TWTRTwitter.sharedInstance().start(withConsumerKey:twitter_app_id, consumerSecret:Twitter_secret)
-
+      
+        BTAppSwitch.setReturnURLScheme("com.dev.RentaSuit.payments")
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
@@ -93,6 +95,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if TWTRTwitter.sharedInstance().application(app, open: url, options: options) {
             return true
         }
+      
+      if url.scheme?.localizedCaseInsensitiveCompare("com.dev.RentaSuit.payments") == .orderedSame {
+          return BTAppSwitch.handleOpen(url, options: options)
+      }
         
         return false
     }

@@ -212,7 +212,7 @@ class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDeleg
     @IBAction func didTapSearchRent(_ sender: Any) {
         let customPopup :CustomPopupViewController = CustomPopupViewController.init(nibName: "CustomPopupViewController", bundle: nil)
         customPopup.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-       self.present(customPopup, animated: false, completion: nil)
+        self.present(customPopup, animated: false, completion: nil)
     }
 }
 

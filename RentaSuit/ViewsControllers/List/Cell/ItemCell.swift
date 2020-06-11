@@ -62,11 +62,16 @@ class ItemCell: UITableViewCell {
               }else {
                 self.deliveryOptionValueLabel.text = cart.deliveryOption
               }
+            
               
               self.rentfromValueLabel.text = cart.rentalStartDate
               self.rentUntilValueLabel.text = cart.rentalEndDate
               self.retailPriceValueLabel.text = detail?.retailPrice
-              self.shippingValueLabel.text = "0"
+              if (cart.shippingInfo == nil){
+                self.shippingValueLabel.text = "0"
+              }else {
+                self.shippingValueLabel.text = String(cart.shippingInfo.hashValue)
+              }
               self.pricePerDayValueLabel.text = String(cart.productDetail.price)
               self.daysValueLabel.text = String(cart.total / cart.productDetail.price)
               self.rentValueLabel.text = String(cart.total)

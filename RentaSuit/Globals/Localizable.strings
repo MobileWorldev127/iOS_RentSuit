@@ -111,6 +111,8 @@
 // wish list
 "wish_list_action" = "Wishlist";
 "wish_list_button" = "CONTINUE SHOPPING";
+"place_order_button" = "PLACE ORDER";
+"cancel_button" = "CANCEL";
 
 // cart list
 "cart_list_button" = "Wishlist";

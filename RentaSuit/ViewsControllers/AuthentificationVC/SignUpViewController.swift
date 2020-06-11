@@ -40,9 +40,7 @@ class SignUpViewController: BaseAuthetificationViewController {
                 self.gotHomeViewController()
             }else{
 
-              
                 if err != nil{
-                  print("1____")
                     let error:NSError = err! as NSError ;
                     if error.userInfo.count != 0 {
                         self.showAlertMessageByError(errorDict: error.userInfo)
@@ -56,7 +54,6 @@ class SignUpViewController: BaseAuthetificationViewController {
                         }
                     }
                 }else{
-                  print("2-----")
                     self.showAlertView(title: "", message: "server_error".localized)
                 }
             }

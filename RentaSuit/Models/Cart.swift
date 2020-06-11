@@ -12,18 +12,7 @@ struct CartResponse: Codable {
     let status: Int?
     let message: String?
     let data: [Cart]?
-//    enum CodingKeys: String, CodingKey {
-//        case cartList = "data"
-//    }
 }
-
-//struct CartList: Codable {
-//    let cartList: [Cart]?
-//
-//    enum CodingKeys: String, CodingKey {
-//        case cartList = "cart_list"
-//    }
-//}
 
 struct Cart: Codable {
     let id, userID, productID: Int

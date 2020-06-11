@@ -470,7 +470,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedString" value="wish_list_button"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedString" value="place_order_button"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="didTapContinue:" destination="az8-9p-b7b" eventType="touchUpInside" id="7nX-bl-KHD"/>
@@ -493,6 +493,7 @@
                         <viewLayoutGuide key="safeArea" id="3LC-69-7tA"/>
                     </view>
                     <connections>
+                        <outlet property="placeOrderBtn" destination="vcn-Sc-26z" id="NAo-Nd-gEB"/>
                         <outlet property="tableView" destination="lGV-Jy-eOr" id="g6G-QB-HUd"/>
                     </connections>
                 </viewController>

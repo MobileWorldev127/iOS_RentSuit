@@ -134,54 +134,37 @@ public class User  : NSObject, NSCoding, MABMapper{
                     //                    if code == 200  {
                     if result["data"] != nil && result["data"] is NSDictionary{
                         let data:NSDictionary  = result["data"]! as! NSDictionary;
-//                        if data["user_details"] != nil && data["user_details"] is NSDictionary{
-                            let userDetails:Dictionary<String,Any>  = data as! Dictionary<String,Any>;
-                            let user = MABMapperFetcher<Any>.fetch(dictionary: userDetails, type: User.self) as? User
-                            if user != nil {
-                                DispatchQueue.main.async {
-                                    User.connect(loggedUser: user!)
-                                    callBack(user,nil)
-                                }
-                            }else{
-                                DispatchQueue.main.async {
-                                    if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
-                                        let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
-                                        callBack(nil,errorTemp)
-                                        
-                                    }else if result["msg"] is NSString && result["msg"] != nil {
-                                        let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
-                                        callBack(nil,errorTemp)
-                                    }else{
-                                        callBack(nil,nil)
-                                        
-                                    }
-                                }
-                            }
-//                        }else{
+                        let userDetails:Dictionary<String,Any>  = data as! Dictionary<String,Any>;
+                        let user = MABMapperFetcher<Any>.fetch(dictionary: userDetails, type: User.self) as? User
+                        if user != nil {
                             DispatchQueue.main.async {
-                                if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
+                                User.connect(loggedUser: user!)
+                                callBack(user,nil)
+                            }
+                        }else{
+                            DispatchQueue.main.async {
+                                if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
                                     let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
                                     callBack(nil,errorTemp)
                                     
-                                }else if result["msg"] is NSString && result["msg"] != nil {
-                                    let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
+                                }else if result["message"] is NSString && result["message"] != nil {
+                                    let errorTemp = NSError(domain:result["message"]! as! String, code:101, userInfo:nil)
                                     callBack(nil,errorTemp)
                                 }else{
                                     callBack(nil,nil)
                                     
                                 }
-                                
                             }
-//                        }
+                        }
                         
                     }else{
                         DispatchQueue.main.async {
-                            if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
-                                let errorTemp = NSError(domain:"wrongData", code:101, userInfo:result["msg"]!  as? [String : Any])
+                            if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
+                                let errorTemp = NSError(domain:"wrongData", code:101, userInfo:result["message"]!  as? [String : Any])
                                 callBack(nil,errorTemp)
                                 
-                            }else if result["msg"] is NSString && result["msg"] != nil {
-                                let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
+                            }else if result["message"] is NSString && result["message"] != nil {
+                                let errorTemp = NSError(domain:result["message"]! as! String, code:101, userInfo:nil)
                                 callBack(nil,errorTemp)
                             }else{
                                 callBack(nil,error)
@@ -189,12 +172,6 @@ public class User  : NSObject, NSCoding, MABMapper{
                             }
                         }
                     }
-                    
-                    //                        }else{
-                    //                            DispatchQueue.main.async {
-                    //                                callBack(nil,error)
-                    //                            }
-                    //                        }
                     
                 } catch {
                     DispatchQueue.main.async {
@@ -234,54 +211,37 @@ public class User  : NSObject, NSCoding, MABMapper{
                     if result["data"] != nil && result["data"] is NSDictionary{
                         let data:NSDictionary  = result["data"]! as! NSDictionary;
                         
-//                        if data["user_details"] != nil && data["user_details"] is NSDictionary{
-                            let userDetails:Dictionary<String,Any>  = data["user_details"] as! Dictionary<String,Any>;
-                            let user = MABMapperFetcher<Any>.fetch(dictionary: userDetails, type: User.self) as? User
-                            if user != nil {
-                                DispatchQueue.main.async {
-                                    User.connect(loggedUser: user!)
-                                    callBack(user,nil)
-                                }
-                            }else{
-                                DispatchQueue.main.async {
-                                    if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
-                                        let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
-                                        callBack(nil,errorTemp)
-                                        
-                                    }else if result["msg"] is NSString && result["msg"] != nil {
-                                        let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
-                                        callBack(nil,errorTemp)
-                                    }else{
-                                        callBack(nil,nil)
-                                        
-                                    }
-                                }
-                            }
-//                        }else{
+                        let userDetails:Dictionary<String,Any>  = data as! Dictionary<String,Any>;
+                        let user = MABMapperFetcher<Any>.fetch(dictionary: userDetails, type: User.self) as? User
+                        if user != nil {
                             DispatchQueue.main.async {
-                                if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull  {
-                                    let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
+                                User.connect(loggedUser: user!)
+                                callBack(user,nil)
+                            }
+                        }else{
+                            DispatchQueue.main.async {
+                                if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
+                                    let errorTemp = NSError(domain:"", code:101, userInfo:result["message"]!  as? [String : Any])
                                     callBack(nil,errorTemp)
                                     
-                                }else if result["msg"] is NSString && result["msg"] != nil {
-                                    let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
+                                }else if result["message"] is NSString && result["message"] != nil {
+                                    let errorTemp = NSError(domain:result["message"]! as! String, code:101, userInfo:nil)
                                     callBack(nil,errorTemp)
                                 }else{
                                     callBack(nil,nil)
                                     
                                 }
-                                
                             }
-//                        }
+                        }
                         
                     }else{
                         DispatchQueue.main.async {
-                            if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
-                                let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
+                            if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
+                                let errorTemp = NSError(domain:"", code:101, userInfo:result["message"]!  as? [String : Any])
                                 callBack(nil,errorTemp)
                                 
-                            }else if result["msg"] is NSString && result["msg"] != nil {
-                                let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
+                            }else if result["message"] is NSString && result["message"] != nil {
+                                let errorTemp = NSError(domain:result["message"]! as! String, code:101, userInfo:nil)
                                 callBack(nil,errorTemp)
                             }else{
                                 callBack(nil,error)

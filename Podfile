@@ -13,7 +13,7 @@ def common_pods
     pod 'FBSDKLoginKit', '4.38.1'
     pod 'FBSDKShareKit', '4.38.1'
     pod 'TwitterKit'  , '3.4.2'
-
+    pod 'Braintree'
 end
 
 

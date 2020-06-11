@@ -171,9 +171,7 @@ class Wish : Product {
         params["results_per_page"] = "50" as! String
         let request =
           RequestBuilder.buildGetRequest(url: kBaseUrl + "wish-list", requireAuth: true, pathParams: nil, queryParams : params)
-//        let request =
-//            RequestBuilder.buildGetRequest(url: kBaseUrl + "wish-list", requireAuth: true, pathParams: nil, queryParams: nil)
-        
+      
         URLSession.shared.dataTask(with: request) { (data, response, err) in
             
             if (err == nil) && (data != nil) {

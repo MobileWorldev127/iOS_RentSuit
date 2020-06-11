@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>GMS_MAPS_KEY</key>
-	<string>AIzaSyA6I3i4Ma_rglQTlkof9o1ATGGzFlMYmDo</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -18,8 +16,36 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb2008114579409719</string>
+				<string>twitterkit-F95kvasU5WqMmbOqWOt1djik8</string>
+				<string>com.dev.RentaSuit.payments</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>2008114579409719</string>
+	<key>FacebookDisplayName</key>
+	<string>rentSuitIos</string>
+	<key>GMS_MAPS_KEY</key>
+	<string>AIzaSyA6I3i4Ma_rglQTlkof9o1ATGGzFlMYmDo</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+		<string>twitter</string>
+		<string>twitterauth</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -76,12 +102,6 @@
 		<string>SF-UI-Text-SemiboldItalic.otf</string>
 		<string>Montserrat-Medium</string>
 	</array>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>instagram</string>
-        <string>fb</string>
-        <string>pinterest</string>        
-    </array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -101,16 +121,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    
-    <key>CFBundleURLTypes</key> <array> <dict> <key>CFBundleURLSchemes</key> <array> <string>fb2008114579409719</string>
-     <string>twitterkit-F95kvasU5WqMmbOqWOt1djik8</string>
-    </array> </dict> </array> <key>FacebookAppID</key> <string>2008114579409719</string> <key>FacebookDisplayName</key> <string>rentSuitIos</string>
-    
-    <key>LSApplicationQueriesSchemes</key> <array> <string>fbapi</string> <string>fb-messenger-share-api</string> <string>fbauth2</string> <string>fbshareextension</string>
-        <string>twitter</string>
-        <string>twitterauth</string>
-    </array>
-    
-    
 </dict>
 </plist>

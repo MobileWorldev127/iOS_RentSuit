@@ -11,12 +11,18 @@ import UIKit
 class ItemListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, CellActionDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var placeOrderBtn: UIButton!
     
     var wishList : [Wish]?
     var cartList: [Cart]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      if (self.cartList?.count == 0){
+        placeOrderBtn.isHidden = true
+      }else {
+        placeOrderBtn.isHidden = false
+      }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,6 +33,10 @@ class ItemListViewController: BaseViewController, UITableViewDataSource, UITable
         }
     }
     @IBAction func didTapContinue(_ sender: Any) {
+        let cartPopup :CartPopupViewController = CartPopupViewController.init(nibName: "CartPopupViewController", bundle: nil)
+        cartPopup.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        cartPopup.cartList = self.cartList
+        self.present(cartPopup, animated: false, completion: nil)
     }
     
     @IBAction func didTapBack(_ sender: Any) {

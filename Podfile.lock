@@ -20,6 +20,28 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - Braintree (4.33.0):
+    - Braintree/Card (= 4.33.0)
+    - Braintree/Core (= 4.33.0)
+    - Braintree/PayPal (= 4.33.0)
+    - Braintree/UI (= 4.33.0)
+  - Braintree/Card (4.33.0):
+    - Braintree/Core
+  - Braintree/Core (4.33.0)
+  - Braintree/PayPal (4.33.0):
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPalDataCollector (4.33.0):
+    - Braintree/Core
+    - Braintree/PayPalUtils
+  - Braintree/PayPalOneTouch (4.33.0):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+    - Braintree/PayPalUtils
+  - Braintree/PayPalUtils (4.33.0)
+  - Braintree/UI (4.33.0):
+    - Braintree/Card
+    - Braintree/Core
   - Cosmos (17.0.0)
   - FBSDKCoreKit (4.38.1):
     - Bolts (~> 1.9)
@@ -39,6 +61,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - Braintree
   - Cosmos (~> 17.0)
   - FBSDKCoreKit (= 4.38.1)
   - FBSDKLoginKit (= 4.38.1)
@@ -51,6 +74,7 @@ SPEC REPOS:
   trunk:
     - AFNetworking
     - Bolts
+    - Braintree
     - Cosmos
     - FBSDKCoreKit
     - FBSDKLoginKit
@@ -63,6 +87,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Braintree: 586e4d274398fabe9d70ab790eefca41660b8a17
   Cosmos: 309e489f21ffc91a1eeecfebef7f817cd2fcfba6
   FBSDKCoreKit: 8d47857400e2f5bdea697a80daff882e91c84ef6
   FBSDKLoginKit: 4621c690d9dd8628031a4791497062183ea34b0d
@@ -72,6 +97,6 @@ SPEC CHECKSUMS:
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: 81ed53038e812c95465aacc516fc34f796fd8180
+PODFILE CHECKSUM: 866d3bd6ed594e3b8f4cfd00f40bf76ca0a89db0
 
 COCOAPODS: 1.8.4
