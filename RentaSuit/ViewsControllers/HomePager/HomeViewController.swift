@@ -197,7 +197,8 @@ extension HomeViewController : PopUpSelectorDelegate {
             goToProfile()
             break
         case 1:
-            goToChat()
+//            goToChat()
+            goToRented()
             break
         case 2:
             goToBilling()
@@ -236,12 +237,22 @@ extension HomeViewController : PopUpSelectorDelegate {
     }
     
     
-    func goToChat(){
-        self.pushViewController(sbId: "Chat",
-                                vcId: "chat_screen",
-                                animated: true)
-    }
+//    func goToChat(){
+//        self.pushViewController(sbId: "Chat",
+//                                vcId: "chat_screen",
+//                                animated: true)
+//    }
     
+    func goToRented(){
+      self.startLoading()
+      RentedProduct.myRentedList {(rentedProducts, code) in
+        print("---->", rentedProducts)
+        self.stopLoading()
+        let vc  = self.getViewControllerInstance(sbId: "RentedList",vcId: "rented_list_screen") as! RentedListViewController
+          vc.rentedList = rentedProducts
+        self.navigationController?.pushViewController(vc, animated: true)
+      }
+    }
     
     func goToBilling(){
         self.pushViewController(sbId: "BillingMethods",

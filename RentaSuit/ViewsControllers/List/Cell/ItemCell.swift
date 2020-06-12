@@ -34,9 +34,19 @@ class ItemCell: UITableViewCell {
     @IBOutlet weak var rentValueLabel: UILabel!
     @IBOutlet weak var cleaningPriceValueLabel: UILabel!
     @IBOutlet weak var totalValueLabel: UILabel!
-    
     @IBOutlet weak var itemImage: UIImageView!
+  
+    @IBOutlet weak var rentedProductImage: UIImageView!
+    @IBOutlet weak var rentedProductOwnerImage: UIImageView!
+    @IBOutlet weak var rentedProductNameLabel: UILabel!
+    @IBOutlet weak var rentedProductPriceLabel: UILabel!
+    @IBOutlet weak var rentedProductOwnerNameLabel: UILabel!
+    @IBOutlet weak var rentedProductStatusLabel: UILabel!
+    @IBOutlet weak var rentedProductOwnerLocationLabel: UILabel!
+    @IBOutlet weak var rentedProductDesignerLabel: UILabel!
+    @IBOutlet weak var rentedProductCancelBookingBtn: UIButton!
     
+  
     var delegate : CellActionDelegate?
     
     func setUp(wish : Wish) {
@@ -44,7 +54,7 @@ class ItemCell: UITableViewCell {
         self.ownerValueLabel.text = wish.owner
         self.colorValueLabel.text = wish.color
         self.sizeValueLabel.text = wish.size
-        self.priceValueLabel.text = "$" + wish.retailPrice! + "/day"
+        self.priceValueLabel.text = "$" + wish.price! + "/day"
         
         if (wish.picture != nil) {
             let urlwithPercentEscapes =  (wish.picture!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
@@ -62,8 +72,7 @@ class ItemCell: UITableViewCell {
               }else {
                 self.deliveryOptionValueLabel.text = cart.deliveryOption
               }
-            
-              
+                          
               self.rentfromValueLabel.text = cart.rentalStartDate
               self.rentUntilValueLabel.text = cart.rentalEndDate
               self.retailPriceValueLabel.text = detail?.retailPrice
@@ -89,12 +98,37 @@ class ItemCell: UITableViewCell {
               }
           }
       }
+    }
+  
+    func setUp(rentedProduct : RentedProduct) {
+        self.rentedProductNameLabel.text = rentedProduct.name
+        self.rentedProductPriceLabel.text = "$ " + rentedProduct.price! + "/day"
+        self.rentedProductOwnerNameLabel.text = (rentedProduct.userDetail?.firstName)! + " " + (rentedProduct.userDetail?.lastName)!
+        self.rentedProductOwnerLocationLabel.text = rentedProduct.userDetail?.location
+        self.rentedProductStatusLabel.text = rentedProduct.status
+        self.rentedProductDesignerLabel.text = rentedProduct.designer
       
 
+        if (rentedProduct.picture != nil) {
+            let urlwithPercentEscapes =  (rentedProduct.picture!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
+            let url:URL = URL(string:urlwithPercentEscapes!)!
+            self.rentedProductImage.setImageWith(url, placeholderImage: UIImage(named: "placeholder-test"))
+        }
+        if (rentedProduct.userDetail?.photo != nil) {
+          let urlwithPercentEscapes = (rentedProduct.userDetail?.photo)!.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
+              let url:URL = URL(string:urlwithPercentEscapes!)!
+              self.rentedProductOwnerImage.setImageWith(url, placeholderImage: UIImage(named: "placeholder-test"))
+        }
     }
     
     
     @IBAction func didTapDelete(_ sender : UIButton) {
+        if nil != self.delegate {
+            self.delegate?.didRequest(self, .delete)
+        }
+    }
+  
+    @IBAction func didTapCancelBooking(_ sender : UIButton) {
         if nil != self.delegate {
             self.delegate?.didRequest(self, .delete)
         }

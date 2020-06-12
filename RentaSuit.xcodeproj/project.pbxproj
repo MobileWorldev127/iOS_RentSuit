@@ -11,6 +11,9 @@
 		22ACE5D42490B3A00068D49D /* Checkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACE5D32490B3A00068D49D /* Checkout.swift */; };
 		22ACE5D62491177B0068D49D /* CartPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACE5D52491177B0068D49D /* CartPopupViewController.swift */; };
 		22ACE5D8249117DC0068D49D /* CartPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22ACE5D7249117DC0068D49D /* CartPopupViewController.xib */; };
+		22ACE5DC2492A80F0068D49D /* RentedProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACE5DB2492A80E0068D49D /* RentedProduct.swift */; };
+		22ACE5DF2492C46A0068D49D /* RentedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACE5DE2492C46A0068D49D /* RentedListViewController.swift */; };
+		22ACE5E12492C8BD0068D49D /* RentedList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22ACE5E02492C8BD0068D49D /* RentedList.storyboard */; };
 		550B8BE621737FB800CFF01B /* HomeHeaderViewCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550B8BE521737FB800CFF01B /* HomeHeaderViewCollectionReusableView.swift */; };
 		550B8BE92173811500CFF01B /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550B8BE82173811500CFF01B /* HomeCollectionViewCell.swift */; };
 		55166649216D5CFA007BED49 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55166648216D5CFA007BED49 /* LoadingOverlay.swift */; };
@@ -194,6 +197,9 @@
 		22ACE5D32490B3A00068D49D /* Checkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkout.swift; sourceTree = "<group>"; };
 		22ACE5D52491177B0068D49D /* CartPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPopupViewController.swift; sourceTree = "<group>"; };
 		22ACE5D7249117DC0068D49D /* CartPopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartPopupViewController.xib; sourceTree = "<group>"; };
+		22ACE5DB2492A80E0068D49D /* RentedProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentedProduct.swift; sourceTree = "<group>"; };
+		22ACE5DE2492C46A0068D49D /* RentedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentedListViewController.swift; sourceTree = "<group>"; };
+		22ACE5E02492C8BD0068D49D /* RentedList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RentedList.storyboard; sourceTree = "<group>"; };
 		550B8BE521737FB800CFF01B /* HomeHeaderViewCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderViewCollectionReusableView.swift; sourceTree = "<group>"; };
 		550B8BE82173811500CFF01B /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		5514850421B03CAD005B2352 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
@@ -394,6 +400,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22ACE5DD2492C4450068D49D /* Rented */ = {
+			isa = PBXGroup;
+			children = (
+				22ACE5DE2492C46A0068D49D /* RentedListViewController.swift */,
+			);
+			path = Rented;
+			sourceTree = "<group>";
+		};
 		27B2FBEB1D3BA41CE5AA9C4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -682,6 +696,7 @@
 				55379B9D217A81A4008419F8 /* Product.swift */,
 				55379B9F217A8341008419F8 /* HomeProduct.swift */,
 				559F7635217B8C73008DF004 /* CategoryProduct.swift */,
+				22ACE5DB2492A80E0068D49D /* RentedProduct.swift */,
 				22ACE5D32490B3A00068D49D /* Checkout.swift */,
 				5538F81A21825738009A4A52 /* News.swift */,
 				5538F81C218259FE009A4A52 /* PagerNews.swift */,
@@ -743,6 +758,7 @@
 				551AB084217CE989002197E1 /* ListeProducts.storyboard */,
 				9A1B995921827579000ADC02 /* Rent.storyboard */,
 				9A1B995B21827594000ADC02 /* Cartlist.storyboard */,
+				22ACE5E02492C8BD0068D49D /* RentedList.storyboard */,
 				9A1B9969218287C8000ADC02 /* Wishlist.storyboard */,
 				9A724F23219D62D100042826 /* Notification.storyboard */,
 			);
@@ -800,6 +816,7 @@
 		9A1B995F2182790A000ADC02 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				22ACE5DD2492C4450068D49D /* Rented */,
 				9A1B9964218283D6000ADC02 /* WishList */,
 				9A1B9963218283D0000ADC02 /* Cart */,
 				9A1B996021827917000ADC02 /* Cell */,
@@ -1195,6 +1212,7 @@
 				9A4BCE3221C1C9D000326684 /* BodyTypeCollectionCell.xib in Resources */,
 				9A4BFD442181176100F17F1C /* HeaderItem.xib in Resources */,
 				9AC8A35A2174E07E00FA3A41 /* ProductSlide.xib in Resources */,
+				22ACE5E12492C8BD0068D49D /* RentedList.storyboard in Resources */,
 				55E9CA1921A2F05700D73E29 /* ShippingCellTableView.xib in Resources */,
 				5569E9742156A3F4000A35A6 /* SF-UI-Text-MediumItalic.otf in Resources */,
 				5569E9652156A3F4000A35A6 /* SF-Pro-Display-Heavy.otf in Resources */,
@@ -1351,6 +1369,7 @@
 				22ACE5D62491177B0068D49D /* CartPopupViewController.swift in Sources */,
 				9A4BFD422181152100F17F1C /* HeaderItem.swift in Sources */,
 				555B29A5216FF7F000C1BE52 /* ShippingPageViewController.swift in Sources */,
+				22ACE5DC2492A80F0068D49D /* RentedProduct.swift in Sources */,
 				559F7639217CB69D008DF004 /* HomeGroupCollectionViewCell.swift in Sources */,
 				553352ED216A311D00C64FA1 /* User.swift in Sources */,
 				555B29AA216FF83600C1BE52 /* ContatcUsPageViewController.swift in Sources */,
@@ -1358,6 +1377,7 @@
 				9A724F27219D7D9900042826 /* NotificationsViewController.swift in Sources */,
 				9AC8A36521753D0000FA3A41 /* RentaInfoWindow.swift in Sources */,
 				55E9CA1821A2F05700D73E29 /* ShippingCellTableView.swift in Sources */,
+				22ACE5DF2492C46A0068D49D /* RentedListViewController.swift in Sources */,
 				9A7179E721963F0E00973B76 /* CreateRentViewController.swift in Sources */,
 				9A2451342177EB6E003D143E /* PickableDataTextField.swift in Sources */,
 				551AE3B8217FCDBB007E8D30 /* AboutViewController.swift in Sources */,

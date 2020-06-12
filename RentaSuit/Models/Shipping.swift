@@ -40,7 +40,6 @@ public class Shipping: NSObject, NSCoding, MABMapper{
     required public init?(coder aDecoder: NSCoder) {
         self.name = (aDecoder.decodeObject(forKey: "name") as! String)
         self.value = (aDecoder.decodeObject(forKey: "value") as! String)
-
         
     }
     

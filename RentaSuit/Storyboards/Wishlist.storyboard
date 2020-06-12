@@ -318,6 +318,7 @@
                         <viewLayoutGuide key="safeArea" id="ISK-M6-cCr"/>
                     </view>
                     <connections>
+                        <outlet property="placeOrderBtn" destination="qiI-wx-iOa" id="c1T-Ed-aSa"/>
                         <outlet property="tableView" destination="NO4-oL-8tH" id="uZZ-N8-zq7"/>
                     </connections>
                 </viewController>

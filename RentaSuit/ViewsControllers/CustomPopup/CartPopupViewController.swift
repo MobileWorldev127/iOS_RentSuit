@@ -22,7 +22,7 @@ class CartPopupViewController: UIViewController {
   var braintreeClient: BTAPIClient!
   
   var cartList : [Cart]?
-//  var paypmentInfo: Checkout
+  var retailPriceList: [Int]?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -36,8 +36,7 @@ class CartPopupViewController: UIViewController {
       var totalChargesValue = 0;
       var totalPaymentValue = 0;
       var totalRetailPriceValue = 0;
-      for item in self.cartList! {
-        Wish.getItemDetails(String(item.productID)) { (detail, code) in
+      for (index, item) in self.cartList!.enumerated() {
           rentValue += Int(item.total)
           if (item.shippingInfo == nil){
             shippingValue += 0;
@@ -45,15 +44,16 @@ class CartPopupViewController: UIViewController {
             shippingValue += (item.shippingInfo?.hashValue)!
           }
           totalChargesValue += rentValue + shippingValue + rentValue/10;
-          totalRetailPriceValue += Int((detail?.retailPrice!)!)!
+          totalRetailPriceValue += self.retailPriceList![index];
           totalPaymentValue += totalChargesValue + totalRetailPriceValue
-        }
-      }      
+        
+      }
       self.rentValueLabel.text = "$ " + String(rentValue);
       self.shippingLabel.text = "$ " + String(shippingValue);
       self.feeLabel.text = "$ " + String(rentValue/10);
       self.totalChargesLabel.text = "$ " + String(totalChargesValue);
       self.totalPaymentLabel.text = "$ " + String(totalPaymentValue);
+      
     }   
     
   }

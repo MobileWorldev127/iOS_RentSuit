@@ -15,12 +15,13 @@ class ItemListViewController: BaseViewController, UITableViewDataSource, UITable
     
     var wishList : [Wish]?
     var cartList: [Cart]?
+    var rentedList: [RentedProduct]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      if (self.cartList?.count == 0){
+      if (placeOrderBtn != nil && self.cartList?.count == 0){
         placeOrderBtn.isHidden = true
-      }else {
+      }else if (placeOrderBtn != nil){
         placeOrderBtn.isHidden = false
       }
     }
@@ -28,15 +29,26 @@ class ItemListViewController: BaseViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self is WishListViewController {
             return (nil != wishList) ? wishList!.count : 0
-        }else{
+        } else if self is RentedListViewController {
+            return (nil != rentedList) ? rentedList!.count : 0
+        } else{
             return (nil != cartList) ? cartList!.count : 0
         }
     }
     @IBAction func didTapContinue(_ sender: Any) {
-        let cartPopup :CartPopupViewController = CartPopupViewController.init(nibName: "CartPopupViewController", bundle: nil)
-        cartPopup.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        cartPopup.cartList = self.cartList
-        self.present(cartPopup, animated: false, completion: nil)
+      var arr : [Int] = []
+      for (index, item) in self.cartList!.enumerated(){
+        Wish.getItemDetails(String(item.productID)) { (detail, code) in
+          arr.append(Int((detail?.retailPrice!)!)!)
+          if (index == self.cartList!.count - 1 ) {
+            let cartPopup :CartPopupViewController = CartPopupViewController.init(nibName: "CartPopupViewController", bundle: nil)
+            cartPopup.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            cartPopup.cartList = self.cartList
+            cartPopup.retailPriceList = arr
+            self.present(cartPopup, animated: false, completion: nil)
+          }
+        }        
+      }
     }
     
     @IBAction func didTapBack(_ sender: Any) {
@@ -49,7 +61,9 @@ class ItemListViewController: BaseViewController, UITableViewDataSource, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
         if self is WishListViewController {
             cell.setUp(wish: self.wishList![indexPath.row])
-        }else{
+        } else if self is RentedListViewController {
+            cell.setUp(rentedProduct: self.rentedList![indexPath.row])
+        } else{
             cell.setUp(cart: self.cartList![indexPath.row])
         }
         
@@ -61,7 +75,9 @@ class ItemListViewController: BaseViewController, UITableViewDataSource, UITable
         if self is WishListViewController {
             let item = self.wishList![indexPath.row]
             self.goToItemDetails(item.id!)
-        }else{
+        } else if self is RentedListViewController {
+          
+        } else{
             let item = self.cartList![indexPath.row]
             self.goToItemDetails(String(item.productDetail.id))
         }
@@ -76,7 +92,10 @@ class ItemListViewController: BaseViewController, UITableViewDataSource, UITable
         if self is WishListViewController {
             let item = wishList![(indexPath?.row)!]
             deleteItem( cell : cell,item: item, index: (indexPath?.row)!)
-        }else{
+        } else if self is RentedListViewController {
+            let item = rentedList![(indexPath?.row)!]
+            deleteItem( cell : cell,item: item, index: (indexPath?.row)!)
+        } else{
             let item = cartList![(indexPath?.row)!]
             deleteItem( cell : cell,item: item, index: (indexPath?.row)!)
         }
