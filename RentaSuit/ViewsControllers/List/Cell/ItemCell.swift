@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Cosmos
+
 enum Action {
     case add
     case edit
@@ -45,7 +47,7 @@ class ItemCell: UITableViewCell {
     @IBOutlet weak var rentedProductOwnerLocationLabel: UILabel!
     @IBOutlet weak var rentedProductDesignerLabel: UILabel!
     @IBOutlet weak var rentedProductCancelBookingBtn: UIButton!
-    
+    @IBOutlet weak var ratingView: CosmosView!
   
     var delegate : CellActionDelegate?
     
@@ -102,12 +104,17 @@ class ItemCell: UITableViewCell {
   
     func setUp(rentedProduct : RentedProduct) {
         self.rentedProductNameLabel.text = rentedProduct.name
+        ratingView.rating = Double(exactly: (rentedProduct.rating))!
         self.rentedProductPriceLabel.text = "$ " + rentedProduct.price! + "/day"
         self.rentedProductOwnerNameLabel.text = (rentedProduct.userDetail?.firstName)! + " " + (rentedProduct.userDetail?.lastName)!
         self.rentedProductOwnerLocationLabel.text = rentedProduct.userDetail?.location
         self.rentedProductStatusLabel.text = rentedProduct.status
         self.rentedProductDesignerLabel.text = rentedProduct.designer
-      
+        if (rentedProduct.cancellationFlag == "TRUE") {
+          self.rentedProductCancelBookingBtn.isHidden = false
+        } else {
+          self.rentedProductCancelBookingBtn.isHidden = true
+        }
 
         if (rentedProduct.picture != nil) {
             let urlwithPercentEscapes =  (rentedProduct.picture!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
@@ -117,6 +124,7 @@ class ItemCell: UITableViewCell {
         if (rentedProduct.userDetail?.photo != nil) {
           let urlwithPercentEscapes = (rentedProduct.userDetail?.photo)!.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
               let url:URL = URL(string:urlwithPercentEscapes!)!
+              self.rentedProductOwnerImage.contentMode = UIViewContentMode.scaleAspectFill;
               self.rentedProductOwnerImage.setImageWith(url, placeholderImage: UIImage(named: "placeholder-test"))
         }
     }
@@ -129,6 +137,7 @@ class ItemCell: UITableViewCell {
     }
   
     @IBAction func didTapCancelBooking(_ sender : UIButton) {
+        
         if nil != self.delegate {
             self.delegate?.didRequest(self, .delete)
         }

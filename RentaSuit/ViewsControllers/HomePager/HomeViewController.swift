@@ -246,7 +246,6 @@ extension HomeViewController : PopUpSelectorDelegate {
     func goToRented(){
       self.startLoading()
       RentedProduct.myRentedList {(rentedProducts, code) in
-        print("---->", rentedProducts)
         self.stopLoading()
         let vc  = self.getViewControllerInstance(sbId: "RentedList",vcId: "rented_list_screen") as! RentedListViewController
           vc.rentedList = rentedProducts

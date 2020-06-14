@@ -167,7 +167,7 @@ class Product: NSObject , NSCoding, MABMapper{
                     callBack(nil,sessionError)
                 }
             }
-            }.resume()
+          }.resume()
     }
     
     public class func removeProductwishlist( credentials : Dictionary <String , String>,callBack:@escaping (Bool?,Error?) -> Void) -> Void {

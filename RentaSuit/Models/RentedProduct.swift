@@ -42,6 +42,10 @@ class RentedProduct : Product{
     @objc var rentStartAt : String?
     @objc var rentEndAt : String?
     @objc var status: String?
+    @objc var cancellationFlag: String?
+    @objc var rating :  Int = 0
+    @objc var totalReviews: String?
+    @objc var rentedId: String?
     
     @objc var owner : String? {
       get{
@@ -135,7 +139,6 @@ class RentedProduct : Product{
             "required" : false,
             "array" : false
         ]
-        
         superMap["suggestions"] = [
             "class" : User.self,
             "path" : "product_suggestions",
@@ -165,6 +168,30 @@ class RentedProduct : Product{
         superMap["status"] = [
             "class" : NSString.self,
             "path" : "status",
+            "required" : false,
+            "array" : false
+        ]
+        superMap["cancellationFlag"] = [
+            "class" : NSString.self,
+            "path" : "cancellation_flag",
+            "required" : false,
+            "array" : false
+        ]
+        superMap["rating"] = [
+            "class" : NSNumber.self,
+            "path" : "rating",
+            "required" : false,
+            "array" : false
+        ]
+        superMap["totalReviews"] = [
+            "class" : NSString.self,
+            "path" : "total_reviews",
+            "required" : false,
+            "array" : false
+        ]
+        superMap["rentedId"] = [
+            "class" : NSString.self,
+            "path" : "rented_id",
             "required" : false,
             "array" : false
         ]
@@ -222,4 +249,58 @@ class RentedProduct : Product{
           
           }.resume()
   }
+  class func changeStatusRentedList(params : Dictionary <String , NSObject>,callBack:@escaping (Bool?,Error?) -> Void) -> Void {
+      let request =
+      RequestBuilder.buildPostFormDataRequest(url: kBaseUrl + "change-rented-product-status", requireAuth: false, pathParams: nil, queryParams : nil, body: params)
+    
+      URLSession.shared.dataTask(with: request) { (data, response, err) in
+          
+          if (err == nil) && (data != nil) {
+              let httpResponse = response as! HTTPURLResponse
+              do {
+                  let result = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String,Any>
+
+                  if result["status"] != nil{
+                      let code:Int  = result["status"]! as! Int;
+                      
+                      if code == 200{
+                          DispatchQueue.main.async {
+                              callBack(true,nil)
+                          }
+                      }else{
+                          DispatchQueue.main.async {
+                              if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
+                                  let errorTemp = NSError(domain:"", code:101, userInfo:result["message"]!  as? [String : Any])
+                                  callBack(nil,errorTemp)
+                                  
+                              }else if result["message"] is NSString && result["message"] != nil {
+                                  let errorTemp = NSError(domain:result["message"]! as! String, code:101, userInfo:nil)
+                                  callBack(nil,errorTemp)
+                              }else{
+                                  callBack(nil,nil)
+                                  
+                              }
+                          }
+                      }
+                  }
+              } catch let err {
+                  print(err)
+                  DispatchQueue.main.async {
+                      callBack(nil, err)
+                  }
+              }
+          }else{
+              var sessionError : Error?;
+              if err == nil {
+                  sessionError = NSError(domain:"NO DATA ERROR", code:-12332, userInfo:nil) as Error
+              }else{
+                  sessionError = err
+              }
+              DispatchQueue.main.async {
+                  callBack(nil,sessionError)
+              }
+          }
+        }.resume()
+  }
+  
 }

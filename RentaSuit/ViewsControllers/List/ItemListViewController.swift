@@ -76,7 +76,8 @@ class ItemListViewController: BaseViewController, UITableViewDataSource, UITable
             let item = self.wishList![indexPath.row]
             self.goToItemDetails(item.id!)
         } else if self is RentedListViewController {
-          
+            let item = self.rentedList![indexPath.row]
+            self.goToRentedProductItemDetails(item.rentedId!)
         } else{
             let item = self.cartList![indexPath.row]
             self.goToItemDetails(String(item.productDetail.id))
@@ -93,8 +94,23 @@ class ItemListViewController: BaseViewController, UITableViewDataSource, UITable
             let item = wishList![(indexPath?.row)!]
             deleteItem( cell : cell,item: item, index: (indexPath?.row)!)
         } else if self is RentedListViewController {
-            let item = rentedList![(indexPath?.row)!]
-            deleteItem( cell : cell,item: item, index: (indexPath?.row)!)
+          let alert = UIAlertController(title: "", message: "Are you sure you want to cancel this booking?", preferredStyle: .alert)
+          alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: nil))
+          alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+              switch action.style{
+                case .default:
+                  let item = self.rentedList![(indexPath?.row)!]
+                  self.deleteItem( cell : cell,item: item, index: (indexPath?.row)!)
+                case .cancel:
+                      print("cancel")
+
+                case .destructive:
+                      print("destructive")
+              }
+            
+          }))
+          self.present(alert, animated: true, completion: nil)
+            
         } else{
             let item = cartList![(indexPath?.row)!]
             deleteItem( cell : cell,item: item, index: (indexPath?.row)!)
@@ -110,6 +126,15 @@ class ItemListViewController: BaseViewController, UITableViewDataSource, UITable
         if self.tableView.indexPathsForVisibleRows!.contains(indexPath!) {
             self.tableView.deleteRows(at: [indexPath!], with: .automatic)
         }
+    }
+    
+    func changeStatus(_ cell: UITableViewCell){
+      self.startLoading()
+      RentedProduct.myRentedList {(rentedProducts, code) in
+        self.stopLoading()
+        self.rentedList = rentedProducts
+        self.tableView.reloadData()
+      }
     }
     
     func deleteItem( cell : UITableViewCell, item : Any, index : Int)  {

@@ -96,6 +96,17 @@ class BaseViewController: UIViewController {
             }
         }
     }
-
-    
+  
+    func goToRentedProductItemDetails(_ id : String){
+        startLoading()
+        RentedProductDetail.getRentedProductItemDetails(id) { (detail, code) in
+          self.stopLoading()
+          if nil != detail {
+            let vc = self.getViewControllerInstance(sbId: "RentedList",
+                                                             vcId: "rented_list_detail_screen") as! RentedProductDetailsViewController
+            vc.item = detail
+            self.navigationController?.pushViewController(vc, animated: true)
+          }
+        }
+    }
 }
