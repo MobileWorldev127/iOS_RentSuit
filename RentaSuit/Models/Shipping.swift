@@ -47,7 +47,7 @@ public class Shipping: NSObject, NSCoding, MABMapper{
 
         aCoder.encode(name, forKey: "name")
         aCoder.encode(value, forKey: "value")
-}
+    }
     
     
     public class func postShippingCalculator( credentials : Dictionary <String , NSObject>, callBack:@escaping ([Shipping]?,Error?) -> Void) -> Void {

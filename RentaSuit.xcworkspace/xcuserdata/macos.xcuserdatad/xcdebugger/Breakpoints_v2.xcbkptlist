@@ -55,54 +55,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5AFD195C-B338-4A2B-BCF8-DD734CFE3AF6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RentaSuit/ViewsControllers/Search/SearchPageViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "filterProductsWs()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "5AFD195C-B338-4A2B-BCF8-DD734CFE3AF6 - 2cef1887082a64fa"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RentaSuit.SearchPageViewController.filterProductsWs() -&gt; ()"
-                  moduleName = "RentaSuit"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/Data/WorkSpace/iOS/RentaSuit/RentaSuit/ViewsControllers/Search/SearchPageViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "6991">
-               </Location>
-               <Location
-                  uuid = "5AFD195C-B338-4A2B-BCF8-DD734CFE3AF6 - 9b3ad158976abf28"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;RentaSuit.HomeProduct&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in RentaSuit.SearchPageViewController.filterProductsWs() -&gt; ()"
-                  moduleName = "RentaSuit"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/Data/WorkSpace/iOS/RentaSuit/RentaSuit/ViewsControllers/Search/SearchPageViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "154">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "7652F40F-2AE3-4094-A65B-3849349E74F1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -273,6 +225,22 @@
             startingLineNumber = "131"
             endingLineNumber = "131"
             landmarkName = "register(credentials:callBack:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "40BBE7D7-0F8F-4C13-961D-0B56EA4B3CB9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RentaSuit/ViewsControllers/Review/ReviewSubmitPageViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "submitBtnPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

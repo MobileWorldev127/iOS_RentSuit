@@ -2,7 +2,16 @@
 import Foundation
 import Cosmos
 
-class RentedProductDetailsViewController: BaseViewController, UIScrollViewDelegate {
+class RentedProductDetailsViewController: BaseViewController, UIScrollViewDelegate, SubmitReviewDelegate, SearchProductDelegate {
+  func filterProducts(homeProduct: HomeProduct) {
+    
+  }
+  
+  func submitReview(review: Review) {
+    
+  }
+  
+  
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productOwnerImage: UIImageView!
     @IBOutlet weak var productDeliveryOptionLabel: UILabel!
@@ -33,12 +42,14 @@ class RentedProductDetailsViewController: BaseViewController, UIScrollViewDelega
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var submitBtn: UIButton!
+    @IBOutlet weak var cancelBookingBtn: UIButton!
   
     var item : RentedProductDetail?
     
   override func viewDidLoad() {
       super.viewDidLoad()
       setUp()
+      showCancelBookingBtn()
   }
   
   func setUp() {
@@ -82,9 +93,79 @@ class RentedProductDetailsViewController: BaseViewController, UIScrollViewDelega
     self.productOwnerNameLabel.text = item?.rentedProductDetail?.userDetail?.displayName()
     self.productOwnerContactLabel.text = item?.rentedProductDetail?.userDetail?.contactNumber
     self.productOwnerLocationLabel.text = item?.rentedProductDetail?.userDetail?.location
+    
+    if (item?.rentedProductDetail?.cancellationFlag == "TRUE") {
+      self.cancelBookingBtn.isHidden = false
+    } else {
+      self.cancelBookingBtn.isHidden = true
+    }
+  }
+  
+  func showCancelBookingBtn() {
+    self.startLoading()
+    UserProfile.loadRemoteProfile(callBack: { (profile, code) in
+        if nil != profile {
+          Review.myReviewsList(self.item!.productId!) { (reviewList, code) in
+            self.stopLoading()
+            if (reviewList != nil) {
+              for item in reviewList! {
+                if (item.userId == profile?.id) {
+                  self.submitBtn.isHidden = true
+                }
+              }
+            }
+          }
+        }else{
+            print(String(format: "error code %d", code != nil ? code! : 666))
+        }
+    })
+  }
+ @IBAction func didTapCancelBookingButton(_ sender: UIButton) {
+    let alert = UIAlertController(title: "", message: "Are you sure you want to cancel this booking?", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: nil))
+    alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+        switch action.style{
+          case .default:
+            self.cancelBooking()
+          case .cancel:
+                print("cancel")
+
+          case .destructive:
+                print("destructive")
+        }
+    }))
+}
+  
+  
+  func cancelBooking(){
+    var params : Dictionary<String , NSObject> = [:]
+    params["rented_id"] = (item as AnyObject).productId as! NSObject
+    params["status"] = "cancel" as! NSObject
+    RentedProduct.changeStatusRentedList(params: params as! Dictionary<String, NSObject>) { (code, err) in
+//      self.showCancelBookingBtn()
+      
+      RentedProductDetail.getRentedProductItemDetails((self.item?.rentedId!)!) { (detail, code) in
+        self.stopLoading()
+        if nil != detail {
+          self.item = detail
+          self.setUp()
+//          let vc = self.getViewControllerInstance(sbId: "RentedList",
+//                                                           vcId: "rented_list_detail_screen") as! RentedProductDetailsViewController
+//          vc.item = detail
+//          self.navigationController?.pushViewController(vc, animated: true)
+        }
+      }
+    }
   }
   
   @IBAction func didTapBackButton(_ sender: UIButton) {
       self.navigationController?.popViewController(animated: true)
+  }
+  @IBAction func submitBtnPressed(_ sender: Any) {
+    let vc = self.getViewControllerInstance(sbId: "RentedList",
+                                       vcId: "review_submit_page") as! ReviewSubmitPageViewController
+    vc.delegate = self
+    vc.modalPresentationStyle = .overCurrentContext
+    self.present(vc, animated: true, completion: nil)
   }
 }

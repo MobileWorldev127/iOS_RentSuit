@@ -23,7 +23,8 @@ class CreateRentViewController: BaseViewController, ImagePickerDelegate, Missing
     @IBOutlet weak var itemSeasonInput: PickableDataTextField!
     @IBOutlet weak var itemCancelationInput: PickableDataTextField!
     @IBOutlet weak var itemDesignerInput: UITextField!
-    @IBOutlet weak var intemDescriptionInput: UITextField!
+    @IBOutlet weak var itemDescriptionInput: UITextField!
+    @IBOutlet weak var itemCleanPriceInput: UITextField!
     
     @IBAction func didTapCreate(_ sender: Any) {
         var params = [String : NSObject]()
@@ -104,8 +105,8 @@ class CreateRentViewController: BaseViewController, ImagePickerDelegate, Missing
             return
         }
         
-        if String.isValid(intemDescriptionInput.text) {
-            params["description"] = intemDescriptionInput.text!.toObject
+        if String.isValid(itemDescriptionInput.text) {
+            params["description"] = itemDescriptionInput.text!.toObject
         }else{
             self.showAlertView(title: nil, message: "mendatory field")
             return

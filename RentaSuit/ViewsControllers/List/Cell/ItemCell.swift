@@ -137,7 +137,6 @@ class ItemCell: UITableViewCell {
     }
   
     @IBAction func didTapCancelBooking(_ sender : UIButton) {
-        
         if nil != self.delegate {
             self.delegate?.didRequest(self, .delete)
         }

@@ -106,8 +106,7 @@ class ItemListViewController: BaseViewController, UITableViewDataSource, UITable
 
                 case .destructive:
                       print("destructive")
-              }
-            
+              }            
           }))
           self.present(alert, animated: true, completion: nil)
             

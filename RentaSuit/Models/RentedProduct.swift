@@ -1,12 +1,4 @@
 
-//
-//  RentedProduct.swift
-//  RentaSuit
-//
-//  Created by macos on 6/11/20.
-//  Copyright © 2020 MacBook Pro. All rights reserved.
-//
-
 import Foundation
 
 class RentedProduct : Product{

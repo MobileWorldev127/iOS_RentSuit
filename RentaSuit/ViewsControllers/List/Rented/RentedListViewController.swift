@@ -14,7 +14,5 @@ class RentedListViewController: ItemListViewController {
         RentedProduct.changeStatusRentedList(params: params as! Dictionary<String, NSObject>) { (code, err) in
             self.changeStatus(cell)
         }
-        
     }
-    
 }
