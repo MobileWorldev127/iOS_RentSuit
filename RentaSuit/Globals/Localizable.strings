@@ -103,6 +103,8 @@
 "action_wish_list" = "My Wishlist";
 "action_cart" = "My Cart";
 "action_logout" = "Log Out";
+"action_rented" = "Rented";
+"action_for_rent" = "For Rent";
 
 // details
 

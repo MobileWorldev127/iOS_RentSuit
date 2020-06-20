@@ -53,31 +53,7 @@ class SearchPageViewController: BasepageViewController,PickableValuesTextFieldDe
     }
     func filterProductsWs()  {
         var params : Dictionary<String , String> = [:]
-        if (sizeTextField.text == "XS") {
-          params ["size"] = "Extra Small" as String
-        }
-        if (sizeTextField.text == "S") {
-          params ["size"] = "Small" as String
-        }
-        if (sizeTextField.text == "M") {
-          params ["size"] = "Medium" as String
-        }
-        if (sizeTextField.text == "L") {
-          params ["size"] = "Large" as String
-        }
-        if (sizeTextField.text == "XL") {
-          params ["size"] = "Extra Large" as String
-        }
-        
-        if (priceTextField.text == "Per Month") {
-          params ["per"] = "per_day" as String
-        }
-        if (priceTextField.text == "Per Week") {
-          params ["per"] = "per_week" as String
-        }
-        if (priceTextField.text == "Per Month") {
-          params ["per"] = "per_month" as String
-        }
+        params ["size"] = sizeTextField.text as!   String
         params ["page"] = "1" as String
         params ["category_id"] = category?.id as! String
         params ["results_per_page"] = "50" as String

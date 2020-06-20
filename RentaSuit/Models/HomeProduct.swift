@@ -20,7 +20,7 @@ class HomeProduct: NSObject , NSCoding, MABMapper{
             ],
             "totalProduct" : [
                 "class" : NSNumber.self,
-                "path" : "total_product",
+                "path" : "total",
                 "required" : false,
                 "array" : false
             ],
@@ -99,7 +99,7 @@ class HomeProduct: NSObject , NSCoding, MABMapper{
                                 let productsDetails:Dictionary<String,Any>  = result["data"] as! Dictionary<String,Any>;
                                 
                                 let homeProduct = MABMapperFetcher<Any>.fetch(dictionary: productsDetails, type: HomeProduct.self) as? HomeProduct
-                                homeProduct?.nbrPage = (homeProduct?.totalProduct)!/10+1
+                              homeProduct?.nbrPage = (homeProduct?.totalProduct)!/10+1
                                 if homeProduct != nil {
                                     DispatchQueue.main.async {
                                         callBack(homeProduct!,nil)

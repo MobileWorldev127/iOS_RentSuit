@@ -190,12 +190,12 @@ struct Cart: Codable {
     
     static func createPost(params : [String : NSObject], callBack:@escaping (String?) -> Void) -> Void {
         let request =
-            RequestBuilder.buildPostFormDataRequest(url: kBaseUrl + "post_item", requireAuth: true, pathParams: nil, queryParams : nil, body: params)
+            RequestBuilder.buildPostFormDataRequest(url: kBaseUrl + "product", requireAuth: true, pathParams: nil, queryParams : nil, body: params)
         URLSession.shared.dataTask(with: request) { (data:Data?, response:URLResponse?,error: Error?) in
             if (error == nil) && (data != nil) {
                 do {
                     let result = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String,Any>
-                    guard let code = result["code"] as? String else {
+                    guard let code = result["status"] as? String else {
                         DispatchQueue.main.async {
                             callBack("500")
                         }

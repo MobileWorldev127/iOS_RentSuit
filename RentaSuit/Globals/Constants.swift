@@ -49,7 +49,8 @@ let CONTACT_PAGE  = 4
 let categorySet :[String] = ["Plz_category_key".localized,"item_damaged_key".localized,"item_late_key".localized,"item_wrong_key".localized,"technical_problme_key".localized]
 let priceSet :[String] = ["per_week_key".localized,"per_day_key".localized, "per_month_key".localized]
 
-let sizeSet :[String] = ["XS","S","M","L","XL"]
+//let sizeSet :[String] = ["XS","S","M","L","XL"]
+let sizeSet :[String] = ["Extra Small","Small","Medium","Large","Extra Large"]
 let ratingSet :[String] = ["1","2","3","4","5"]
 let citySet :[String] = ["plz_select_key".localized,"AB".localized,"BC".localized,"MB".localized,"NB".localized,"NL".localized,"NT".localized,"NS".localized,"NU".localized,"ON".localized,"PE".localized,"QC".localized,"SK".localized,"YT".localized]
 let  paysCity : [String] = ["canada_key".localized,"UPS_key".localized]

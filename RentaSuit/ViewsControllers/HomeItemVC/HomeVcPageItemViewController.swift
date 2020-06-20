@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol HomeVcpageItemDelegate : AnyObject {
+    func setupHomePager(index:NSInteger)
+}
+
 class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
+  weak var delegate: HomeVcpageItemDelegate?
+  
     let reuseGroupIdentifier = "HomeGroupId"
     let reuseHomeIdentifier = "HomeCellId"
     let reuseHomeHeaderIdentifier = "HomeHeaderCellId"
@@ -19,6 +25,13 @@ class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDeleg
     var currentPageProducts : Int = 0
     
     
+  var homeItemVC : HomeVcPageItemViewController? = nil
+  var garmentsVC : GarmentsPageViewController? = nil
+  var shippingVC : ShippingPageViewController? = nil
+  var aboutVC    : AboutViewController? = nil
+  var contatcUsVC : ContatcUsPageViewController? = nil
+  var newsVC : NewsViewController? = nil
+  
     @IBOutlet weak var homeCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -38,7 +51,7 @@ class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDeleg
         }
     }
     func getListProducts()  {
-        HomeProduct.getListProducts(productsUrl: "product-list" ,page: 0) { (homeProduct, err) in
+        HomeProduct.getListProducts(productsUrl: "product-list" ,page: 1) { (homeProduct, err) in
             if homeProduct != nil {
                 self.homeObject = homeProduct
                 self.listProducts = (homeProduct?.listProducts)!
@@ -200,19 +213,22 @@ class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDeleg
         }
 
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    
- */
+  func getAllHomeViewControllers() -> [UIViewController] {
+         homeItemVC = HomeVcPageItemViewController.sharedInstance
+         garmentsVC = GarmentsPageViewController.sharedInstance
+         shippingVC = ShippingPageViewController.sharedInstance
+         contatcUsVC = ContatcUsPageViewController.sharedInstance
+
+        return [homeItemVC!,garmentsVC!,contatcUsVC!,shippingVC!]
+    }
+
     @IBAction func didTapSearchRent(_ sender: Any) {
-        let customPopup :CustomPopupViewController = CustomPopupViewController.init(nibName: "CustomPopupViewController", bundle: nil)
-        customPopup.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        self.present(customPopup, animated: false, completion: nil)
+//        let customPopup :CustomPopupViewController = CustomPopupViewController.init(nibName: "CustomPopupViewController", bundle: nil)
+//        customPopup.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+//        self.present(customPopup, animated: false, completion: nil)
+      
+      self.delegate!.setupHomePager(index: 1)
     }
 }
 

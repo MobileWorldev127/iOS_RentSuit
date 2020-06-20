@@ -185,11 +185,6 @@ class ForRentViewController: BaseViewController, PickableValuesTextFieldDelegate
 //              self.navigationController?.popToViewController(viewControllers[viewControllers.count - 4], animated: false)
               self.navigationController?.pushViewController(vc, animated: true)
             })
-//            self.stopLoading()
-//            let vc = self.getViewControllerInstance(sbId: "ProductDetails", vcId: "feed_back_screen")
-//            self.addChildViewController(vc)
-//            self.view.addSubview(vc.view)
-//            vc.didMove(toParentViewController: self)
         }
       
     }

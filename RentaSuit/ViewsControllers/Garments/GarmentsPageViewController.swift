@@ -17,7 +17,7 @@ class GarmentsPageViewController: BasepageViewController,UICollectionViewDataSou
     var homeObject:HomeProduct?
     var listCategoryProduct :[CategoryProduct]  = [CategoryProduct]()
     var listProducts :[Product]  = [Product]()
-    var currentPageProducts : Int = 0
+    var currentPageProducts : Int = 1
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class GarmentsPageViewController: BasepageViewController,UICollectionViewDataSou
     }
     
     func getListProducts()  {
-        HomeProduct.getListProducts(productsUrl: "product-list" ,page: 0) { (homeProduct, err) in
+        HomeProduct.getListProducts(productsUrl: "product-list" ,page: 1) { (homeProduct, err) in
             if homeProduct != nil {
                 self.homeObject = homeProduct
                 self.listProducts = (homeProduct?.listProducts)!

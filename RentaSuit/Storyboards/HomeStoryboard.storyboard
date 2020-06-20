@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Montserrat-Medium.otf">
+        <array key="Montserrat-Medium.ttf">
             <string>Montserrat-Medium</string>
         </array>
         <array key="SF-Pro-Display-Regular.otf">
@@ -302,7 +302,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="4"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedString" value="action_chat"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedString" value="action_rented"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="didTapMenuItem:" destination="jBH-uf-Jes" eventType="touchUpInside" id="xxo-rM-u9x"/>
@@ -325,7 +325,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="4"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedString" value="action_billing"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedString" value="action_for_rent"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="didTapMenuItem:" destination="jBH-uf-Jes" eventType="touchUpInside" id="4Dl-Fw-EYL"/>

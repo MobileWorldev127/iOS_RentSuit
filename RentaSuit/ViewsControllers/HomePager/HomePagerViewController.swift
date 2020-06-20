@@ -109,6 +109,27 @@ class HomePagerViewController: UIViewController  ,UIPageViewControllerDataSource
         }
         return false
     }
+  
+    func slideToIndex1(index:NSInteger) -> Bool {
+        if (index >= 0 && index < (allViewControllersPage?.count)! ){
+            if(index != currentPage){
+                let direction : UIPageViewControllerNavigationDirection = index > currentPage ? UIPageViewControllerNavigationDirection.forward : UIPageViewControllerNavigationDirection.reverse
+                
+                let viewControllerAtPage: UIViewController? = allViewControllersPage![index]
+                
+                if (viewControllerAtPage != nil ){
+                    self.pageVc?.setViewControllers( [viewControllerAtPage!], direction:direction, animated: true, completion: nil)
+                    currentPage = index
+                    self.delegate?.didScrollToPage(index: currentPage)
+                    
+                }
+                
+            }
+            return false
+            
+        }
+        return false
+    }
     
     func  getCurrentPage() -> NSInteger {
         return currentPage

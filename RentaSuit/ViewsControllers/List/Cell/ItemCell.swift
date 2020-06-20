@@ -16,6 +16,8 @@ enum Action {
 }
 protocol CellActionDelegate {
     func didRequest(_ cell :UITableViewCell ,_ action : Action)
+    func didEditItem(_ cell :UITableViewCell ,_ action : Action)
+    func didRemoveItem(_ cell :UITableViewCell ,_ action : Action)
 }
 
 class ItemCell: UITableViewCell {
@@ -48,6 +50,15 @@ class ItemCell: UITableViewCell {
     @IBOutlet weak var rentedProductDesignerLabel: UILabel!
     @IBOutlet weak var rentedProductCancelBookingBtn: UIButton!
     @IBOutlet weak var ratingView: CosmosView!
+  
+    @IBOutlet weak var forRentProductImage: UIImageView!
+    @IBOutlet weak var forRentProductNameLabel: UILabel!
+    @IBOutlet weak var forRentProductPriceLabel: UILabel!
+    @IBOutlet weak var forRentProductDesignerLabel: UILabel!
+    @IBOutlet weak var forRentProductEditItemBtn: UIButton!
+    @IBOutlet weak var forRentProductRemoveItemBtn: UIButton!
+    @IBOutlet weak var forRentProductCancelBookingBtn: UIButton!
+    @IBOutlet weak var forRentProductRatingView: CosmosView!
   
     var delegate : CellActionDelegate?
     
@@ -128,6 +139,19 @@ class ItemCell: UITableViewCell {
               self.rentedProductOwnerImage.setImageWith(url, placeholderImage: UIImage(named: "placeholder-test"))
         }
     }
+  
+    func setUp(addedProduct : AddedProduct) {
+        if (addedProduct.picture != nil) {
+          let urlwithPercentEscapes =  (addedProduct.picture).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
+            let url:URL = URL(string:urlwithPercentEscapes!)!
+            self.forRentProductImage.contentMode = UIViewContentMode.scaleAspectFill;
+            self.forRentProductImage.setImageWith(url, placeholderImage: UIImage(named: "placeholder-test"))
+        }
+        self.forRentProductNameLabel.text = addedProduct.name
+        self.forRentProductPriceLabel.text = "$" + String(addedProduct.price)
+        self.forRentProductDesignerLabel.text = addedProduct.designer
+        self.forRentProductRatingView.rating = Double(exactly: (addedProduct.rating))!
+    }
     
     
     @IBAction func didTapDelete(_ sender : UIButton) {
@@ -140,6 +164,24 @@ class ItemCell: UITableViewCell {
         if nil != self.delegate {
             self.delegate?.didRequest(self, .delete)
         }
+    }
+  
+    @IBAction func didTapEditItem(_ sender: UIButton) {
+      if nil != self.delegate {
+          self.delegate?.didEditItem(self, .delete)
+      }
+    }
+
+    @IBAction func didTapRemoveItem(_ sender: UIButton) {
+      if nil != self.delegate {
+          self.delegate?.didRemoveItem(self, .delete)
+      }
+    }
+
+    @IBAction func didTapBookigList(_ sender: UIButton) {
+      if nil != self.delegate {
+          self.delegate?.didRemoveItem(self, .delete)
+      }
     }
 
 }

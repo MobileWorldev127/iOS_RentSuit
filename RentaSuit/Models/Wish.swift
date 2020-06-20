@@ -293,7 +293,7 @@ class Wish : Product {
                     callBack("500")
                 }
             }
-            }.resume()
+          }.resume()
     }
     
     func add(callBack:@escaping (String?) -> Void) -> Void {

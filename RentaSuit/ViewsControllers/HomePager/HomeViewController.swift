@@ -9,7 +9,7 @@
 import UIKit
 
 @available(iOS 10.0, *)
-class HomeViewController: BaseViewController ,HomePagerDelagate{
+class HomeViewController: BaseViewController ,HomePagerDelagate, HomeVcpageItemDelegate{
     
     
     @IBOutlet weak var menuBtnsStackview: UIStackView!
@@ -33,7 +33,6 @@ class HomeViewController: BaseViewController ,HomePagerDelagate{
     @IBOutlet weak var moreButton: UIButton!
     
     var homePagerViewController:HomePagerViewController? = nil
-    
     var homeItemVC : HomeVcPageItemViewController? = nil
     var garmentsVC : GarmentsPageViewController? = nil
     var shippingVC : ShippingPageViewController? = nil
@@ -47,19 +46,19 @@ class HomeViewController: BaseViewController ,HomePagerDelagate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupHomePager()
+      setupHomePager(index: 0)
         Category.loadRemoteCategories()
     }
     
-    func setupHomePager()  {
-        currentPage = 0
+  func setupHomePager(index page: NSInteger)  {
+//        currentPage = 0
 
         if (homePagerViewController != nil) {
             homePagerViewController?.view .removeFromSuperview()
             homePagerViewController?.removeFromParentViewController()
         }
         homePagerViewController = HomePagerViewController()
-        homePagerViewController!.currentPage = currentPage
+        homePagerViewController!.currentPage = page
         homePagerViewController!.allViewControllersPage = getAllHomeViewControllers()
         homePagerViewController!.delegate = self
         homePagerViewController!.view.frame = self.pagerContainerView.bounds
@@ -69,10 +68,10 @@ class HomeViewController: BaseViewController ,HomePagerDelagate{
         self.view.layoutIfNeeded()
         self.updateHeader(indexBtn:homePagerViewController!.currentPage)
         
-        
     }
     func getAllHomeViewControllers() -> [UIViewController] {
          homeItemVC = HomeVcPageItemViewController.sharedInstance
+      homeItemVC?.delegate = self
          garmentsVC = GarmentsPageViewController.sharedInstance
          shippingVC = ShippingPageViewController.sharedInstance
 //         aboutVC = AboutViewController.sharedInstance
@@ -175,10 +174,15 @@ class HomeViewController: BaseViewController ,HomePagerDelagate{
       let pageItemClicked  =  homePagerViewController!.slideToIndex(index: sender.tag)
         print(pageItemClicked)
     }
+  
     func didScrollToPage(index: NSInteger) {
         currentPage = index
         self.updateHeader(indexBtn: index)
     }
+  
+//    func setUpHomepage(index: NSInteger) {
+//      print("12", index)
+//     }
   
     @IBAction func didSelectMoreButton(_ sender: UIButton) {
         let vc = getViewControllerInstance(sbId: "HomeStoryboard", vcId: "pop_up_scene") as! PopUpSelectorViewController
@@ -201,7 +205,8 @@ extension HomeViewController : PopUpSelectorDelegate {
             goToRented()
             break
         case 2:
-            goToBilling()
+//            goToBilling()
+            goToForRent()
             break
         case 3:
             goToMap()
@@ -253,11 +258,22 @@ extension HomeViewController : PopUpSelectorDelegate {
       }
     }
     
-    func goToBilling(){
-        self.pushViewController(sbId: "BillingMethods",
-                                vcId: "billing_screen",
-                                animated: true)
+//    func goToBilling(){
+//        self.pushViewController(sbId: "BillingMethods",
+//                                vcId: "billing_screen",
+//                                animated: true)
+//    }
+  
+  func goToForRent() {
+    self.startLoading()
+    AddedProduct.myAddedProductList {(rentedProducts, code) in
+      self.stopLoading()
+      let vc  = self.getViewControllerInstance(sbId: "ForRentList",vcId: "for_rent_list_screen") as! ForRentListViewController
+        vc.forRentAddedProductList = rentedProducts
+      self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+  }
     
     func goToMap(){
         self.pushViewController(sbId: "Map",

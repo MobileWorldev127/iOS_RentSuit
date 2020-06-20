@@ -107,3 +107,46 @@ struct PaymentStatus: Codable {
             }.resume()
     }
 }
+
+struct ProceedToPayment: Codable {
+//    let payKey: String?
+//     
+//     enum CodingKeys: String, CodingKey {
+//         case payKey = "pay_key"
+//     }
+    static func ProceedToPayment(params : Dictionary <String , NSObject>, callBack:@escaping (String?) -> Void) -> Void {
+        let request =
+            RequestBuilder.buildPostFormDataRequest(url: kBaseUrl + "proceed-to-payment", requireAuth: true, pathParams: nil, queryParams: nil, body: params)
+      
+        URLSession.shared.dataTask(with: request) { (data, response, err) in
+
+            if (err == nil) && (data != nil) {
+                do {
+                    let decoder = JSONDecoder()
+                    let model = try decoder.decode(PaymentStatusResponse.self, from:
+                        data!)
+                    if model.data != nil {
+                        DispatchQueue.main.async {
+                          callBack("200")
+                        }
+                    }else{
+                        DispatchQueue.main.async {
+                            callBack(nil)
+                        }
+                    }
+
+                } catch let err {
+                    print(err)
+                    DispatchQueue.main.async {
+                        callBack(nil)
+                    }
+                }
+            }else{
+                DispatchQueue.main.async {
+                    callBack(nil)
+                }
+            }
+
+            }.resume()
+    }
+}
