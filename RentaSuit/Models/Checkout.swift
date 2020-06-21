@@ -82,7 +82,7 @@ struct PaymentStatus: Codable {
                     let decoder = JSONDecoder()
                     let model = try decoder.decode(PaymentStatusResponse.self, from:
                         data!)
-                    if model.data != nil {
+                  if model.data?.payKey != nil {
                         DispatchQueue.main.async {
                           callBack(model.data)
                         }

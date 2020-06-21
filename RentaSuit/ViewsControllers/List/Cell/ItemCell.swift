@@ -72,6 +72,7 @@ class ItemCell: UITableViewCell {
         if (wish.picture != nil) {
             let urlwithPercentEscapes =  (wish.picture!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
             let url:URL = URL(string:urlwithPercentEscapes!)!
+            self.itemImage.contentMode = UIViewContentMode.scaleAspectFill;
             self.itemImage.setImageWith(url, placeholderImage: UIImage(named: "placeholder-test"))
         }
     }
@@ -107,6 +108,7 @@ class ItemCell: UITableViewCell {
               if (cart.productDetail.picture != nil) {
                   let urlwithPercentEscapes =  (cart.productDetail.picture).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
                   let url:URL = URL(string:urlwithPercentEscapes!)!
+                  self.itemImage.contentMode = UIViewContentMode.scaleAspectFill;
                   self.itemImage.setImageWith(url, placeholderImage: UIImage(named: "placeholder-test"))
               }
           }
@@ -130,6 +132,7 @@ class ItemCell: UITableViewCell {
         if (rentedProduct.picture != nil) {
             let urlwithPercentEscapes =  (rentedProduct.picture!).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
             let url:URL = URL(string:urlwithPercentEscapes!)!
+            self.rentedProductImage.contentMode = UIViewContentMode.scaleAspectFill;
             self.rentedProductImage.setImageWith(url, placeholderImage: UIImage(named: "placeholder-test"))
         }
         if (rentedProduct.userDetail?.photo != nil) {

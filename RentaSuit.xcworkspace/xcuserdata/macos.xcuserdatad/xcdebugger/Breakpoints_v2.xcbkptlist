@@ -183,32 +183,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0037B014-D48D-462D-BF4C-F04FF3EC1C25"
+            uuid = "60CCD182-742E-409C-A631-9F04105BEBE9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RentaSuit/ViewsControllers/Garments/GarmentsPageViewController.swift"
+            filePath = "RentaSuit/ViewsControllers/List/ItemListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "getMoreProducts()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C26B4BDF-2FBC-4D7E-9BD4-305CA1FD1CE5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RentaSuit/Models/HomeProduct.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "getListProducts(productsUrl:page:callBack:)"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "moveToRentedView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

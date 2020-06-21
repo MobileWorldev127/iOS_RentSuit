@@ -11,7 +11,13 @@ import Foundation
 import WebKit
 import Braintree
 
-class CartPopupViewController: UIViewController {
+protocol CartPopUpDelegate : AnyObject {
+    func moveToRentedView()
+}
+
+class CartPopupViewController: UIViewController, WebViewDelegate {
+  
+  weak var delegate: CartPopUpDelegate?
   
   @IBOutlet weak var rentValueLabel: UILabel!
   @IBOutlet weak var shippingLabel: UILabel!
@@ -54,13 +60,18 @@ class CartPopupViewController: UIViewController {
       self.totalChargesLabel.text = "$ " + String(totalChargesValue);
       self.totalPaymentLabel.text = "$ " + String(totalPaymentValue);
       
-    }   
-    
+    }
+  }
+  
+  func refreshCart() {
+    self.dismiss(animated: false, completion: nil)
+    self.delegate!.moveToRentedView()
   }
   
   func openWebViewWithUrlString(urlString:String)  {
       let webViewVc:PrivacyViewController = PrivacyViewController.init(nibName: "PrivacyViewController", bundle: nil)
       webViewVc.urlString = urlString
+      webViewVc.delegate = self
       self.present(webViewVc, animated: true, completion: nil)
   }
   
@@ -72,7 +83,6 @@ class CartPopupViewController: UIViewController {
       Checkout.generatePaymentURL { (products, code) in
         print((products?.paymentKey)!)
         print((products?.paymentUrl)!)
-
         var params = [String : NSObject]()
         params["payment_key"] = (products?.paymentKey)!.toObject
         

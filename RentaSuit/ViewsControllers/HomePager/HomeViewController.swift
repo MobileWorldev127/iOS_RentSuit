@@ -9,7 +9,7 @@
 import UIKit
 
 @available(iOS 10.0, *)
-class HomeViewController: BaseViewController ,HomePagerDelagate, HomeVcpageItemDelegate{
+class HomeViewController: BaseViewController ,HomePagerDelagate, HomeVcpageItemDelegate, WishListDelegate{
     
     
     @IBOutlet weak var menuBtnsStackview: UIStackView!
@@ -46,7 +46,7 @@ class HomeViewController: BaseViewController ,HomePagerDelagate, HomeVcpageItemD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      setupHomePager(index: 0)
+        setupHomePager(index: 0)
         Category.loadRemoteCategories()
     }
     
@@ -70,13 +70,13 @@ class HomeViewController: BaseViewController ,HomePagerDelagate, HomeVcpageItemD
         
     }
     func getAllHomeViewControllers() -> [UIViewController] {
-         homeItemVC = HomeVcPageItemViewController.sharedInstance
-      homeItemVC?.delegate = self
-         garmentsVC = GarmentsPageViewController.sharedInstance
-         shippingVC = ShippingPageViewController.sharedInstance
-//         aboutVC = AboutViewController.sharedInstance
-         contatcUsVC = ContatcUsPageViewController.sharedInstance
-//         newsVC = NewsViewController.sharedInstance
+        homeItemVC = HomeVcPageItemViewController.sharedInstance
+        homeItemVC?.delegate = self
+        garmentsVC = GarmentsPageViewController.sharedInstance
+        shippingVC = ShippingPageViewController.sharedInstance
+//        aboutVC = AboutViewController.sharedInstance
+        contatcUsVC = ContatcUsPageViewController.sharedInstance
+//        newsVC = NewsViewController.sharedInstance
 
         return [homeItemVC!,garmentsVC!,contatcUsVC!,shippingVC!]
     }
@@ -289,6 +289,7 @@ extension HomeViewController : PopUpSelectorDelegate {
 //            if products != nil {
                 let vc  = self.getViewControllerInstance(sbId: "Wishlist",vcId: "wish_list_scene") as! WishListViewController
                 vc.wishList = products
+                vc.delegate = self
                 self.navigationController?.pushViewController(vc, animated: true)
 //            }else{
 //                

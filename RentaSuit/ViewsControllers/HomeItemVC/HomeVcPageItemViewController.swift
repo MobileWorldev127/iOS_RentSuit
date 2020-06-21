@@ -14,7 +14,7 @@ protocol HomeVcpageItemDelegate : AnyObject {
 
 class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
-  weak var delegate: HomeVcpageItemDelegate?
+    weak var delegate: HomeVcpageItemDelegate?
   
     let reuseGroupIdentifier = "HomeGroupId"
     let reuseHomeIdentifier = "HomeCellId"
@@ -25,12 +25,12 @@ class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDeleg
     var currentPageProducts : Int = 0
     
     
-  var homeItemVC : HomeVcPageItemViewController? = nil
-  var garmentsVC : GarmentsPageViewController? = nil
-  var shippingVC : ShippingPageViewController? = nil
-  var aboutVC    : AboutViewController? = nil
-  var contatcUsVC : ContatcUsPageViewController? = nil
-  var newsVC : NewsViewController? = nil
+    var homeItemVC : HomeVcPageItemViewController? = nil
+    var garmentsVC : GarmentsPageViewController? = nil
+    var shippingVC : ShippingPageViewController? = nil
+    var aboutVC    : AboutViewController? = nil
+    var contatcUsVC : ContatcUsPageViewController? = nil
+    var newsVC : NewsViewController? = nil
   
     @IBOutlet weak var homeCollectionView: UICollectionView!
     
@@ -214,7 +214,7 @@ class HomeVcPageItemViewController: BasepageViewController,UICollectionViewDeleg
 
     }
 
-  func getAllHomeViewControllers() -> [UIViewController] {
+    func getAllHomeViewControllers() -> [UIViewController] {
          homeItemVC = HomeVcPageItemViewController.sharedInstance
          garmentsVC = GarmentsPageViewController.sharedInstance
          shippingVC = ShippingPageViewController.sharedInstance

@@ -8,21 +8,27 @@
 
 import UIKit
 import WebKit
+
+protocol WebViewDelegate : AnyObject {
+    func refreshCart()
+}
+
 class PrivacyViewController: UIViewController ,UIWebViewDelegate{
-    @IBOutlet weak var webViewContainer: UIView!
+    
+    weak var delegate: WebViewDelegate?
+    @IBOutlet weak var webViewContainer: UIWebView!
     var urlString : String = ""
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
         DispatchQueue.main.async {
             LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         }
-                let webView = UIWebView(frame:  CGRect(x: 0, y: 0, width: webViewContainer.frame.size.width, height: webViewContainer.frame.size.height))
-               webViewContainer.addSubview(webView)
-               webView.delegate = self
-                let url = URL(string: urlString)
+        webViewContainer.delegate = self
+        let url = URL(string: urlString)
         let request = URLRequest(url: url!)
-        webView.loadRequest(request)
+        webViewContainer.loadRequest(request)
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -32,6 +38,7 @@ class PrivacyViewController: UIViewController ,UIWebViewDelegate{
     }
     @IBAction func closeBtnPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+        self.delegate!.refreshCart()
     }
    
     

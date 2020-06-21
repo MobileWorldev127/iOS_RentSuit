@@ -7,9 +7,14 @@
 //
 
 import UIKit
+protocol WishListDelegate : AnyObject {
+    func setupHomePager(index:NSInteger)
+}
 
-class ItemListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, CellActionDelegate {
+class ItemListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, CellActionDelegate, CartPopUpDelegate {
     
+    weak var delegate: WishListDelegate?
+  
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var placeOrderBtn: UIButton!
     
@@ -39,19 +44,34 @@ class ItemListViewController: BaseViewController, UITableViewDataSource, UITable
         }
     }
     @IBAction func didTapContinue(_ sender: Any) {
-      var arr : [Int] = []
-      for (index, item) in self.cartList!.enumerated(){
-        Wish.getItemDetails(String(item.productID)) { (detail, code) in
-          arr.append(Int((detail?.retailPrice!)!)!)
-          if (index == self.cartList!.count - 1 ) {
-            let cartPopup :CartPopupViewController = CartPopupViewController.init(nibName: "CartPopupViewController", bundle: nil)
-            cartPopup.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-            cartPopup.cartList = self.cartList
-            cartPopup.retailPriceList = arr
-            self.present(cartPopup, animated: false, completion: nil)
+      if self is WishListViewController {
+        self.navigationController?.popViewController(animated: true)
+        self.delegate!.setupHomePager(index: 1)
+      } else {
+        var arr : [Int] = []
+        for (index, item) in self.cartList!.enumerated(){
+          Wish.getItemDetails(String(item.productID)) { (detail, code) in
+            arr.append(Int((detail?.retailPrice!)!)!)
+            if (index == self.cartList!.count - 1 ) {
+              let cartPopup :CartPopupViewController = CartPopupViewController.init(nibName: "CartPopupViewController", bundle: nil)
+              cartPopup.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+              cartPopup.cartList = self.cartList
+              cartPopup.retailPriceList = arr
+              cartPopup.delegate = self
+              self.present(cartPopup, animated: false, completion: nil)
+            }
           }
-        }        
+        }
       }
+    }
+  
+    func moveToRentedView() {
+      self.startLoading()
+      Cart.cartList(callBack:{ (products, code) in
+          self.stopLoading()
+          self.cartList = products
+          self.tableView.reloadData()
+      })
     }
   
   
