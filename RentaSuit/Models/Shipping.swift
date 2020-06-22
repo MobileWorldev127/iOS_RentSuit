@@ -21,13 +21,13 @@ public class Shipping: NSObject, NSCoding, MABMapper{
         return [
             "name" : [
                 "class" : NSString.self,
-                "path" : "name",
+                "path" : "service",
                 "required" : false,
                 "array" : false
             ],
             "value" : [
                 "class" : NSString.self,
-                "path" : "value",
+                "path" : "cost",
                 "required" : false,
                 "array" : false
             ]
@@ -38,21 +38,21 @@ public class Shipping: NSObject, NSCoding, MABMapper{
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        self.name = (aDecoder.decodeObject(forKey: "name") as! String)
-        self.value = (aDecoder.decodeObject(forKey: "value") as! String)
+        self.name = (aDecoder.decodeObject(forKey: "service") as! String)
+        self.value = (aDecoder.decodeObject(forKey: "cost") as! String)
         
     }
     
     public func encode(with aCoder: NSCoder) {
 
-        aCoder.encode(name, forKey: "name")
-        aCoder.encode(value, forKey: "value")
+        aCoder.encode(name, forKey: "service")
+        aCoder.encode(value, forKey: "cost")
     }
     
     
     public class func postShippingCalculator( credentials : Dictionary <String , NSObject>, callBack:@escaping ([Shipping]?,Error?) -> Void) -> Void {
         let request =
-            RequestBuilder.buildPostRequest(url: kBaseUrl + "shipping_calculator", requireAuth: true, pathParams: nil, queryParams : nil, body: credentials)
+          RequestBuilder.buildPostRequest(url: kBaseUrl + "shipping-calculator", requireAuth: true, pathParams: nil, queryParams : credentials as! Dictionary<String, String>, body: nil)
         DispatchQueue.main.async {
             LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         }
@@ -65,14 +65,15 @@ public class Shipping: NSObject, NSCoding, MABMapper{
             if (error == nil) && (data != nil) {
                 do {
                     let result = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String,Any>
-                      let code:String? = result["code"]! as? String
-                    if code == "200"  {
+                    let code:Int  = result["status"] as! Int
+                                             
+                    if code  == 200 {
                         if result["data"] != nil && result["data"] is Dictionary<String,Any>{
                             let newsData:Dictionary<String,Any>  = result["data"] as! Dictionary<String,Any>;
-                            if newsData["shipping_calculator"] != nil && newsData["shipping_calculator"] is NSArray{}
+                            if newsData["shipping_plans"] != nil && newsData["shipping_plans"] is NSArray{}
 
                             
-                            let shippingArray = MABMapperFetcher<Any>.fetch(array: newsData["shipping_calculator"] as! Array<Any>, type: Shipping.self)
+                            let shippingArray = MABMapperFetcher<Any>.fetch(array: newsData["shipping_plans"] as! Array<Any>, type: Shipping.self)
                             if shippingArray != nil && shippingArray is [Shipping] {
                                 DispatchQueue.main.async {
                                     callBack((shippingArray! as! [Shipping]),nil)
@@ -85,12 +86,12 @@ public class Shipping: NSObject, NSCoding, MABMapper{
                         }
                     }else{
                         DispatchQueue.main.async {
-                            if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
-                                let errorTemp = NSError(domain:"wrongData", code:101, userInfo:result["msg"]!  as? [String : Any])
+                            if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
+                                let errorTemp = NSError(domain:"wrongData", code:101, userInfo:result["message"]!  as? [String : Any])
                                 callBack([],errorTemp)
                                 
-                            }else if result["msg"] is NSString && result["msg"] != nil {
-                                let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
+                            }else if result["message"] is NSString && result["message"] != nil {
+                                let errorTemp = NSError(domain:result["message"]! as! String, code:101, userInfo:nil)
                                 callBack([],errorTemp)
                             }else{
                                 callBack([],error)

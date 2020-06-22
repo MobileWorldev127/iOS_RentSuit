@@ -142,6 +142,10 @@ class ItemListViewController: BaseViewController, UITableViewDataSource, UITable
         }
         
     }
+    
+    func detailRetailPrice(_ cell: UITableViewCell, _ action: Action) {
+      showAlertView(title: "", message: "A deposit will be retrieved from your credit card upon the owner of the item receives the item back satisfactorily")
+    }
   
     func didEditItem(_ cell: UITableViewCell, _ action: Action) {
       let indexPath = self.tableView.indexPath(for: cell)

@@ -67,6 +67,7 @@ class RentedProductDetailsViewController: BaseViewController, UIScrollViewDelega
     self.productEmailLabel.text = "Email: " + item!.email!
     self.productContactLabel.text = "Contact: " + item!.rentedcontactNumber!
     self.productRentDescriptionLabel.text = "Description: " + item!.detail!
+    self.productStatusLabel.text = item?.status
     self.productNameLabel.text = item?.rentedProductDetail?.name
     ratingView.rating = Double(exactly: (item?.rentedProductDetail?.rating)!)!
     self.productReviewsLabel.text = (item?.rentedProductDetail?.totalReviews!)! + " REVIEWS"

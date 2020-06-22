@@ -16,6 +16,7 @@ enum Action {
 }
 protocol CellActionDelegate {
     func didRequest(_ cell :UITableViewCell ,_ action : Action)
+    func detailRetailPrice(_ cell :UITableViewCell ,_ action : Action)
     func didEditItem(_ cell :UITableViewCell ,_ action : Action)
     func didRemoveItem(_ cell :UITableViewCell ,_ action : Action)
 }
@@ -160,6 +161,12 @@ class ItemCell: UITableViewCell {
     @IBAction func didTapDelete(_ sender : UIButton) {
         if nil != self.delegate {
             self.delegate?.didRequest(self, .delete)
+        }
+    }
+  
+    @IBAction func didTapDetail(_ sender : UIButton) {
+        if nil != self.delegate {
+            self.delegate?.detailRetailPrice(self, .delete)
         }
     }
   
