@@ -79,6 +79,25 @@ class CartPopupViewController: UIViewController, WebViewDelegate {
       self.dismiss(animated: false, completion: nil)
 
   }
+  
+  @IBAction func pointBtnPressed(_ sender: Any) {
+//      showAlertView(title: nil, message: "Total payment= total price + retail price")
+    let alert = UIAlertController(title: "Total payment= total price + retail price", message: "", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+        switch action.style{
+          case .default:
+            print("Ok")
+          case .cancel:
+                print("cancel")
+
+          case .destructive:
+                print("destructive")
+        }
+    }))
+    self.present(alert, animated: true, completion: nil)
+
+  }
+  
   @IBAction func orderBtnPressed(_ sender: Any) {
       Checkout.generatePaymentURL { (products, code) in
         print((products?.paymentKey)!)

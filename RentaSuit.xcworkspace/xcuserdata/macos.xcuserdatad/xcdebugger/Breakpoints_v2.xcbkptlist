@@ -71,22 +71,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D73D7A19-DF71-4EA3-BB0E-CC797DE1D4F8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RentaSuit/Models/User.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
-            landmarkName = "Login(credentials:callBack:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "1E935AB8-DC4B-45F7-B64B-77E6B4762CF9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -162,6 +146,54 @@
             endingLineNumber = "69"
             landmarkName = "moveToRentedView()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7E823AA2-4AF3-467C-BB1F-6F046927C733"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RentaSuit/Models/Shipping.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "getShippingCalculator(credentials:callBack:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7E823AA2-4AF3-467C-BB1F-6F046927C733 - c34b5ec065a14e3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static RentaSuit.Shipping.getShippingCalculator(credentials: Swift.Dictionary&lt;Swift.String, __C.NSObject&gt;, callBack: (Swift.Optional&lt;Swift.Array&lt;RentaSuit.Shipping&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "RentaSuit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Data/WorkSpace/iOS/RentaSuit/RentaSuit/Models/Shipping.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "7822">
+               </Location>
+               <Location
+                  uuid = "7E823AA2-4AF3-467C-BB1F-6F046927C733 - e82285f8f0041aa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 () -&gt; () in closure #2 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static RentaSuit.Shipping.getShippingCalculator(credentials: Swift.Dictionary&lt;Swift.String, __C.NSObject&gt;, callBack: (Swift.Optional&lt;Swift.Array&lt;RentaSuit.Shipping&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "RentaSuit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Data/WorkSpace/iOS/RentaSuit/RentaSuit/Models/Shipping.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "41">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

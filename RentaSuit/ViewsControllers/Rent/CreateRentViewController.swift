@@ -25,11 +25,16 @@ class CreateRentViewController: BaseViewController, ImagePickerDelegate, Missing
     @IBOutlet weak var itemDesignerInput: UITextField!
     @IBOutlet weak var itemDescriptionInput: UITextField!
     @IBOutlet weak var itemCleanPriceInput: UITextField!
+    @IBOutlet weak var cguChekbox: UIButton!
   
     var item: AddedProductDetailItem?
     
     @IBAction func didTapCreate(_ sender: Any) {
         var params = [String : NSObject]()
+        if (!cguChekbox.isSelected) {
+          self.showAlertView(title: nil, message: "Please check the agreement")
+          return
+        }
         if String.isValid(itemNameInput.text) {
             params["name"] = itemNameInput.text!.toObject
         }else{
@@ -207,16 +212,12 @@ class CreateRentViewController: BaseViewController, ImagePickerDelegate, Missing
               self.present(alert, animated: true, completion: nil)
             
             
-            
-//              self.startLoading()
-//              AddedProduct.myAddedProductList {(rentedProducts, code) in
-//                self.stopLoading()
-//                let vc  = self.getViewControllerInstance(sbId: "ForRentList",vcId: "for_rent_list_screen") as! ForRentListViewController
-//                  vc.forRentAddedProductList = rentedProducts
-//                self.navigationController?.pushViewController(vc, animated: true)
-//              }
           }
         }
+    }
+    
+    @IBAction func cguCheckBox(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
     }
     
     var avatarPicker : ImagePicker?

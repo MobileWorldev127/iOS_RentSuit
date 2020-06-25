@@ -48,11 +48,10 @@ public class Shipping: NSObject, NSCoding, MABMapper{
         aCoder.encode(name, forKey: "service")
         aCoder.encode(value, forKey: "cost")
     }
-    
-    
-    public class func postShippingCalculator( credentials : Dictionary <String , NSObject>, callBack:@escaping ([Shipping]?,Error?) -> Void) -> Void {
+  
+    public class func getShippingCalculator( credentials : Dictionary <String , NSObject>, callBack:@escaping ([Shipping]?,Error?) -> Void) -> Void {
         let request =
-          RequestBuilder.buildPostRequest(url: kBaseUrl + "shipping-calculator", requireAuth: true, pathParams: nil, queryParams : credentials as! Dictionary<String, String>, body: nil)
+          RequestBuilder.buildGetRequest(url: kBaseUrl + "shipping-calculator", requireAuth: true, pathParams: nil, queryParams : credentials as! Dictionary<String, String>)
         DispatchQueue.main.async {
             LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         }

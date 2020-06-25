@@ -273,7 +273,7 @@ public class User  : NSObject, NSCoding, MABMapper{
     
     public class func ForgotPsw( credentials : Dictionary <String , NSObject>, callBack:@escaping (String?,Error?) -> Void) -> Void {
         let request =
-            RequestBuilder.buildPostFormDataRequest(url: kBaseUrl + "forgotpassword", requireAuth: false, pathParams: nil, queryParams : nil, body: credentials)
+            RequestBuilder.buildPostFormDataRequest(url: kBaseUrl + "forgot-password", requireAuth: false, pathParams: nil, queryParams : nil, body: credentials)
         DispatchQueue.main.async {
             LoadingOverlay.shared.showOverlay(view: UIApplication.shared.keyWindow!)
         }
@@ -285,45 +285,28 @@ public class User  : NSObject, NSCoding, MABMapper{
                 do {
                     let result = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String,Any>
                     
-                    if result["code"] != nil && result["code"] is String{
-                        let code:String  = result["code"]! as! String;
+                      let code:Int  = result["Status"]! as! Int;
+                      
+                      if code  == 200{
+                          DispatchQueue.main.async {
+                              callBack("succes",nil)
+                          }
+                      }else{
+                          DispatchQueue.main.async {
+                              if result["message"] is NSDictionary && result["message"] != nil && result["data"] is NSNull{
+                                  let errorTemp = NSError(domain:"", code:101, userInfo:result["message"]!  as? [String : Any])
+                                  callBack(nil,errorTemp)
+                                  
+                              }else if result["message"] is NSString && result["message"] != nil {
+                                  let errorTemp = NSError(domain:result["message"]! as! String, code:101, userInfo:nil)
+                                  callBack(nil,errorTemp)
+                              }else{
+                                  callBack(nil,nil)
+                                  
+                              }
+                          }
+                      }
                         
-                        if code  == "200"{
-                            DispatchQueue.main.async {
-                                callBack("succes",nil)
-                            }
-                        }else{
-                            DispatchQueue.main.async {
-                                if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
-                                    let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
-                                    callBack(nil,errorTemp)
-                                    
-                                }else if result["msg"] is NSString && result["msg"] != nil {
-                                    let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
-                                    callBack(nil,errorTemp)
-                                }else{
-                                    callBack(nil,nil)
-                                    
-                                }
-                            }
-                        }
-                        
-                        
-                    }else{
-                        DispatchQueue.main.async {
-                            if result["msg"] is NSDictionary && result["msg"] != nil && result["data"] is NSNull{
-                                let errorTemp = NSError(domain:"", code:101, userInfo:result["msg"]!  as? [String : Any])
-                                callBack(nil,errorTemp)
-                                
-                            }else if result["msg"] is NSString && result["msg"] != nil {
-                                let errorTemp = NSError(domain:result["msg"]! as! String, code:101, userInfo:nil)
-                                callBack(nil,errorTemp)
-                            }else{
-                                callBack(nil,error)
-                                
-                            }
-                        }
-                    }
                     
                     
                 } catch {
@@ -351,20 +334,20 @@ public class User  : NSObject, NSCoding, MABMapper{
         let params = ["current_password" : old,
                       "new_password" : new]
         let request =
-            RequestBuilder.buildPostFormDataRequest(url: kBaseUrl + "change_password", requireAuth: true, pathParams: nil, queryParams : nil, body: params as Dictionary<String, NSObject>)
+            RequestBuilder.buildPostFormDataRequest(url: kBaseUrl + "change-password", requireAuth: true, pathParams: nil, queryParams : nil, body: params as Dictionary<String, NSObject>)
         
         URLSession.shared.dataTask(with: request) { (data:Data?, response:URLResponse?,error: Error?) in
             if (error == nil) && (data != nil) {
                 do {
                     let result = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String,Any>
-                    guard let code = result["code"] as? String else {
+                    guard let code = result["status"] as? Int else {
                         DispatchQueue.main.async {
                             callBack("500")
                         }
                         return
                     }
                     DispatchQueue.main.async {
-                        callBack(code)
+                        callBack("success")
                     }
                     
                 } catch {

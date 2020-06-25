@@ -178,7 +178,7 @@ class ShippingPageViewController: BasepageViewController,PickableValuesTextField
         
 
 
-        Shipping.postShippingCalculator(credentials: params as! Dictionary<String, NSObject>) { (shippingArrayResult, error) in
+        Shipping.getShippingCalculator(credentials: params as! Dictionary<String, NSObject>) { (shippingArrayResult, error) in
             if shippingArrayResult?.count != 0 {
                 self.shippingArray = shippingArrayResult!
                 self.shippingResultTableView .reloadData()
