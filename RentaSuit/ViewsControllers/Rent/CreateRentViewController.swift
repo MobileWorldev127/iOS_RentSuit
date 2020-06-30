@@ -279,7 +279,7 @@ class CreateRentViewController: BaseViewController, ImagePickerDelegate, Missing
     }
     fileprivate func setUpSelector(_ sender : PickableDataTextField, dataSet : [String]?, action : ExtrasActions) {
         sender.text = dataSet?.first
-        sender.dataSet = (dataSet! as [AnyObject])
+//        sender.dataSet = (dataSet! as [AnyObject])
         sender.extras = action
         sender.pickableDelegate = self
     }
